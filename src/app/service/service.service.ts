@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class ServiceService {
 
-  url = 'https://server-redesocial.herokuapp.com/redesocial/'
+  url = 'https://server-redesocial.herokuapp.com/redesocial'
 
   constructor(private http: HttpClient) { }
 
