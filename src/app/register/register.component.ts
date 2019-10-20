@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   msgError = false;
   verificar: boolean;
 
-  constructor(private service: ServiceService,
+  constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router) {
@@ -47,7 +47,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {    
-    console.log(this.service.url);
   }
 
   showContaPaga(){
