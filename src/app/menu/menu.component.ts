@@ -12,7 +12,6 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.url);
   }
 
   logout() {
