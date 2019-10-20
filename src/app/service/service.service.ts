@@ -7,7 +7,7 @@ import { Pessoa } from '../model/pessoa';
 })
 export class ServiceService{
 
-  private url = 'https://reqres.in/api/users';
+  url = 'https://reqres.in/api/users';
 
   constructor(private http: HttpClient) { }
 

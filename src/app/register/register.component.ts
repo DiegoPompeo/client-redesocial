@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Pessoa } from '../model/pessoa';
 import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
+import { ServiceService } from '../service/service.service';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,8 @@ export class RegisterComponent implements OnInit {
   msgError = false;
   verificar: boolean;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private service: ServiceService,
+    private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router) {
     this.registerForm = this.formBuilder.group({
@@ -44,7 +46,8 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
+  ngOnInit() {    
+    console.log(this.service.url);
   }
 
   showContaPaga(){
