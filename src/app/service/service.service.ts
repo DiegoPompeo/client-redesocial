@@ -7,27 +7,25 @@ import { Pessoa } from '../model/pessoa';
 })
 export class ServiceService{
 
-  url = 'https://reqres.in/api/users';
-
   constructor(private http: HttpClient) { }
 
   //Read
   listar() {
-    return this.http.get<Pessoa[]>(this.url);
+    return this.http.get<Pessoa[]>('https://server-redesocial.herokuapp.com/pessoas/');
   }
 
   //ReadById
   verPerfil(id: number) {
-    return this.http.get<Pessoa>(this.url + "/" + id);
+    return this.http.get<Pessoa>('https://server-redesocial.herokuapp.com/pessoas/' + id);
   }
 
   //Update
   atualizarPerfil(pessoa: Pessoa) {
-    return this.http.put<Pessoa>(this.url + "/" + pessoa.id, pessoa);
+    return this.http.put<Pessoa>('https://server-redesocial.herokuapp.com/pessoas/' + pessoa.id, pessoa);
   }
 
   //ReadByEmail
   getCientist(email: string){
-    return this.http.get<Pessoa>(this.url + "/buscar/" + email);
+    return this.http.get<Pessoa>('https://server-redesocial.herokuapp.com/pessoas/buscar/' + email);
   }
 }
