@@ -1,0 +1,27 @@
+<div class="container mt-3" *ngIf="pessoa">
+    <h1>Conta Premium</h1>
+    <form ngNativeValidate>
+        <div class="form-group">
+            <label for="inputNCard" class="sr-only">Numero do cartão</label>
+            <input type="text" id="inputCompany" [(ngModel)]="pessoa.nroCartao" class="form-control"
+                placeholder="Numero do cartão" required="true" name="nroCartao">
+        </div>
+        <div class="form-group">
+            <label for="input" class="sr-only">Nome no cartão</label>
+            <input type="text" id="inputCompany" [(ngModel)]="nomeNoCartao" class="form-control"
+                placeholder="Nome no cartão" required="true" name="nomeNoCartao">
+        </div>
+        <div class="form-group">
+            <label for="inputDateVal" class="sr-only">Data validade</label>
+            <input type="text" id="inputCompany" [(ngModel)]="dataValidade" class="form-control"
+                placeholder="Data validade" required="true" name="dataValidade">
+        </div>
+        <div class="form-group">
+            <label for="inputCodSec" class="sr-only">Codigo segurança</label>
+            <input type="text" id="inputCodSec" [(ngModel)]="codSeg" class="form-control"
+                placeholder="Código segurança" required="true" name="codSeg">
+        </div>
+        <button (click)="update(pessoa)" class="btn btn-success">Confirmar</button>
+        <a href="/profile" class="btn btn-dark ml-3">Voltar para o ínicio</a>
+    </form>
+</div>
