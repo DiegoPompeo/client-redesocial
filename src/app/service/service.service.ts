@@ -1,14 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Pessoa, PessoaLogin } from '../model/pessoa';
-import { map } from 'rxjs/operators';
+import { Pessoa } from '../model/pessoa';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceService {
+export class ServiceService{
 
-  url = 'https://server-redesocial.herokuapp.com/redesocial'
+  private url = 'https://reqres.in/api/users';
 
   constructor(private http: HttpClient) { }
 
