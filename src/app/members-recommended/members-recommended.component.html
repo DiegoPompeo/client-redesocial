@@ -14,7 +14,7 @@
                 </thead>
                 <tbody *ngIf="pessoa">
                     <div *ngIf="pessoa.paga">
-                        <tr *ngFor="let cientist of cientists"></tr>
+                        <tr *ngFor="let cientist of cientists">
                         <td scope="row">
                             <div *ngIf="cientist.paga"><span>☆&nbsp;{{cientist.nome}}</span></div>
                         </td>
@@ -25,7 +25,7 @@
                         </tr>
                     </div>
                     <div *ngIf="!pessoa.paga">
-                        <tr>
+                        <tr *ngFor="let cientist of cientists">
                             <td scope="row">
                                 <div *ngIf="cientist.paga"><span>{{cientist.nome}}</span></div>
                             </td>
