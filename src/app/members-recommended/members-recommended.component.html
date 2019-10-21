@@ -12,30 +12,30 @@
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody *ngIf="pessoa.paga">
                     <div>
-                        <div *ngIf="pessoa.paga">
-                            <tr *ngFor="let cientist of cientists">                        
-                                <td scope="row">
-                                    <div *ngIf="cientist.paga"><span>☆&nbsp;{{cientist.nome}}</span></div>
-                                </td>
-                                <td scope="row">{{cientist.email}}</td>
-                                <td scope="row">
-                                    <div class="btn btn-info" (click)="gotoDetails(cientist)">Ver detalhes</div>
-                                </td>
-                            </tr>
-                        </div>
-                            <div *ngIf="!pessoa.paga">
-                                <tr *ngFor="let cientist of cientists">
-                                    <td scope="row">
-                                        <div *ngIf="!cientist.paga"><span>{{cientist.nome}}</span></div>
-                                    </td>
-                                    <td scope="row">{{cientist.email}}</td>
-                                    <td scope="row">
-                                        <div class="btn btn-info" (click)="gotoDetails(cientist)">Ver detalhes</div>
-                                    </td>
-                                </tr>
-                            </div>
+                        <tr *ngFor="let cientist of cientists">
+                            <td scope="row">
+                                <div *ngIf="cientist.paga"><span>☆&nbsp;{{cientist.nome}}</span></div>
+                            </td>
+                            <td scope="row">{{cientist.email}}</td>
+                            <td scope="row">
+                                <div class="btn btn-info" (click)="gotoDetails(cientist)">Ver detalhes</div>
+                            </td>
+                        </tr>
+                    </div>
+                </tbody>
+                <tbody *ngIf="!pessoa.paga">
+                    <div>
+                        <tr *ngFor="let cientist of cientists">
+                            <td scope="row">
+                                <div *ngIf="!cientist.paga"><span>{{cientist.nome}}</span></div>
+                            </td>
+                            <td scope="row">{{cientist.email}}</td>
+                            <td scope="row">
+                                <div class="btn btn-info" (click)="gotoDetails(cientist)">Ver detalhes</div>
+                            </td>
+                        </tr>
                     </div>
                 </tbody>
             </table>
