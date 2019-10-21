@@ -19,7 +19,7 @@ export class AuthService {
     }
 
     login(pessoaLogin: PessoaLogin){
-        return this.httpClient.post(this.url, pessoaLogin)
+        return this.httpClient.post(this.url + "/login", pessoaLogin)
         .pipe(map(data =>{            
             if(data != null){
                 localStorage.setItem('email', pessoaLogin.email);
