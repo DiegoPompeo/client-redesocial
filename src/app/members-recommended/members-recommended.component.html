@@ -27,7 +27,7 @@
                     <div *ngIf="!pessoa.paga">
                         <tr *ngFor="let cientist of cientists">
                             <td scope="row">
-                                <div *ngIf="cientist.paga"><span>{{cientist.nome}}</span></div>
+                                <div *ngIf="!cientist.paga"><span>{{cientist.nome}}</span></div>
                             </td>
                             <td scope="row">{{cientist.email}}</td>
                             <td scope="row">
