@@ -18,12 +18,12 @@ export class ServiceService {
 
   //ReadById
   verPerfil(id: number) {
-    return this.http.get<Pessoa>(this.url + "/" + id);
+    return this.http.get<Pessoa>(this.url + "/perfil/" + id);
   }
 
   //Update
   atualizarPerfil(pessoa: Pessoa) {
-    return this.http.put<Pessoa>(this.url + "/" + pessoa.id, pessoa);
+    return this.http.put<Pessoa>(this.url + "/editar/" + pessoa.id, pessoa);
   }
 
   //ReadByEmail

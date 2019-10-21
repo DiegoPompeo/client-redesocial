@@ -1,6 +1,7 @@
 const PROXY_CONFIG = [
     {
         context: [
+            "/signup",
             "/login",
             "/profile",
             "/register",
@@ -8,7 +9,8 @@ const PROXY_CONFIG = [
             "/update",
             "/details",
             "/cientists",
-            "/premium"
+            "/premium",
+            "/email"
         ],
         target: "https://server-redesocial.herokuapp.com/redesocial",
         secure: false
