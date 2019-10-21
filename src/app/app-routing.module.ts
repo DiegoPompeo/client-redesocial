@@ -11,20 +11,21 @@ import { DetailsComponent } from './details/details.component';
 import { UpdatePremiumComponent } from './update-premium/update-premium.component';
 import { GlossaryComponent } from './glossary/glossary.component';
 import { MembersRecommendedComponent } from './members-recommended/members-recommended.component';
+import { AuthGuard } from './auth.guard';
 
-// canActive: [AuthGuard]
+// canActivate: [AuthGuard]
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},  
   {path: 'register', component: RegisterComponent},
   {path: 'register-success', component: RegisterSuccessComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'update', component: UpdateComponent},
-  {path: 'details', component: DetailsComponent},
-  {path: 'cientists', component: ListCientistsComponent},
-  {path: 'premium', component: UpdatePremiumComponent},
-  {path: 'members-recommended', component: MembersRecommendedComponent},
-  {path: 'glossary', component: GlossaryComponent}
+  {path: 'profile', component: ProfileComponent,canActivate: [AuthGuard]},
+  {path: 'update', component: UpdateComponent,canActivate: [AuthGuard]},
+  {path: 'details', component: DetailsComponent,canActivate: [AuthGuard]},
+  {path: 'cientists', component: ListCientistsComponent,canActivate: [AuthGuard]},
+  {path: 'premium', component: UpdatePremiumComponent,canActivate: [AuthGuard]},
+  {path: 'members-recommended', component: MembersRecommendedComponent,canActivate: [AuthGuard]},
+  {path: 'glossary', component: GlossaryComponent,canActivate: [AuthGuard]}
 ];
 
 @NgModule({
