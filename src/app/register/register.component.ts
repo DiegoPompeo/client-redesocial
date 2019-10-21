@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Pessoa } from '../model/pessoa';
 import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
-import { ServiceService } from '../service/service.service';
 
 @Component({
   selector: 'app-register',
