@@ -16,7 +16,7 @@ export class UpdateComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.edit();
+    this.searchProfile();
   }
 
   downgrade(pessoa: Pessoa){
@@ -40,13 +40,11 @@ export class UpdateComponent implements OnInit {
       }
     );
   }
-
-  edit() {
-    let id = localStorage.getItem("id");
-    this.service.verPerfil(+id).subscribe(
-      data => {
+  
+  searchProfile() {
+    this.service.getCientist(localStorage.getItem("email"))
+      .subscribe(data => {
         this.pessoa = data;
-      }
-    );
+      });
   }
 }
