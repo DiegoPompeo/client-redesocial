@@ -11,7 +11,7 @@ const PROXY_CONFIG = [
             "/cientists",
             "/premium"
         ],
-        target: "https://server-redesocial.herokuapp.com/redesocial/",
+        target: "https://server-redesocial.herokuapp.com/redesocial",
         secure: false,
         "changeOrigin": true
     }
