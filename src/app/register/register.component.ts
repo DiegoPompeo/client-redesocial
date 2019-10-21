@@ -73,13 +73,14 @@ export class RegisterComponent implements OnInit {
           this.pessoa.paga = this.submitted;
     
           this.authService.register(this.pessoa).subscribe(data => {
-            console.log('register success');
-            this.router.navigateByUrl('/register-success');
+            console.log('register success');            
           });
+          this.router.navigate(['/register-success']);
         } else {
           this.msgError = true;
         }
       }
     );
+    
   }
 }
