@@ -4,7 +4,7 @@
             <h1>Membros recomendados</h1>
         </div>
         <div class="card-body">
-            <table class="table">
+            <table class="table" *ngIf="pessoa">
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">Nome</th>
@@ -12,27 +12,18 @@
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody *ngIf="pessoa">
-                    <div *ngIf="pessoa.paga">
+                <tbody>
+                    <div>
                         <tr *ngFor="let cientist of cientists">
-                        <td scope="row">
-                            <div *ngIf="cientist.paga"><span>☆&nbsp;{{cientist.nome}}</span></div>
-                        </td>
-                        <td scope="row">{{cientist.email}}</td>
-                        <td scope="row">
-                            <div class="btn btn-info" (click)="gotoDetails(cientist)">Ver detalhes</div>
-                        </td>
-                        </tr>
-                    </div>
-                    <div *ngIf="!pessoa.paga">
-                        <tr *ngFor="let cientist of cientists">
-                            <td scope="row">
-                                <div *ngIf="!cientist.paga"><span>{{cientist.nome}}</span></div>
-                            </td>
-                            <td scope="row">{{cientist.email}}</td>
-                            <td scope="row">
-                                <div class="btn btn-info" (click)="gotoDetails(cientist)">Ver detalhes</div>
-                            </td>
+                            <div *ngIf="pessoa.paga">
+                                <td scope="row">
+                                    <div *ngIf="cientist.paga"><span>☆&nbsp;{{cientist.nome}}</span></div>
+                                </td>
+                                <td scope="row">{{cientist.email}}</td>
+                                <td scope="row">
+                                    <div class="btn btn-info" (click)="gotoDetails(cientist)">Ver detalhes</div>
+                                </td>
+                            </div>
                         </tr>
                     </div>
                 </tbody>
