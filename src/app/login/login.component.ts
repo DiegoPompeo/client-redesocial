@@ -3,7 +3,6 @@ import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { PessoaLogin } from '../model/pessoa';
-import { first } from 'rxjs/operators';
 import { } from "@angular/forms";
 
 @Component({
