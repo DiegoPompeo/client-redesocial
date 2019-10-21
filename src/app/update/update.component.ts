@@ -33,14 +33,14 @@ export class UpdateComponent implements OnInit {
     );
   }
 
-  Atualizar(pessoa: Pessoa){
+  onSubmit(pessoa: Pessoa){
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
       }
     );
   }
-  
+
   searchProfile() {
     this.service.getCientist(localStorage.getItem("email"))
       .subscribe(data => {
