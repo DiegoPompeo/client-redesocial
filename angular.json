@@ -63,8 +63,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "cientistaf:build",
-            "proxyConfig": "src/proxy.conf.js"
+            "browserTarget": "cientistaf:build"
           },
           "configurations": {
             "production": {
