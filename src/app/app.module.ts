@@ -14,7 +14,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { ListCientistsComponent } from './list-cientists/list-cientists.component';
 import { UpdateComponent } from './update/update.component';
 import { DetailsComponent } from './details/details.component';
-import { TesteComponent } from './teste/teste.component';
 import { UpdatePremiumComponent } from './update-premium/update-premium.component';
 import { GlossaryComponent } from './glossary/glossary.component';
 import { MembersRecommendedComponent } from './members-recommended/members-recommended.component';
@@ -31,7 +30,6 @@ import { MembersRecommendedComponent } from './members-recommended/members-recom
     ListCientistsComponent,
     UpdateComponent,
     DetailsComponent,
-    TesteComponent,
     UpdatePremiumComponent,
     GlossaryComponent,
     MembersRecommendedComponent
