@@ -14,14 +14,14 @@ import { UpdatePremiumComponent } from './update-premium/update-premium.componen
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: 'login', component: LoginComponent},  
   {path: 'register', component: RegisterComponent},
   {path: 'register-success', component: RegisterSuccessComponent},
-  {path: 'update', component: UpdateComponent, canActivate: [AuthGuard]},
-  {path: 'details', component: DetailsComponent, canActivate: [AuthGuard]},
-  {path: 'cientists', component: ListCientistsComponent, canActivate: [AuthGuard]},
-  {path: 'premium', component: UpdatePremiumComponent, canActivate: [AuthGuard]}
+  {path: 'profile', component: ProfileComponent},
+  {path: 'update', component: UpdateComponent},
+  {path: 'details', component: DetailsComponent},
+  {path: 'cientists', component: ListCientistsComponent},
+  {path: 'premium', component: UpdatePremiumComponent}
 ];
 
 @NgModule({
