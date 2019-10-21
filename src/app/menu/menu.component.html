@@ -3,7 +3,7 @@
         <div class="col-md-5">
             <h3>RedeSocial</h3>
         </div>
-        <div *ngIf="!authService.isAuthenticated()" class="col-md-5">
+        <div *ngIf="authService.isAuthenticated()" class="col-md-5">
             <a routerLink="/profile" class="btn btn-default">Ver Perfil</a>
             <a routerLink="/cientists" class="btn btn-default">Lista de Cientistas</a>
             <a routerLink="/members-recommended" class="btn btn-default">Membros recomendados</a>
