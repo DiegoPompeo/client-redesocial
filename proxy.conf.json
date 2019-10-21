@@ -1,6 +1,0 @@
-{
-    "/api": {
-      "target": "https://server-redesocial.herokuapp.com/redesocial/",
-      "secure": true
-    }
-  }
