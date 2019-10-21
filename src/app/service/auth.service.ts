@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-    url = 'https://cors-anywhere.herokuapp.com/https://server-redesocial.herokuapp.com/redesocial';
+    url = 'https://server-redesocial.herokuapp.com/redesocial';
 
     constructor(private httpClient: HttpClient, private router: Router) { }
 
