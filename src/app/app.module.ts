@@ -17,6 +17,7 @@ import { DetailsComponent } from './details/details.component';
 import { TesteComponent } from './teste/teste.component';
 import { UpdatePremiumComponent } from './update-premium/update-premium.component';
 import { GlossaryComponent } from './glossary/glossary.component';
+import { MembersRecommendedComponent } from './members-recommended/members-recommended.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { GlossaryComponent } from './glossary/glossary.component';
     DetailsComponent,
     TesteComponent,
     UpdatePremiumComponent,
-    GlossaryComponent
+    GlossaryComponent,
+    MembersRecommendedComponent
   ],
   imports: [
     BrowserModule,

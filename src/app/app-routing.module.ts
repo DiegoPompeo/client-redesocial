@@ -10,6 +10,7 @@ import { ListCientistsComponent } from './list-cientists/list-cientists.componen
 import { DetailsComponent } from './details/details.component';
 import { UpdatePremiumComponent } from './update-premium/update-premium.component';
 import { GlossaryComponent } from './glossary/glossary.component';
+import { MembersRecommendedComponent } from './members-recommended/members-recommended.component';
 
 // canActive: [AuthGuard]
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'details', component: DetailsComponent},
   {path: 'cientists', component: ListCientistsComponent},
   {path: 'premium', component: UpdatePremiumComponent},
+  {path: 'members-recommended', component: MembersRecommendedComponent},
   {path: 'glossary', component: GlossaryComponent}
 ];
 
