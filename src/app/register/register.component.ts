@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   pessoa: Pessoa;
   submitted = false;
   msgError = false;
+  msgSuccess = false;
   verificar: boolean;
 
   constructor(
@@ -75,7 +76,7 @@ export class RegisterComponent implements OnInit {
           this.authService.register(this.pessoa).subscribe(data => {
             console.log('register success');            
           });
-          this.router.navigate(['/register-success']);
+          this.msgSuccess = true;
         } else {
           this.msgError = true;
         }

@@ -1,4 +1,7 @@
 <div class="container justify-content-center">
+    <div *ngIf="msgSuccess">
+        <app-register-success></app-register-success>
+    </div>
     <h4>Conta paga?</h4>
     <div class="btn-group mb-3" role="group">
         <button (click)="showContaPaga()" class="btn btn-success">Sim</button>
