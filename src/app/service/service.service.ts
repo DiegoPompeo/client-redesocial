@@ -11,17 +11,17 @@ export class ServiceService{
 
   //Read
   listar() {
-    return this.http.get<Pessoa[]>('https://server-redesocial.herokuapp.com/pessoas/');
+    return this.http.get<Pessoa[]>('https://server-redesocial.herokuapp.com/redesocial/');
   }
 
   //ReadById
   verPerfil(id: number) {
-    return this.http.get<Pessoa>('https://server-redesocial.herokuapp.com/pessoas/' + id);
+    return this.http.get<Pessoa>('https://server-redesocial.herokuapp.com/redesocial/' + id);
   }
 
   //Update
   atualizarPerfil(pessoa: Pessoa) {
-    return this.http.put<Pessoa>('https://server-redesocial.herokuapp.com/pessoas/' + pessoa.id, pessoa);
+    return this.http.put<Pessoa>('https://server-redesocial.herokuapp.com/redesocial/' + pessoa.id, pessoa);
   }
 
   //ReadByEmail
