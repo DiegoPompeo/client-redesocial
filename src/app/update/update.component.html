@@ -1,5 +1,5 @@
 <div class="container mt-3" *ngIf="pessoa">
-    <form ngNativeValidate (ngSubmit)="onSubmit(pessoa)">
+    <form ngNativeValidate>
         <h1 class="h3 mb-3 font-weight-normal">Atualizar dados</h1>
         <div class="form-group">
             <label for="nome" class="sr-only">Nome Completo</label>
@@ -23,7 +23,7 @@
                 required="true">
         </div>
         
-        <input class="btn btn-success" type="submit" value="Atualizar dados">
+        <input (click)="Atualizar(pessoa)" class="btn btn-success" type="submit" value="Atualizar dados">
         <a routerLink="/profile" class="btn btn-info ml-3">Voltar para o perfil</a>
     </form>
     <div class="alert alert-info mt-3" *ngIf="!pessoa.paga">

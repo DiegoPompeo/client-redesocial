@@ -33,10 +33,11 @@ export class UpdateComponent implements OnInit {
     );
   }
 
-  onSubmit(pessoa: Pessoa){
+  Atualizar(pessoa: Pessoa){
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
+        this.router.navigate(["/profile"]);
       }
     );
   }
