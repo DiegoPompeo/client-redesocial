@@ -11,21 +11,21 @@ export class ServiceService{
 
   //Read
   listar() {
-    return this.http.get<Pessoa[]>('https://server-redesocial.herokuapp.com/redesocial/');
+    return this.http.get<Pessoa[]>('https://cors-anywhere.herokuapp.com/https://server-redesocial.herokuapp.com/redesocial/');
   }
 
   //ReadById
   verPerfil(id: number) {
-    return this.http.get<Pessoa>('https://server-redesocial.herokuapp.com/redesocial/' + id);
+    return this.http.get<Pessoa>('https://cors-anywhere.herokuapp.com/https://server-redesocial.herokuapp.com/redesocial/' + id);
   }
 
   //Update
   atualizarPerfil(pessoa: Pessoa) {
-    return this.http.put<Pessoa>('https://server-redesocial.herokuapp.com/redesocial/' + pessoa.id, pessoa);
+    return this.http.put<Pessoa>('https://cors-anywhere.herokuapp.com/https://server-redesocial.herokuapp.com/redesocial/' + pessoa.id, pessoa);
   }
 
   //ReadByEmail
   getCientist(email: string){
-    return this.http.get<Pessoa>('https://server-redesocial.herokuapp.com/pessoas/buscar/' + email);
+    return this.http.get<Pessoa>('https://cors-anywhere.herokuapp.com/https://server-redesocial.herokuapp.com/pessoas/buscar/' + email);
   }
 }
