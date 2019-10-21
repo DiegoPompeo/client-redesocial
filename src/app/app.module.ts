@@ -16,6 +16,7 @@ import { UpdateComponent } from './update/update.component';
 import { DetailsComponent } from './details/details.component';
 import { TesteComponent } from './teste/teste.component';
 import { UpdatePremiumComponent } from './update-premium/update-premium.component';
+import { GlossaryComponent } from './glossary/glossary.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { UpdatePremiumComponent } from './update-premium/update-premium.componen
     UpdateComponent,
     DetailsComponent,
     TesteComponent,
-    UpdatePremiumComponent
+    UpdatePremiumComponent,
+    GlossaryComponent
   ],
   imports: [
     BrowserModule,

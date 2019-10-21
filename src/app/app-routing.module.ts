@@ -7,11 +7,11 @@ import { RegisterSuccessComponent } from './register-success/register-success.co
 import { ProfileComponent } from './profile/profile.component';
 import { UpdateComponent } from './update/update.component';
 import { ListCientistsComponent } from './list-cientists/list-cientists.component';
-import { AuthGuard } from './auth.guard';
 import { DetailsComponent } from './details/details.component';
 import { UpdatePremiumComponent } from './update-premium/update-premium.component';
+import { GlossaryComponent } from './glossary/glossary.component';
 
-
+// canActive: [AuthGuard]
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},  
@@ -21,7 +21,8 @@ const routes: Routes = [
   {path: 'update', component: UpdateComponent},
   {path: 'details', component: DetailsComponent},
   {path: 'cientists', component: ListCientistsComponent},
-  {path: 'premium', component: UpdatePremiumComponent}
+  {path: 'premium', component: UpdatePremiumComponent},
+  {path: 'glossary', component: GlossaryComponent}
 ];
 
 @NgModule({
