@@ -23,14 +23,16 @@ export class MembersRecommendedComponent implements OnInit {
         this.cientists = data;
       }
     );
-
-    let id = localStorage.getItem("id");
-    this.service.verPerfil(+id).subscribe(
-      data => {
-        this.pessoa = data;
-      }
-    );
+    this.getPessoa();  
   }
+
+  getPessoa(){
+    this.service.getCientist(localStorage.getItem("email"))
+      .subscribe(data => {
+        this.pessoa = data;
+      });
+  }
+
 
   gotoDetails(cientist: Pessoa){
     localStorage.setItem("det_id", cientist.id.toString());
