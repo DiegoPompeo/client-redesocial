@@ -1,4 +1,4 @@
-<div class="container mt-3">
+<div class="container mt-3" >
     <div class="card">
         <div class="card-header">
             <h1>Membros recomendados</h1>
@@ -12,7 +12,7 @@
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody *ngIf="pessoa">
                     <div *ngIf="!pessoa.paga">
                         <tr *ngFor="let cientist of cientists">
                             <td scope="row">
