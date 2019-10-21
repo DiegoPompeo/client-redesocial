@@ -36,5 +36,6 @@ export class MembersRecommendedComponent implements OnInit {
 
   gotoDetails(cientist: Pessoa){
     localStorage.setItem("det_id", cientist.id.toString());
+    this.router.navigate(['/details']);
   }
 }
