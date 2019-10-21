@@ -12,7 +12,7 @@
             <a routerLink="/cientists" class="btn btn-default">Lista de Cientistas</a>
             <button class="logout btn btn-default" (click)="logout()">Logout</button>
         </div>
-        <div *ngIf="authService.isAuthenticated()" class="col-md-2">
+        <div *ngIf="!authService.isAuthenticated()" class="col-md-2">
             <a routerLink="/login" class="btn btn-default">Login</a>
             <a routerLink="/register" class="btn btn-default">Register</a>
         </div>
