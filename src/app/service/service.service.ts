@@ -11,12 +11,12 @@ export class ServiceService{
 
   //Read
   listar() {
-    return this.http.get<Pessoa[]>('https://server-redesocial.herokuapp.com/redesocial/');
+    return this.http.get<Pessoa[]>('https://server-redesocial.herokuapp.com/redesocial/cientistas');
   }
 
   //ReadById
   verPerfil(id: number) {
-    return this.http.get<Pessoa>('https://server-redesocial.herokuapp.com/redesocial/' + id);
+    return this.http.get<Pessoa>('https://server-redesocial.herokuapp.com/redesocial/perfil/' + id);
   }
 
   //Update
