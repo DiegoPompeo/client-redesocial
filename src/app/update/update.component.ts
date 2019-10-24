@@ -3,6 +3,7 @@ import { Pessoa } from '../model/pessoa';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { AuthService } from '../service/auth.service';
+import { ServiceService } from '../service/service.service';
 
 @Component({
   selector: 'app-update',
@@ -19,6 +20,7 @@ export class UpdateComponent implements OnInit {
   verificar: boolean;
 
   constructor(
+    private service : ServiceService,
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router) {

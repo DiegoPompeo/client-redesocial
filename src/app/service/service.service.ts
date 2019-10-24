@@ -17,8 +17,8 @@ export class ServiceService {
   }
 
   //ReadById
-  verPerfil(id: number) {
-    return this.http.get<Pessoa>(this.url + "/perfil/" + id);
+  verPerfil(email: string) {
+    return this.http.get<Pessoa>(this.url + "/perfil/" + email);
   }
 
   //Update

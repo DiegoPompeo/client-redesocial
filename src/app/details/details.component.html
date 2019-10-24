@@ -2,20 +2,18 @@
     <div class="card">
         <div class="card-header">
             <td scope="row">
-                <div *ngIf="pessoa.paga"><h2>☆&nbsp;{{pessoa.nome}}</h2></div>
-                <div *ngIf="!pessoa.paga"><h2>{{pessoa.nome}}</h2></div>
+                <div *ngIf="pessoa.paga">
+                    <h2>☆&nbsp;{{pessoa.nome}}</h2>
+                </div>
+                <div *ngIf="!pessoa.paga">
+                    <h2>{{pessoa.nome}}</h2>
+                </div>
             </td>
         </div>
         <div class="card-body">
             <div class="row">
-                <img style="width: 200px; height: 200px;"
-                    src="https://cdn.icon-icons.com/icons2/1812/PNG/512/4213460-account-avatar-head-person-profile-user_115386.png"
-                    alt="">
-
-                <div>
-                    <p> <b>Email: </b> {{pessoa.email}} </p>
-                    <p><b>Empresa: </b>{{pessoa.empresa}}</p>
-                </div>
+                <p> <b>Email: </b> {{pessoa.email}} </p>
+                <p><b>Empresa: </b>{{pessoa.empresa}}</p>
             </div>
             <button (click)="gotoList()" class="btn btn-dark btn-lg">
                 Voltar a lista
