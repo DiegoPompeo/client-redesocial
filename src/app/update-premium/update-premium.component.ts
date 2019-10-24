@@ -41,8 +41,8 @@ export class UpdatePremiumComponent implements OnInit {
   }
 
   edit() {
-    let id = localStorage.getItem("id");
-    this.service.verPerfil(+id).subscribe(
+    let email = localStorage.getItem("det_email");
+    this.service.getCientist(email).subscribe(
       data => {
         this.pessoa = data;
       }
