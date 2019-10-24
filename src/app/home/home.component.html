@@ -1,1 +1,6 @@
-<app-login></app-login>
+<div *ngIf="!authService.isAuthenticated()">
+    <app-login></app-login>
+</div>
+<div *ngIf="authService.isAuthenticated()">
+    <app-profile></app-profile>
+</div>
