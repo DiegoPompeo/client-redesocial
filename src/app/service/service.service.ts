@@ -23,11 +23,11 @@ export class ServiceService {
 
   //Update
   atualizarPerfil(pessoa: Pessoa) {
-    return this.http.put<Pessoa>(this.url + "/editar/" + pessoa.id, pessoa);
+    return this.http.put<Pessoa>(this.url + "/editar/" + pessoa.email, pessoa);
   }
 
   //ReadByEmail
-  getCientist(id: number){
-    return this.http.get<Pessoa>(this.url + "/buscar/" + id);
+  getCientist(email: string){
+    return this.http.get<Pessoa>(this.url + "/buscar/" + email);
   }
 }

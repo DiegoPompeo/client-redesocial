@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   }
 
   searchProfile() {
-    this.service.getCientist(+localStorage.getItem("id"))
+    this.service.getCientist(localStorage.getItem("email"))
       .subscribe(data => {
         this.cientist = data;
       });

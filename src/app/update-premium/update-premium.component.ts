@@ -29,7 +29,7 @@ export class UpdatePremiumComponent implements OnInit {
   }
 
   edit() {
-    this.service.getCientist(+localStorage.getItem("id"))
+    this.service.getCientist(localStorage.getItem("email"))
       .subscribe(data => {
         this.pessoa = data;
       });

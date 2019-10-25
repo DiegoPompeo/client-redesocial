@@ -28,6 +28,7 @@ export class UpdateComponent implements OnInit {
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
+        alert("Atualizado com sucesso!");
       }
     );
   }
@@ -36,13 +37,13 @@ export class UpdateComponent implements OnInit {
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
-        this.router.navigateByUrl("profile");
+        this.router.navigate(['profile']);
       }
     );
   }
 
   edit() {
-    this.service.getCientist(+localStorage.getItem("id"))
+    this.service.getCientist(localStorage.getItem("email"))
       .subscribe(data => {
         this.pessoa = data;
       });
