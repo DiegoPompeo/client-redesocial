@@ -36,8 +36,8 @@ export class UpdateComponent implements OnInit {
   Atualizar(pessoa: Pessoa) {
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
-        this.pessoa = data;
         this.msgSuccess = true;
+        this.pessoa = data;        
       }
     );
   }
