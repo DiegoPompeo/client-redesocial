@@ -27,12 +27,11 @@ export class MembersRecommendedComponent implements OnInit {
   }
 
   getPessoa(){
-    this.service.getCientist(localStorage.getItem("email"))
+    this.service.getCientist(+localStorage.getItem("id"))
       .subscribe(data => {
         this.pessoa = data;
       });
   }
-
 
   gotoDetails(cientist: Pessoa){
     localStorage.setItem("det_id", cientist.id.toString());
