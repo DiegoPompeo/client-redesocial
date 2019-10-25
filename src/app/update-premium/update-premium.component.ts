@@ -24,18 +24,6 @@ export class UpdatePremiumComponent implements OnInit {
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
-        alert("Atualizado com sucesso!");
-        this.router.navigate(['profile']);
-      }
-    );
-  }
-
-  Atualizar(pessoa: Pessoa){
-    this.service.atualizarPerfil(pessoa).subscribe(
-      data => {
-        this.pessoa = data;
-        alert("Atualizado com sucesso!");
-        this.router.navigate(['profile']);
       }
     );
   }
