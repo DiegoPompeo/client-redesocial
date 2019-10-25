@@ -23,7 +23,7 @@ export class ServiceService {
 
   //Update
   atualizarPerfil(pessoa: Pessoa) {
-    return this.http.put<Pessoa>(this.url + "/editar/" + pessoa.email, pessoa);
+    return this.http.put<Pessoa>(this.url + "/editar/" + pessoa.id, pessoa);
   }
 
   //ReadByEmail

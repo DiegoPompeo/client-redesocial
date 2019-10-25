@@ -37,7 +37,7 @@ export class UpdateComponent implements OnInit {
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
-        this.router.navigate(['profile']);
+        this.router.navigateByUrl("profile");
       }
     );
   }
