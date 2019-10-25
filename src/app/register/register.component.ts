@@ -30,7 +30,13 @@ export class RegisterComponent implements OnInit {
       nomeNoCartao: '',
       dataValidade: '',
       codSeg: '',
-      empresa: ''
+      empresa: '',
+      inicioDaAtividade:'',
+      dataNascimento:'',
+      nivelEscolaridade:'',
+      cidade:'',
+      estado:'',
+      salario:'',
     });
     this.pessoa = {
       id: null,
@@ -42,6 +48,12 @@ export class RegisterComponent implements OnInit {
       dataValidade: '',
       codSeg: '',
       empresa: '',
+      inicioDaAtividade:'',
+      dataNascimento:'',
+      nivelEscolaridade:'',
+      cidade:'',
+      estado:'',
+      salario:'',
       paga: null
     }
   }
@@ -70,6 +82,14 @@ export class RegisterComponent implements OnInit {
           this.pessoa.dataValidade = this.registerForm.get('dataValidade').value;
           this.pessoa.codSeg = this.registerForm.get('codSeg').value;
           this.pessoa.empresa = this.registerForm.get('empresa').value;
+
+          this.pessoa.inicioDaAtividade = this.registerForm.get('inicioDaAtividade').value;
+          this.pessoa.dataNascimento = this.registerForm.get('dataNascimento').value;
+          this.pessoa.nivelEscolaridade = this.registerForm.get('nivelEscolaridade').value;
+          this.pessoa.cidade = this.registerForm.get('cidade').value;
+          this.pessoa.estado = this.registerForm.get('estado').value;
+          this.pessoa.salario = this.registerForm.get('salario').value;
+
           this.pessoa.paga = this.submitted;
     
           this.authService.register(this.pessoa).subscribe(data => {          

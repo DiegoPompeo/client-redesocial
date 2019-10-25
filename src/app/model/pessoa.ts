@@ -8,7 +8,15 @@ export class Pessoa {
     dataValidade: string;
     codSeg: string;
     empresa: string;
-    paga: boolean;
+
+    inicioDaAtividade: string;
+    dataNascimento: string;
+    nivelEscolaridade: string;
+    cidade: string;
+    estado: string;
+    salario: string;
+
+    paga: boolean;    
 }
 
 export class PessoaLogin{
