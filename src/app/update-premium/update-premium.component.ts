@@ -41,12 +41,10 @@ export class UpdatePremiumComponent implements OnInit {
   }
 
   edit() {
-    let email = localStorage.getItem("det_email");
-    this.service.getCientist(email).subscribe(
-      data => {
+    this.service.getCientist(localStorage.getItem("email"))
+      .subscribe(data => {
         this.pessoa = data;
-      }
-    );
+      });
   }
 
 }
