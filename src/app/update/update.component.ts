@@ -44,8 +44,8 @@ export class UpdateComponent implements OnInit {
 
   edit() {
     this.service.getCientist(localStorage.getItem("email"))
-      .subscribe(data => {
-        this.pessoa = data;
-      });
+    .subscribe(data => {
+      this.pessoa = data;
+    });
   }
 }

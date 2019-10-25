@@ -26,7 +26,8 @@ export class ProfileComponent implements OnInit {
   }
 
   gotoUpdate(cientist: Pessoa) {
-    localStorage.setItem("id", cientist.id.toString());
+    localStorage.setItem("email", cientist.email);
+    this.router.navigate(['update'])
   }
 
 }

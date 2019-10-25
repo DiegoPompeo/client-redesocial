@@ -26,6 +26,7 @@ export class UpdatePremiumComponent implements OnInit {
         this.pessoa = data;
       }
     );
+    this.router.navigate(['profile']);
   }
 
   edit() {
