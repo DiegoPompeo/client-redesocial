@@ -9,7 +9,7 @@
     </div>
     <form class="form-signin mb-3" [formGroup]="registerForm" (ngSubmit)="onSubmit()" ngNativeValidate>
         <h1 class="h3 mb-3 font-weight-normal">Cadastro</h1>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="form-group">
                 <label for="inputUsername" class="sr-only">Nome</label>
                 <input type="text" id="inputUsername" formControlName="nome" class="form-control"
@@ -64,7 +64,7 @@
                     placeholder="Salário" required="true">
             </div>
         </div>
-        <div *ngIf="submitted" class="col-md-6">
+        <div *ngIf="submitted" class="col-md-4">
             <div class="form-group">
                 <label for="inputNCard" class="sr-only">Numero do cartão</label>
                 <input type="text" id="inputNCard" formControlName="nroCartao" class="form-control"
