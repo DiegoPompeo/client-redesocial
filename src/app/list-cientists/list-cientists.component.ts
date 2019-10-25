@@ -24,8 +24,8 @@ export class ListCientistsComponent implements OnInit {
     );
   }
 
-  gotoDetails(cientist: Pessoa){
-    localStorage.setItem("det_email", cientist.email);
+  gotoDetails(pessoa: Pessoa){
+    localStorage.setItem("det_id", pessoa.id.toString());
     this.router.navigate(['details']);
   }
 
