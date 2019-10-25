@@ -7,56 +7,64 @@
         <button (click)="showContaPaga()" class="btn btn-success">Sim</button>
         <button (click)="hideContaPaga()" class="btn btn-danger">Não</button>
     </div>
-    <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+    <form class="form-signin mb-3" [formGroup]="registerForm" (ngSubmit)="onSubmit()" ngNativeValidate>
         <h1 class="h3 mb-3 font-weight-normal">Cadastro</h1>
-        <div class="form-group">
-            <label for="inputUsername" class="sr-only">Nome</label>
-            <input type="text" id="inputUsername" formControlName="nome" class="form-control"
-                placeholder="Nome Completo" required="true">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputUsername" class="sr-only">Nome</label>
+                <input type="text" id="inputUsername" formControlName="nome" class="form-control"
+                    placeholder="Nome Completo" required="true">
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="sr-only">Email</label>
+                <input type="email" id="inputEmail" formControlName="email" class="form-control" placeholder="Email"
+                    required="true">
+            </div>
+            <div class="alert alert-danger" *ngIf="msgError">
+                Email já cadastrado.
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="sr-only">Senha</label>
+                <input type="password" id="inputPassword" formControlName="senha" class="form-control"
+                    placeholder="Senha" required="true">
+            </div>
+            <div class="form-group">
+                <label for="inputCompany" class="sr-only">Empresa</label>
+                <input type="text" id="inputCompany" formControlName="empresa" class="form-control"
+                    placeholder="Empresa" required="true">
+            </div>
+            <div class="form-group">
+                <label for="inputAtividade" class="sr-only">Inicio de atividade</label>
+                <input type="text" id="inputAtividade" formControlName="inicioDaAtividade" class="form-control"
+                    placeholder="Inicio de atividade" required="true">
+            </div>
+            <div class="form-group">
+                <label for="inputNascimento" class="sr-only">Data de nascimento</label>
+                <input type="text" id="inputNascimento" formControlName="dataNascimento" class="form-control"
+                    placeholder="Data de nascimento" required="true">
+            </div>
+            <div class="form-group">
+                <label for="inputEscolaridade" class="sr-only">Nivel de escolaridade</label>
+                <input type="text" id="inputEscolaridade" formControlName="nivelEscolaridade" class="form-control"
+                    placeholder="Nivel de escolaridade" required="true">
+            </div>
+            <div class="form-group">
+                <label for="inputCidade" class="sr-only">Cidade</label>
+                <input type="text" id="inputCidade" formControlName="cidade" class="form-control" placeholder="Cidade"
+                    required="true">
+            </div>
+            <div class="form-group">
+                <label for="inputEstado" class="sr-only">Estado</label>
+                <input type="text" id="inputEstado" formControlName="estado" class="form-control" placeholder="Estado"
+                    required="true">
+            </div>
+            <div class="form-group">
+                <label for="inputSalario" class="sr-only">Salario</label>
+                <input type="text" id="inputSalario" formControlName="salario" class="form-control"
+                    placeholder="Salário" required="true">
+            </div>
         </div>
-        <div class="form-group">
-            <label for="inputEmail" class="sr-only">Email</label>
-            <input type="email" id="inputEmail" formControlName="email" class="form-control" placeholder="Email"
-                required="true">
-        </div>
-        <div class="alert alert-danger" *ngIf="msgError">
-            Email já cadastrado.
-        </div>
-        <div class="form-group">
-            <label for="inputPassword" class="sr-only">Senha</label>
-            <input type="password" id="inputPassword" formControlName="senha" class="form-control" placeholder="Senha"
-                required="true">
-        </div>
-        <div class="form-group">
-            <label for="inputCompany" class="sr-only">Empresa</label>
-            <input type="text" id="inputCompany" formControlName="empresa" class="form-control" placeholder="Empresa"
-                required="true">
-        </div>
-        <div class="form-group">
-            <label for="inputAtividade" class="sr-only">Inicio de atividade</label>
-            <input type="text" id="inputAtividade" formControlName="inicioDaAtividade" class="form-control" placeholder="Inicio de atividade" required="true">
-        </div>
-        <div class="form-group">
-            <label for="inputNascimento" class="sr-only">Data de nascimento</label>
-            <input type="text" id="inputNascimento" formControlName="dataNascimento" class="form-control" placeholder="Data de nascimento" required="true">
-        </div>
-        <div class="form-group">
-            <label for="inputEscolaridade" class="sr-only">Nivel de escolaridade</label>
-            <input type="text" id="inputEscolaridade" formControlName="nivelEscolaridade" class="form-control" placeholder="Nivel de escolaridade" required="true">
-        </div>
-        <div class="form-group">
-            <label for="inputCidade" class="sr-only">Cidade</label>
-            <input type="text" id="inputCidade" formControlName="cidade" class="form-control" placeholder="Cidade" required="true">
-        </div>
-        <div class="form-group">
-            <label for="inputEstado" class="sr-only">Estado</label>
-            <input type="text" id="inputEstado" formControlName="estado" class="form-control" placeholder="Estado" required="true">
-        </div>
-        <div class="form-group">
-            <label for="inputSalario" class="sr-only">Salario</label>
-            <input type="text" id="inputSalario" formControlName="salario" class="form-control" placeholder="Salário" required="true">
-        </div>
-        <div *ngIf="submitted">
+        <div *ngIf="submitted" class="col-md-6">
             <div class="form-group">
                 <label for="inputNCard" class="sr-only">Numero do cartão</label>
                 <input type="text" id="inputNCard" formControlName="nroCartao" class="form-control"
