@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../service/service.service';
 import { Pessoa } from '../model/pessoa';
 import { Router } from '@angular/router';
-import { map } from 'rxjs/internal/operators/map';
 
 @Component({
   selector: 'app-update',
@@ -35,16 +34,18 @@ export class UpdateComponent implements OnInit {
   }
 
   Atualizar(pessoa: Pessoa) {
-    this.service.atualizarPerfil(pessoa).pipe(map(user => {
-      JSON.stringify(user);
-      return user;
-    }));
+    this.service.atualizarPerfil(pessoa).subscribe(
+      data => {        
+        this.pessoa = data;        
+      }
+    );
+    this.msgSuccess = true;
   }
 
   edit() {
     this.service.getCientist(localStorage.getItem("email"))
-      .subscribe(data => {
-        this.pessoa = data;
-      });
+    .subscribe(data => {
+      this.pessoa = data;
+    });
   }
 }
