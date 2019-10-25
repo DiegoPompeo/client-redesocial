@@ -1,31 +1,39 @@
 <div class="container mt-3" *ngIf="pessoa">
-        <form ngNativeValidate>
-            <h1 class="h3 mb-3 font-weight-normal">Atualizar dados</h1>
-            <div class="form-group">
-                <label for="nome" class="sr-only">Nome Completo</label>
-                <input id="nome" type="text" [(ngModel)]="pessoa.nome" class="form-control" name="nome" required="true">
+    <div *ngIf="msgSuccess">
+        <div class="center alert alert-success mt-3">
+            <p class="text-center">Dados atualizado com sucesso.</p>
+            <div class="text-center">
+                <a routerLink="/profile" class="item-center-align btn btn-success center">Clique aqui para voltar ao seu perfil.</a>
             </div>
-    
-            <div class="form-group">
-                <label for="empresa" class="sr-only">Empresa</label>
-                <input id="empresa" type="text" [(ngModel)]="pessoa.empresa" class="form-control" name="empresa"
-                    required="true">
-            </div>
-    
-            <div class="form-group">
-                <label for="senha" class="sr-only">Senha:</label>
-                <input id="senha" type="password" [(ngModel)]="pessoa.senha" class="form-control" name="senha"
-                    required="true">
-            </div>
-            
-            <input (click)="Atualizar(pessoa)" class="btn btn-success" type="submit" value="Atualizar dados">
-            <a routerLink="/profile" class="btn btn-info ml-3">Voltar para o perfil</a>
-        </form>
-        <div class="alert alert-info mt-3" *ngIf="!pessoa.paga">
-            Tornar conta premium? Então <a routerLink="/premium">clique aqui</a>.
-        </div>
-        <div class="alert alert-warning mt-3" *ngIf="pessoa.paga">
-            Cancelar conta premium?<br>
-            <button (click)="downgrade(pessoa)" class="btn btn-success">Sim</button>
         </div>
     </div>
+    <form ngNativeValidate>
+        <h1 class="h3 mb-3 font-weight-normal">Atualizar dados</h1>
+        <div class="form-group">
+            <label for="nome" class="sr-only">Nome Completo</label>
+            <input id="nome" type="text" [(ngModel)]="pessoa.nome" class="form-control" name="nome" required="true">
+        </div>
+
+        <div class="form-group">
+            <label for="empresa" class="sr-only">Empresa</label>
+            <input id="empresa" type="text" [(ngModel)]="pessoa.empresa" class="form-control" name="empresa"
+                required="true">
+        </div>
+
+        <div class="form-group">
+            <label for="senha" class="sr-only">Senha:</label>
+            <input id="senha" type="password" [(ngModel)]="pessoa.senha" class="form-control" name="senha"
+                required="true">
+        </div>
+
+        <input (click)="Atualizar(pessoa)" class="btn btn-success" type="submit" value="Atualizar dados">
+        <a routerLink="/profile" class="btn btn-info ml-3">Voltar para o perfil</a>
+    </form>
+    <div class="alert alert-info mt-3" *ngIf="!pessoa.paga">
+        Tornar conta premium? Então <a routerLink="/premium">clique aqui</a>.
+    </div>
+    <div class="alert alert-warning mt-3" *ngIf="pessoa.paga">
+        Cancelar conta premium?<br>
+        <button (click)="downgrade(pessoa)" class="btn btn-success">Sim</button>
+    </div>
+</div>

@@ -72,8 +72,7 @@ export class RegisterComponent implements OnInit {
           this.pessoa.empresa = this.registerForm.get('empresa').value;
           this.pessoa.paga = this.submitted;
     
-          this.authService.register(this.pessoa).subscribe(data => {
-            console.log('register success');            
+          this.authService.register(this.pessoa).subscribe(data => {          
           });
           this.msgSuccess = true;
         } else {

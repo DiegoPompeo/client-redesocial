@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class UpdateComponent implements OnInit {
 
   pessoa: Pessoa;
+  msgSuccess = false;
 
   constructor(private service: ServiceService,
     private router: Router) { }
@@ -28,7 +29,6 @@ export class UpdateComponent implements OnInit {
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
-        alert("Atualizado com sucesso!");
       }
     );
   }
@@ -37,7 +37,7 @@ export class UpdateComponent implements OnInit {
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
-        this.router.navigateByUrl("profile");
+        this.msgSuccess = true;
       }
     );
   }
