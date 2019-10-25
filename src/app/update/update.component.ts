@@ -39,7 +39,6 @@ export class UpdateComponent implements OnInit {
       JSON.stringify(user);
       return user;
     }));
-    this.router.navigateByUrl("profile");
   }
 
   edit() {
