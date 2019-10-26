@@ -29,32 +29,35 @@
 
         <div class="form-group">
             <label for="inicioDaAtividade" class="sr-only"></label>
-            <input id="inicioDaAtividade" type="text" [(ngModel)]="pessoa.inicioDaAtividade" class="form-control" required="true">
+            <input id="inicioDaAtividade" type="text" [(ngModel)]="pessoa.inicioDaAtividade" name="inicioDaAtividade" 
+            class="form-control" required="true">
         </div>
 
         <div class="form-group">
             <label for="dataNascimento" class="sr-only"></label>
-            <input id="dataNascimento" type="text" [(ngModel)]="pessoa.dataNascimento" class="form-control" required="true">
+            <input id="dataNascimento" type="text" [(ngModel)]="pessoa.dataNascimento" name="dataNascimento"
+            class="form-control" required="true">
         </div>
 
         <div class="form-group">
             <label for="nivelEscolaridade" class="sr-only"></label>
-            <input id="nivelEscolaridade" type="text" [(ngModel)]="pessoa.nivelEscolaridade" class="form-control" required="true">
+            <input id="nivelEscolaridade" type="text" [(ngModel)]="pessoa.nivelEscolaridade" name="nivelEscolaridade"
+             class="form-control" required="true">
         </div>
 
         <div class="form-group">
             <label for="cidade" class="sr-only"></label>
-            <input id="cidade" type="text" [(ngModel)]="pessoa.cidade" class="form-control" required="true">
+            <input id="cidade" type="text" [(ngModel)]="pessoa.cidade" name="cidade" class="form-control" required="true">
         </div>
 
         <div class="form-group">
             <label for="estado" class="sr-only"></label>
-            <input id="estado" type="text" [(ngModel)]="pessoa.estado" class="form-control" required="true">
+            <input id="estado" type="text" [(ngModel)]="pessoa.estado" name="estado" class="form-control" required="true">
         </div>
 
         <div class="form-group">
-            <label for="" class="sr-only"></label>
-            <input id="text" type="text" [(ngModel)]="pessoa.salario" class="form-control" required="true">
+            <label for="salario" class="sr-only"></label>
+            <input id="salario" type="text" [(ngModel)]="pessoa.salario" name="salario" class="form-control" required="true">
         </div>
 
 
