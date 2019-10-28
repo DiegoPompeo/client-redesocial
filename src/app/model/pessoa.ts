@@ -9,7 +9,6 @@ export class Pessoa {
     nivelEscolaridade: string;
     cidade: string;
     estado: string;
-    salario: string;
 
     nroCartao: string;
     nomeNoCartao: string;

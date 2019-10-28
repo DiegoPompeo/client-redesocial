@@ -36,7 +36,6 @@ export class RegisterComponent implements OnInit {
       nivelEscolaridade:  '',
       cidade:  '',
       estado:  '',
-      salario:  '',
       qualidades: '',
     });
     this.pessoa = {
@@ -54,7 +53,6 @@ export class RegisterComponent implements OnInit {
       nivelEscolaridade:  '',
       cidade:  '',
       estado:  '',
-      salario:  '',
       qualidades: '',
       curtidas: 0,
       paga: null
@@ -92,7 +90,6 @@ export class RegisterComponent implements OnInit {
           this.pessoa.nivelEscolaridade = this.registerForm.get('nivelEscolaridade').value;
           this.pessoa.cidade = this.registerForm.get('cidade').value;
           this.pessoa.estado = this.registerForm.get('estado').value;
-          this.pessoa.salario = this.registerForm.get('salario').value;
 
           this.pessoa.paga = this.submitted;
 

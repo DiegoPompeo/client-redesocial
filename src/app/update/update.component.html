@@ -42,13 +42,7 @@
         <div class="form-group">
             <label for="estado"></label>
             <input id="estado" type="text" [(ngModel)]="pessoa.estado" class="form-control" name="estado" required="true">
-        </div>
-
-        <div class="form-group">
-            <label for="salario"></label>
-            <input id="salario" type="text" [(ngModel)]="pessoa.salario" class="form-control" name="salario" required="true">
-        </div>
-        
+        </div>        
 
         <input (click)="Atualizar(pessoa)" class="btn btn-success" type="submit" value="Atualizar dados">
         <a routerLink="/profile" class="btn btn-info ml-3">Voltar para o perfil</a>
