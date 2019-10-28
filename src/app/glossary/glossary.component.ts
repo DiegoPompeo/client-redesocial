@@ -21,10 +21,15 @@ export class GlossaryComponent implements OnInit {
       orders: new FormArray([], minSelectedCheckboxes(1))
     });
 
+    // async orders
     of(this.getOrders()).subscribe(orders => {
       this.ordersData = orders;
       this.addCheckboxes();
     });
+
+    // synchronous orders
+    // this.orders = this.getOrders();
+    // this.addCheckboxes();
   }
 
   ngOnInit() {
