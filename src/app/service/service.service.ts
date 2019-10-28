@@ -1,31 +1,52 @@
-import { Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Pessoa } from '../model/pessoa';
-
+import { Pessoa, PessoaLogin, Post, PessoaRecomendada } from '../model/pessoa';
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceService{
+export class ServiceService {
+
+  url = 'https://server-redesocial.herokuapp.com/redesocial'
 
   constructor(private http: HttpClient) { }
 
   //Read
   listar() {
-    return this.http.get<Pessoa[]>('https://server-redesocial.herokuapp.com/pessoas/');
+    return this.http.get<Pessoa[]>(this.url);
   }
 
   //ReadById
   verPerfil(id: number) {
-    return this.http.get<Pessoa>('https://server-redesocial.herokuapp.com/pessoas/' + id);
+    return this.http.get<Pessoa>(this.url + "/" + id);
   }
 
   //Update
   atualizarPerfil(pessoa: Pessoa) {
-    return this.http.put<Pessoa>('https://server-redesocial.herokuapp.com/pessoas/' + pessoa.id, pessoa);
+    return this.http.put<Pessoa>(this.url + "/" + pessoa.id, pessoa);
   }
 
   //ReadByEmail
   getCientist(email: string){
-    return this.http.get<Pessoa>('https://server-redesocial.herokuapp.com/pessoas/buscar/' + email);
+    return this.http.get<Pessoa>(this.url + "/buscar/" + email);
+  }
+
+  //AddPost
+  addPost(post: Post){
+    return this.http.post<Post>(this.url + "/addPost", post);
+  }
+
+  //ReadPostByEmail
+  verPost(email: string){
+    return this.http.get<Post[]>(this.url+ "/verPost/" + email);
+  }
+
+  //AddRecomendacao
+  addRecomendacao(pessoaRecomendada: PessoaRecomendada){
+    return this.http.post<PessoaRecomendada>(this.url + "/addRecomendacao", pessoaRecomendada);
+  }
+
+  //ListRecomendacao
+  listaRecomendacao(){
+    return this.http.get<PessoaRecomendada[]>(this.url + "/getRecomendacao");
   }
 }
