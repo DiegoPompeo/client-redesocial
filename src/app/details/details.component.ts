@@ -19,7 +19,6 @@ export class DetailsComponent implements OnInit {
   posts: Post[];
   pessoaRecomendada: PessoaRecomendada;
   listaRecomendadas: PessoaRecomendada[];
-  areas: any;
   emailLogado: string;
   auth: boolean = false;  
   desabilita: boolean;
@@ -35,8 +34,7 @@ export class DetailsComponent implements OnInit {
     let id = localStorage.getItem("det_id");
     this.service.verPerfil(+id).subscribe(
       data => {
-        this.pessoa = data; 
-        this.areas = data.qualidades.split(",");   
+        this.pessoa = data;
       }
     )
   }

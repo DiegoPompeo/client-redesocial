@@ -10,12 +10,10 @@ import { ListCientistsComponent } from './list-cientists/list-cientists.componen
 import { AuthGuard } from './auth.guard';
 import { DetailsComponent } from './details/details.component';
 import { UpdatePremiumComponent } from './update-premium/update-premium.component';
-import { GlossaryComponent } from './glossary/glossary.component';
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'glossary', component: GlossaryComponent},
   {path: 'login', component: LoginComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'register', component: RegisterComponent},

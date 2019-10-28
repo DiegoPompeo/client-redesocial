@@ -30,7 +30,8 @@ export class ProfileComponent implements OnInit {
     this.post = {
       id: null,
       conteudo: '',
-      email: ''
+      email: '',
+      curtidas: 0
     }
   }
 
