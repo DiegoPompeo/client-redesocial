@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class GlossaryComponent implements OnInit {
 
   pessoa: Pessoa;
-  addDados = [];
   ordersData = [
     'Algoritmo', 'AngularJS', 'Inteligência Artificial', 'Retropropagação',
     'Teorema de Bayes', 'Rede bayesiana', 'Viés', 'Big Data', 'Distribuição Binomial',
@@ -44,11 +43,6 @@ export class GlossaryComponent implements OnInit {
     this.search();
   }
 
-  addOption(opt: string){
-    this.addDados.push(opt);
-    console.log(this.addDados);
-    this.pessoa.qualidades = this.addDados.toString();
-  }
 
   search() {
     let email = localStorage.getItem("email");
@@ -59,12 +53,19 @@ export class GlossaryComponent implements OnInit {
     );
   }
 
-  submit(pessoa: Pessoa) {
+  addOption(qualidade: string, pessoa: Pessoa){
+    const selected = qualidade + ",";
+    const addDados = [];
+
+    addDados.push(selected);
+
+    pessoa.qualidades = addDados.toString();
+
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
-        this.router.navigate(['login']);
       }
     );
   }
+
 }
