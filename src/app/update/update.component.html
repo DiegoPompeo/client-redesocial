@@ -1,13 +1,4 @@
 <div class="container mt-3" *ngIf="pessoa">
-    <div *ngIf="msgSuccess">
-        <div class="center alert alert-success mt-3">
-            <p class="text-center">Dados atualizado com sucesso.</p>
-            <div class="text-center">
-                <a routerLink="/profile" class="item-center-align btn btn-success center">Clique aqui para voltar ao seu
-                    perfil.</a>
-            </div>
-        </div>
-    </div>
     <form ngNativeValidate>
         <h1 class="h3 mb-3 font-weight-normal">Atualizar dados</h1>
         <div class="form-group">
@@ -28,38 +19,35 @@
         </div>
 
         <div class="form-group">
-            <label for="inicioDaAtividade" class="sr-only"></label>
-            <input id="inicioDaAtividade" type="text" [(ngModel)]="pessoa.inicioDaAtividade" name="inicioDaAtividade" 
-            class="form-control" required="true">
+            <label for="inicioDaAtividade"></label>
+            <input id="inicioDaAtividade" type="text" [(ngModel)]="pessoa.inicioDaAtividade" class="form-control" name="inicioDaAtividade" required="true">
         </div>
 
         <div class="form-group">
-            <label for="dataNascimento" class="sr-only"></label>
-            <input id="dataNascimento" type="text" [(ngModel)]="pessoa.dataNascimento" name="dataNascimento"
-            class="form-control" required="true">
+            <label for="dataNascimento"></label>
+            <input id="dataNascimento" type="text" [(ngModel)]="pessoa.dataNascimento" class="form-control" name="dataNascimento" required="true">
         </div>
 
         <div class="form-group">
-            <label for="nivelEscolaridade" class="sr-only"></label>
-            <input id="nivelEscolaridade" type="text" [(ngModel)]="pessoa.nivelEscolaridade" name="nivelEscolaridade"
-             class="form-control" required="true">
+            <label for="nivelEscolaridade"></label>
+            <input id="nivelEscolaridade" type="text" [(ngModel)]="pessoa.nivelEscolaridade" class="form-control" name="nivelEscolaridade" required="true">
         </div>
 
         <div class="form-group">
-            <label for="cidade" class="sr-only"></label>
-            <input id="cidade" type="text" [(ngModel)]="pessoa.cidade" name="cidade" class="form-control" required="true">
+            <label for="cidade"></label>
+            <input id="cidade" type="text" [(ngModel)]="pessoa.cidade" class="form-control" name="cidade" required="true">
         </div>
 
         <div class="form-group">
-            <label for="estado" class="sr-only"></label>
-            <input id="estado" type="text" [(ngModel)]="pessoa.estado" name="estado" class="form-control" required="true">
+            <label for="estado"></label>
+            <input id="estado" type="text" [(ngModel)]="pessoa.estado" class="form-control" name="estado" required="true">
         </div>
 
         <div class="form-group">
-            <label for="salario" class="sr-only"></label>
-            <input id="salario" type="text" [(ngModel)]="pessoa.salario" name="salario" class="form-control" required="true">
+            <label for="salario"></label>
+            <input id="salario" type="text" [(ngModel)]="pessoa.salario" class="form-control" name="salario" required="true">
         </div>
-
+        
 
         <input (click)="Atualizar(pessoa)" class="btn btn-success" type="submit" value="Atualizar dados">
         <a routerLink="/profile" class="btn btn-info ml-3">Voltar para o perfil</a>

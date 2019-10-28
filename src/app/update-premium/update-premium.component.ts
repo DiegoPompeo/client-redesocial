@@ -24,16 +24,27 @@ export class UpdatePremiumComponent implements OnInit {
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
+        this.router.navigate(['profile']);
       }
     );
-    this.router.navigate(['profile']);
+  }
+
+  Atualizar(pessoa: Pessoa){
+    this.service.atualizarPerfil(pessoa).subscribe(
+      data => {
+        this.pessoa = data;
+        this.router.navigate(['profile']);
+      }
+    );
   }
 
   edit() {
-    this.service.getCientist(localStorage.getItem("email"))
-      .subscribe(data => {
+    let id = localStorage.getItem("id");
+    this.service.verPerfil(+id).subscribe(
+      data => {
         this.pessoa = data;
-      });
+      }
+    );
   }
 
 }

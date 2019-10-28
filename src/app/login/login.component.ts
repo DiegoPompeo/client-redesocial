@@ -3,6 +3,7 @@ import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { PessoaLogin } from '../model/pessoa';
+import { first } from 'rxjs/operators';
 import { } from "@angular/forms";
 
 @Component({
@@ -39,9 +40,11 @@ export class LoginComponent implements OnInit {
         if (data) {
           this.router.navigateByUrl("profile");
         } else {
+          console.log(this.pessoaLogin);
           this.msgError = true;
         }
       }
     );
+
   }
 }

@@ -11,16 +11,15 @@ import { Router } from '@angular/router';
 export class UpdateComponent implements OnInit {
 
   pessoa: Pessoa;
-  msgSuccess = false;
 
-  constructor(private service: ServiceService,
+  constructor(private service: ServiceService, 
     private router: Router) { }
 
   ngOnInit() {
     this.edit();
   }
 
-  downgrade(pessoa: Pessoa) {
+  downgrade(pessoa: Pessoa){
     pessoa.paga = false;
     pessoa.codSeg = '';
     pessoa.dataValidade = '';
@@ -33,19 +32,21 @@ export class UpdateComponent implements OnInit {
     );
   }
 
-  Atualizar(pessoa: Pessoa) {
+  Atualizar(pessoa: Pessoa){
     this.service.atualizarPerfil(pessoa).subscribe(
-      data => {        
-        this.pessoa = data;        
+      data => {
+        this.pessoa = data;
+        this.router.navigate(['profile']);
       }
     );
-    this.msgSuccess = true;
   }
 
   edit() {
-    this.service.getCientist(localStorage.getItem("email"))
-    .subscribe(data => {
-      this.pessoa = data;
-    });
+    let id = localStorage.getItem("id");
+    this.service.verPerfil(+id).subscribe(
+      data => {
+        this.pessoa = data;
+      }
+    );
   }
 }

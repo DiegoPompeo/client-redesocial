@@ -3,12 +3,7 @@ export class Pessoa {
     nome: string;
     email: string;
     senha: string;
-    nroCartao: string;
-    nomeNoCartao: string;
-    dataValidade: string;
-    codSeg: string;
     empresa: string;
-
     inicioDaAtividade: string;
     dataNascimento: string;
     nivelEscolaridade: string;
@@ -16,10 +11,30 @@ export class Pessoa {
     estado: string;
     salario: string;
 
-    paga: boolean;    
+    nroCartao: string;
+    nomeNoCartao: string;
+    dataValidade: string;
+    codSeg: string;    
+
+    paga: boolean;
+    curtidas: number;
+    qualidades: string;
 }
 
 export class PessoaLogin{
     email: string;
     senha: string;
+}
+
+export class Post{
+    id: number;
+    conteudo: string;
+    email: string;
+    curtidas: number;
+}
+
+export class PessoaRecomendada{
+    id: number;
+    emailRecomendou: string;
+    emailRecomendada: string;
 }

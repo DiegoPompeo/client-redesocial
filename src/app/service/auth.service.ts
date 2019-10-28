@@ -10,16 +10,16 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-    url = 'https://server-redesocial.herokuapp.com/redesocial';
+    private url = 'http://localhost:8080/api/pessoas/';
 
     constructor(private httpClient: HttpClient, private router: Router) { }
 
     register(pessoa: Pessoa): Observable<any> {
-        return this.httpClient.post(this.url + "/signup", pessoa);
+        return this.httpClient.post(this.url + 'signup', pessoa);
     }
 
     login(pessoaLogin: PessoaLogin){
-        return this.httpClient.post(this.url + "/login", pessoaLogin)
+        return this.httpClient.post(this.url + "login", pessoaLogin)
         .pipe(map(data =>{            
             if(data != null){
                 localStorage.setItem('email', pessoaLogin.email);
