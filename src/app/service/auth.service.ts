@@ -35,11 +35,11 @@ export class AuthService {
     }
     
     verificaEmail(email: string){
-        return this.httpClient.get<boolean>(this.url + "/email/" + email);
+        return this.httpClient.get<boolean>(this.url + "email/" + email);
     }
 
     logout(){
         localStorage.clear();
-        this.router.navigateByUrl('login');
+        this.router.navigate(['login']);
     }
 }
