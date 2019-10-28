@@ -6,7 +6,7 @@ import { Pessoa, PessoaLogin, Post, PessoaRecomendada } from '../model/pessoa';
 })
 export class ServiceService {
 
-  url = 'http://localhost:8080/api/pessoas'
+  url = 'https://server-redesocial.herokuapp.com/redesocial'
 
   constructor(private http: HttpClient) { }
 
