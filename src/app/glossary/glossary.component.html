@@ -1,9 +1,9 @@
 <form [formGroup]="form" (ngSubmit)="submit(pessoa)">
     <div class="col-md-6">
-        <label formArrayName="orders" class="row custom-control" *ngFor="let order of ordersData; let i = index">
-            <input type="checkbox" [formControlName]="i">
-            {{ordersData[i]}}
-        </label>
+        <div *ngFor="let order of ordersData; let i = index">            
+            <span>{{ordersData[i]}}</span>
+            <button (click)="addOption(ordersData[i])" class="btn btn-info">Adicionar</button>
+        </div>
     </div>
 
     <button class="ml-3 mb-3 btn btn-success">Confirmar</button>
