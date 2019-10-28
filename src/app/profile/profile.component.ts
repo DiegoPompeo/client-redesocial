@@ -67,8 +67,4 @@ export class ProfileComponent implements OnInit {
     localStorage.setItem("id", cientist.id.toString());
     this.router.navigate(['update']);
   }
-
-  logout() {
-    this.authService.logout();
-  }
 }
