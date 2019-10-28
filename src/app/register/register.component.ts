@@ -98,7 +98,8 @@ export class RegisterComponent implements OnInit {
 
           localStorage.setItem("email",this.pessoa.email);
     
-          this.authService.register(this.pessoa).subscribe(data => {    
+          this.authService.register(this.pessoa).subscribe(data => { 
+            this.pessoa = data;
           });
           this.msgSuccess = true;
         } else {
