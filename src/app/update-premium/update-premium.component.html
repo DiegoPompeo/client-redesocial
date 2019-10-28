@@ -8,17 +8,17 @@
         </div>
         <div class="form-group">
             <label for="input" class="sr-only">Nome no cartão</label>
-            <input type="text" id="inputCompany" [(ngModel)]="nomeNoCartao" class="form-control"
+            <input type="text" id="inputCompany" [(ngModel)]="pessoa.nomeNoCartao" class="form-control"
                 placeholder="Nome no cartão" required="true" name="nomeNoCartao">
         </div>
         <div class="form-group">
             <label for="inputDateVal" class="sr-only">Data validade</label>
-            <input type="text" id="inputCompany" [(ngModel)]="dataValidade" class="form-control"
+            <input type="text" id="inputCompany" [(ngModel)]="pessoa.dataValidade" class="form-control"
                 placeholder="Data validade" required="true" name="dataValidade">
         </div>
         <div class="form-group">
             <label for="inputCodSec" class="sr-only">Codigo segurança</label>
-            <input type="text" id="inputCodSec" [(ngModel)]="codSeg" class="form-control"
+            <input type="text" id="inputCodSec" [(ngModel)]="pessoa.codSeg" class="form-control"
                 placeholder="Código segurança" required="true" name="codSeg">
         </div>
         <button (click)="update(pessoa)" class="btn btn-success">Confirmar</button>
