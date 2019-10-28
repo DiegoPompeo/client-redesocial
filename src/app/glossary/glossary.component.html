@@ -1,6 +1,6 @@
 <form [formGroup]="form" (ngSubmit)="submit(pessoa)">
     <div class="col-md-6">
-        <label formArrayName="orders" class="row custom-control" *ngFor="let order of form.controls.orders.controls | async; let i = index">
+        <label formArrayName="orders" class="row custom-control" *ngFor="let order of form.controls.orders | async; let i = index">
             <input type="checkbox" [formControlName]="i">
             {{ordersData[i].name}}
         </label>
