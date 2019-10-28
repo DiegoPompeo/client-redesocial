@@ -1,130 +1,56 @@
-<div class="container mt-3 mb-3" >
-    <div *ngIf="msgSuccess">
-        <app-register-success></app-register-success>
+<div class="container justify-content-center">
+    <h4>Conta paga?</h4>
+    <div class="btn-group mb-3" role="group">
+        <button (click)="showContaPaga()" class="btn btn-success">Sim</button>
+        <button (click)="hideContaPaga()" class="btn btn-danger">Não</button>
     </div>
-    <div class="mb-3 row justify-content-center" role="group">
-        <button (click)="hideContaPaga()" class="btn btn-info mr-3">Normal</button>
-        <button (click)="showContaPaga()" class="btn btn-info">Premium</button>
-    </div>
-    <form class="form-signin mb-3" [formGroup]="registerForm" (ngSubmit)="onSubmit()" ngNativeValidate>
-        <div *ngIf="!submitted">
-            <h1 class="h3 mb-3 font-weight-normal">Cadastro Normal</h1>
+    <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+        <h1 class="h3 mb-3 font-weight-normal">Cadastro</h1>
+        <div class="form-group">
+            <label for="inputUsername" class="sr-only">Nome</label>
+            <input type="text" id="inputUsername" formControlName="nome" class="form-control"
+                placeholder="Nome Completo" required="true" autofocus="">
+        </div>
+        <div class="form-group">
+            <label for="inputEmail" class="sr-only">Email</label>
+            <input type="text" id="inputEmail" formControlName="email" class="form-control" placeholder="Email"
+                required="true" autofocus="">
+        </div>
+        <div class="alert alert-danger" *ngIf="msgError">
+            Email já cadastrado.
+        </div>
+        <div class="form-group">
+            <label for="inputPassword" class="sr-only">Senha</label>
+            <input type="password" id="inputPassword" formControlName="senha" class="form-control" placeholder="Senha"
+                required="true">
+        </div>
+        <div class="form-group">
+            <label for="inputCompany" class="sr-only">Empresa</label>
+            <input type="text" id="inputCompany" formControlName="empresa" class="form-control" placeholder="Empresa"
+                required="true">
         </div>
         <div *ngIf="submitted">
-            <h1 class="h3 mb-3 font-weight-normal">Cadastro Premium</h1>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group row">
-                    <label for="inputUsername" class="col-md-2 col-form-label">Nome</label>
-                    <div class="col-md-10">
-                        <input type="text" id="inputUsername" formControlName="nome" class="form-control"
-                            placeholder="Nome completo" required="true">
-
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputEmail" class="col-md-2 col-form-label">Email</label>
-                    <div class="col-md-10">
-                        <input type="email" id="inputEmail" formControlName="email" class="form-control"
-                            placeholder="Email" required="true">
-                    </div>
-
-                </div>
-                <div class="alert alert-danger col-md-12" *ngIf="msgError">
-                    Email já cadastrado.
-                </div>
-                <div class="form-group row">
-                    <label for="inputPassword" class="col-md-2 col-form-label">Senha</label>
-                    <div class="col-md-10">
-                        <input type="password" id="inputPassword" formControlName="senha" class="form-control"
-                            placeholder="Senha" required="true">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputCompany" class="col-md-2 col-form-label">Empresa</label>
-                    <div class="col-md-10">
-                        <input type="text" id="inputCompany" formControlName="empresa" class="form-control"
-                            placeholder="Empresa" required="true">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputAtividade" class="col-md-4 col-form-label">Inicio de atividade</label>
-                    <div class="col-md-8">
-                        <input type="text" id="inputAtividade" formControlName="inicioDaAtividade" class="form-control"
-                            placeholder="Inicio de atividade" required="true">
-                    </div>
-                </div>
-
+            <div class="form-group">
+                <label for="inputNCard" class="sr-only">Numero do cartão</label>
+                <input type="text" id="inputCompany" formControlName="nroCartao" class="form-control"
+                    placeholder="Numero do cartão" required="{{submitted}}">
             </div>
-            <div class="col-md-6">
-                <div class="form-group row">
-                    <label for="inputNascimento" class="col-md-4 col-form-label">Data de nascimento</label>
-                    <div class="col-md-8">
-                        <input type="text" id="inputNascimento" formControlName="dataNascimento" class="form-control"
-                            placeholder="Data de nascimento" required="true">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputEscolaridade" class="col-md-4 col-form-label">Nivel de escolaridade</label>
-                    <div class="col-md-8">
-                        <input type="text" id="inputEscolaridade" formControlName="nivelEscolaridade"
-                            class="form-control" placeholder="Nivel de escolaridade" required="true">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputCidade" class="col-md-2 col-form-label">Cidade</label>
-                    <div class="col-md-10">
-                        <input type="text" id="inputCidade" formControlName="cidade" class="form-control"
-                            placeholder="Cidade" required="true">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputEstado" class="col-md-2 col-form-label">Estado</label>
-                    <div class="col-md-10">
-                        <input type="text" id="inputEstado" formControlName="estado" class="form-control"
-                            placeholder="Estado" required="true">
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="input" class="sr-only">Nome no cartão</label>
+                <input type="text" id="inputCompany" formControlName="nomeNoCartao" class="form-control"
+                    placeholder="Nome no cartão" required="{{submitted}}">
             </div>
-        </div>
-        <div class="row" *ngIf="submitted">
-            <div class="col-md-6">
-                <div class="form-group row">
-                    <label for="inputNCard" class="col-md-4 col-form-label">Numero do cartão</label>
-                    <div class="col-md-8">
-                    <input type="text" id="inputNCard" formControlName="nroCartao" class="form-control"
-                        placeholder="Numero do cartão" required="{{submitted}}">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="input"  class="col-md-4 col-form-label">Nome no cartão</label>
-                    <div class="col-md-8">
-                    <input type="text" id="input" formControlName="nomeNoCartao" class="form-control"
-                        placeholder="Nome no cartão" required="{{submitted}}">
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="inputDateVal" class="sr-only">Data validade</label>
+                <input type="text" id="inputCompany" formControlName="dataValidade" class="form-control"
+                    placeholder="Data validade" required="{{submitted}}">
             </div>
-            <div class="col-md-6">
-                <div class="form-group row">
-                    <label for="inputDateVal" class="col-md-4 col-form-label">Data de validade</label>
-                    <div class="col-md-8">
-                        <input type="text" id="inputDateVal" formControlName="dataValidade" class="form-control"
-                            placeholder="Data de Validade" required="{{submitted}}">
-                    </div>                    
-                </div>
-                <div class="form-group row">
-                    <label for="inputCodSec" class="col-md-4 col-form-label">Codigo segurança</label>
-                    <div class="col-md-8">
-                        <input type="text" id="inputCodSec" formControlName="codSeg" class="form-control"
-                            placeholder="Código segurança" required="{{submitted}}">
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="inputCodSec" class="sr-only">Codigo segurança</label>
+                <input type="text" id="inputCodSec" formControlName="codSeg" class="form-control"
+                    placeholder="Código segurança" required="{{submitted}}">
             </div>
         </div>
         <button class="btn btn-lg btn-primary" type="submit">Cadastrar</button>
-        <div class="row ml-2 mt-3">
-            <a routerLink="/login">Voltar para tela de login</a>
-        </div>
     </form>
 </div>

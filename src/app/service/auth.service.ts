@@ -10,12 +10,12 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-    private url = 'https://server-redesocial.herokuapp.com/redesocial/';
+    private url = 'http://localhost:8080/api/pessoas/';
 
     constructor(private httpClient: HttpClient, private router: Router) { }
 
     register(pessoa: Pessoa): Observable<any> {
-        return this.httpClient.post(this.url + "signup", pessoa);
+        return this.httpClient.post(this.url + 'signup', pessoa);
     }
 
     login(pessoaLogin: PessoaLogin){
@@ -35,11 +35,11 @@ export class AuthService {
     }
     
     verificaEmail(email: string){
-        return this.httpClient.get<boolean>(this.url + "email/" + email);
+        return this.httpClient.get<boolean>(this.url + "/email/" + email);
     }
 
     logout(){
         localStorage.clear();
-        this.router.navigate(['login']);
+        this.router.navigateByUrl('login');
     }
 }

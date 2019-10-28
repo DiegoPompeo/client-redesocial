@@ -3,37 +3,15 @@ export class Pessoa {
     nome: string;
     email: string;
     senha: string;
-    empresa: string;
-    inicioDaAtividade: string;
-    dataNascimento: string;
-    nivelEscolaridade: string;
-    cidade: string;
-    estado: string;
-
     nroCartao: string;
     nomeNoCartao: string;
     dataValidade: string;
-    codSeg: string;    
-
+    codSeg: string;
+    empresa: string;
     paga: boolean;
-    curtidas: number;
-    qualidades: string;
 }
 
 export class PessoaLogin{
     email: string;
     senha: string;
-}
-
-export class Post{
-    id: number;
-    conteudo: string;
-    email: string;
-    curtidas: number;
-}
-
-export class PessoaRecomendada{
-    id: number;
-    emailRecomendou: string;
-    emailRecomendada: string;
 }

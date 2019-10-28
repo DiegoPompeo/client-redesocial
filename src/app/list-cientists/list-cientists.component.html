@@ -1,14 +1,30 @@
-<div *ngFor="let cientist of cientists">
-    <div class="container">
-        <div class="row">
-            <i style="font-size: 120px;" class="large material-icons">insert_photo</i>
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-header">
+            <h1>Cientistas</h1>
         </div>
-        <div class="row ml-1">
-            {{cientist.nome}}
-        </div>
-        
-        <div scope="row">
-            <div class="btn btn-info" (click)="gotoDetails(cientist)">Ver perfil</div>
+        <div class="card-body">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Email</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cientist of cientists">
+                        <td scope="row">
+                            <div *ngIf="cientist.paga"><span>☆&nbsp;{{cientist.nome}}</span></div>
+                            <div *ngIf="!cientist.paga"><span>{{cientist.nome}}</span></div>                            
+                        </td>
+                        <td scope="row">{{cientist.email}}</td>
+                        <td scope="row">
+                            <div class="btn btn-info" (click)="gotoDetails(cientist)">Ver detalhes</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

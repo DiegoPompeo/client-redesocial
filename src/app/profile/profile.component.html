@@ -1,68 +1,12 @@
-<app-menu></app-menu>
+<div class="container-fluid mt-3" *ngIf="cientist">    
+    <p class="mb-3">Bem vindo, <b>{{cientist.nome}}</b></p>
+    
+    <img style="width: 200px; height: 200px;" src="https://cdn.icon-icons.com/icons2/1812/PNG/512/4213460-account-avatar-head-person-profile-user_115386.png" alt="">
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="mt-3 col-md-3" *ngIf="cientist">
-            <p class="mb-3">Bem vindo, <b>{{cientist.nome}}</b></p>
+    <p><b>Email: </b>{{cientist.email}}</p>
+    <p><b>Empresa: </b>{{cientist.empresa}}</p>
 
-            <i style="font-size: 120px;" class="large material-icons">insert_photo</i>
+    <div *ngIf="cientist.paga"><span>☆&nbsp;Você é um usuário premium</span></div>
 
-            <p><b>Email: </b>{{cientist.email}}</p>
-            <p><b>Empresa: </b>{{cientist.empresa}}</p>
-            <p><b>Início Atividade: </b>{{cientist.inicioDaAtividade}}</p>
-            <p><b>Data de Nascimento: </b>{{cientist.dataNascimento}}</p>
-
-            <p><b>Nível de Escolaridade: </b>{{cientist.nivelEscolaridade}}</p>
-            <p><b>Cidade: </b>{{cientist.cidade}}</p>
-            <p><b>Estado: </b>{{cientist.estado}}</p>
-
-            <div *ngIf="cientist.paga"><span>☆&nbsp;Você é um usuário premium</span></div>
-
-            <button class="btn btn-dark" (click)="gotoUpdate(cientist)">Atualizar perfil</button>
-
-            <div class="mt-3">
-                <h3>Fotos</h3>
-                <div>
-                    <i style="font-size: 90px;" class="large material-icons">insert_photo</i>
-                    <i style="font-size: 90px;" class="large material-icons">insert_photo</i>
-                    <i style="font-size: 90px;" class="large material-icons">insert_photo</i>
-                </div>
-            </div>
-            <div class="mt-3">
-                <h3>Amigos</h3>
-                <div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" ngNativeValidate>
-                <h3>Post</h3>
-                <div class="row container mb-3">
-                    <textarea type="text" placeholder="O que você está pensando?" class="form-control" formControlName="conteudo"
-                        required="true"></textarea>
-                </div>
-                <button class="btn btn-primary" type="submit">Postar</button>
-            </form>
-
-            <div *ngIf="posts">
-                <div *ngFor="let post of posts">
-                    <div class="card mt-3 mb-3">
-                        <div class="card-body">
-                            <p class="card-text">{{post.conteudo}}</p>
-                            <div>
-                                <button class="btn btn-primary">Like</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <h3>Eventos</h3>
-
-            <h3>Amizade sugeridas</h3>
-            <app-list-cientists></app-list-cientists>
-        </div>
-    </div>
+    <button class="btn btn-dark" (click)="gotoUpdate(cientist)">Atualizar perfil</button>
 </div>

@@ -15,14 +15,12 @@ export class RegisterComponent implements OnInit {
   pessoa: Pessoa;
   submitted = false;
   msgError = false;
-  msgSuccess = false;
   verificar: boolean;
 
-  constructor(
-    private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router) {
-    this.registerForm = this.formBuilder.group({      
+    this.registerForm = this.formBuilder.group({
       nome: '',
       email: '',
       senha: '',
@@ -30,13 +28,7 @@ export class RegisterComponent implements OnInit {
       nomeNoCartao: '',
       dataValidade: '',
       codSeg: '',
-      empresa: '',
-      inicioDaAtividade: '',
-      dataNascimento:  '',
-      nivelEscolaridade:  '',
-      cidade:  '',
-      estado:  '',
-      qualidades: '',
+      empresa: ''
     });
     this.pessoa = {
       id: null,
@@ -48,18 +40,11 @@ export class RegisterComponent implements OnInit {
       dataValidade: '',
       codSeg: '',
       empresa: '',
-      inicioDaAtividade: '',
-      dataNascimento:  '',
-      nivelEscolaridade:  '',
-      cidade:  '',
-      estado:  '',
-      qualidades: '',
-      curtidas: 0,
       paga: null
     }
   }
 
-  ngOnInit() {    
+  ngOnInit() {
   }
 
   showContaPaga(){
@@ -78,31 +63,21 @@ export class RegisterComponent implements OnInit {
           this.pessoa.nome = this.registerForm.get('nome').value;
           this.pessoa.email = this.registerForm.get('email').value;
           this.pessoa.senha = this.registerForm.get('senha').value;
-          this.pessoa.empresa = this.registerForm.get('empresa').value;
-
           this.pessoa.nroCartao = this.registerForm.get('nroCartao').value;
           this.pessoa.nomeNoCartao = this.registerForm.get('nomeNoCartao').value;
           this.pessoa.dataValidade = this.registerForm.get('dataValidade').value;
           this.pessoa.codSeg = this.registerForm.get('codSeg').value;
-          
-          this.pessoa.inicioDaAtividade = this.registerForm.get('inicioDaAtividade').value;
-          this.pessoa.dataNascimento = this.registerForm.get('dataNascimento').value;
-          this.pessoa.nivelEscolaridade = this.registerForm.get('nivelEscolaridade').value;
-          this.pessoa.cidade = this.registerForm.get('cidade').value;
-          this.pessoa.estado = this.registerForm.get('estado').value;
-
+          this.pessoa.empresa = this.registerForm.get('empresa').value;
           this.pessoa.paga = this.submitted;
-
-          localStorage.setItem("email",this.pessoa.email);
     
-          this.authService.register(this.pessoa).subscribe(data => {             
+          this.authService.register(this.pessoa).subscribe(data => {
+            console.log('register success');
+            this.router.navigateByUrl('/register-success');
           });
-          this.msgSuccess = true;
         } else {
           this.msgError = true;
         }
       }
     );
-    
   }
 }

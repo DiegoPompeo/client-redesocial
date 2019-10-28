@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -9,14 +8,10 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
-  }
-
-  glossario(){
-    this.router.navigate(["glossary"]);
   }
 
   logout() {
