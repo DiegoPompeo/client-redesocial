@@ -141,12 +141,11 @@ export class GlossaryComponent implements OnInit {
 
   ngOnInit() {
     this.search();
-    this.ordersData;
   }
 
   private addCheckboxes() {
     this.ordersData.forEach((o, i) => {
-      const control = new FormControl(i === 0);
+      const control = new FormControl(i === 0); // if first item set to true, else false
       (this.form.controls.orders as FormArray).push(control);
     });
   }
