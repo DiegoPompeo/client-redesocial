@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./glossary.component.css']
 })
 export class GlossaryComponent implements OnInit {
-  
+
   pessoa: Pessoa;
   form: FormGroup;
   ordersData = [];
@@ -20,16 +20,9 @@ export class GlossaryComponent implements OnInit {
     this.form = this.formBuilder.group({
       orders: new FormArray([], minSelectedCheckboxes(1))
     });
+    this.ordersData = this.getOrders();
+    this.addCheckboxes();
 
-    // async orders
-    of(this.getOrders()).subscribe(orders => {
-      this.ordersData = orders;
-      this.addCheckboxes();
-    });
-
-    // synchronous orders
-    // this.orders = this.getOrders();
-    // this.addCheckboxes();
   }
 
   ngOnInit() {
@@ -177,13 +170,13 @@ export class GlossaryComponent implements OnInit {
     const selectedOrderIds = this.form.value.orders
       .map((v, i) => v ? this.ordersData[i].name : null)
       .filter(v => v !== null);
-      pessoa.qualidades = selectedOrderIds.toString();
-      this.service.atualizarPerfil(pessoa).subscribe(
-        data => {          
-          this.pessoa = data;
-          this.router.navigate(['login']);
-        }
-      );
+    pessoa.qualidades = selectedOrderIds.toString();
+    this.service.atualizarPerfil(pessoa).subscribe(
+      data => {
+        this.pessoa = data;
+        this.router.navigate(['login']);
+      }
+    );
   }
 }
 
