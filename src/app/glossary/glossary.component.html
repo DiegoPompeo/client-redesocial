@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="submit(pessoa)">
+<form (ngSubmit)="submit(pessoa)">
     <div class="col-md-6">
         <div *ngFor="let order of ordersData; let i = index">            
             <span>{{ordersData[i]}}</span>
