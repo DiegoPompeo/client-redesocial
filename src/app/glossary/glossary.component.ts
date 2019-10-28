@@ -41,7 +41,7 @@ export class GlossaryComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private service: ServiceService, private router: Router) {
     this.form = this.formBuilder.group({
-      orders: new FormArray([])
+      orders: new FormArray([], minSelectedCheckboxes(1))
     });
     this.addCheckboxes();
   }
@@ -67,17 +67,28 @@ export class GlossaryComponent implements OnInit {
     );
   }
 
-
   submit(pessoa: Pessoa) {
-    const selectedOrderIds = this.form.value.orders
+    const selectedOrder = this.form.value.orders
       .map((v, i) => v ? this.ordersData[i] : null)
       .filter(v => v !== null);
-    pessoa.qualidades = selectedOrderIds.toString();
-    this.service.atualizarPerfil(pessoa).subscribe(
-      data => {
-        this.pessoa = data;
-        this.router.navigate(['login']);
-      }
-    );
+      pessoa.qualidades = selectedOrder.toString();
+      this.service.atualizarPerfil(pessoa).subscribe(
+        data => {          
+          this.pessoa = data;
+          this.router.navigate(['login']);
+        }
+      );
   }
+}
+
+function minSelectedCheckboxes(min = 1) {
+  const validator: ValidatorFn = (formArray: FormArray) => {
+    const totalSelected = formArray.controls
+      .map(control => control.value)
+      .reduce((prev, next) => next ? prev + next : prev, 0);
+
+    return totalSelected >= min ? null : { required: true };
+  };
+
+  return validator;
 }
