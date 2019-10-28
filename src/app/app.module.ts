@@ -15,7 +15,6 @@ import { ListCientistsComponent } from './list-cientists/list-cientists.componen
 import { UpdateComponent } from './update/update.component';
 import { DetailsComponent } from './details/details.component';
 import { UpdatePremiumComponent } from './update-premium/update-premium.component';
-import { QualidadesComponent } from './qualidades/qualidades.component';
 import { GlossaryComponent } from './glossary/glossary.component';
 import { MembersRecommendedComponent } from './members-recommended/members-recommended.component';
 
@@ -32,7 +31,6 @@ import { MembersRecommendedComponent } from './members-recommended/members-recom
     UpdateComponent,
     DetailsComponent,
     UpdatePremiumComponent,
-    QualidadesComponent,
     GlossaryComponent,
     MembersRecommendedComponent
   ],
