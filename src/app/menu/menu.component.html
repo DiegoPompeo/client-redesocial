@@ -7,7 +7,6 @@
             <h3>RedeSocial</h3>
         </div>
         <div *ngIf="authService.isAuthenticated()" class="col-md-4">
-            <!--<a href="/add-post" class="new-post">Add Post</a>-->
             <a href="/profile" class="btn btn-default">Ver Perfil</a>
             <a href="/cientists" class="btn btn-default">Lista de Cientistas</a>
             <button class="logout btn btn-default" (click)="logout()">Logout</button>
