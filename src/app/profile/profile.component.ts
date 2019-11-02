@@ -40,7 +40,7 @@ export class ProfileComponent implements OnInit {
     this.post.email = this.cientist.email;
     this.service.addPost(this.post).subscribe(data => { 
       this.ngOnInit();
-     });    
+    });    
   }
 
   ngOnInit() {
