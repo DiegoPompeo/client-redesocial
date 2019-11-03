@@ -14,7 +14,15 @@ export class GlossaryComponent implements OnInit {
   glossarios = [];
   selecionados = [];
 
-  constructor(private service: ServiceService, private router: Router) { }
+  constructor(private service: ServiceService, private router: Router) {
+    this.service.listaGlossary().subscribe(
+      data => {
+        data.forEach(x => {
+          this.glossarios.push(x.nome);
+        })
+      }
+    )
+  }
   
   ngOnInit() {
     this.search();
