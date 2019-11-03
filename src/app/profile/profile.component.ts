@@ -37,10 +37,10 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     this.post.conteudo = this.registerForm.get('conteudo').value;
-    this.post.email = this.cientist.email;
+    this.post.email = localStorage.getItem("email");
     this.service.addPost(this.post).subscribe(data => { 
-    });
-    this.ngOnInit();   
+      this.ngOnInit();
+    });       
   }
 
   ngOnInit() {
@@ -49,7 +49,8 @@ export class ProfileComponent implements OnInit {
   }
 
   searchPosts() {
-    this.service.verPost(localStorage.getItem("email")).subscribe(data => {
+    this.service.verPost(localStorage.getItem("email"))
+    .subscribe(data => {
       this.posts = data;
     });
   }
