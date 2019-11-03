@@ -42,10 +42,10 @@ export class GlossaryComponent implements OnInit {
     this.selecionados.push(g);
   }
 
-  submit(pessoa: Pessoa){    
-    pessoa.qualidades = this.selecionados.toString();
+  submit(pessoa: Pessoa){        
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
+        this.pessoa.qualidades = this.selecionados.toString();
         this.pessoa = data;
       }
     );
