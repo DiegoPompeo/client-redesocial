@@ -45,10 +45,11 @@ export class GlossaryComponent implements OnInit {
   submit(){    
     this.service.getCientist(localStorage.getItem("email")).subscribe(
       data => {
-        data.qualidades = this.selecionados.toString();
-        this.service.atualizarPerfil(data).subscribe(
-          data => {
-            this.pessoa = data;
+        this.pessoa = data;
+        this.pessoa.qualidades = this.selecionados.toString();
+        this.service.atualizarPerfil(this.pessoa).subscribe(
+          data => {  
+            this.pessoa = data;          
           }
         )
       }
