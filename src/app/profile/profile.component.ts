@@ -38,8 +38,8 @@ export class ProfileComponent implements OnInit {
   onSubmit() {
     this.post.conteudo = this.registerForm.get('conteudo').value;
     this.post.email = localStorage.getItem("email");
+    this.ngOnInit();
     this.service.addPost(this.post).subscribe(data => { 
-      this.ngOnInit();
     });       
   }
 
