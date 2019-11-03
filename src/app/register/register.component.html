@@ -1,4 +1,7 @@
 <div class="container mt-3 mb-3" >
+    <div *ngIf="msgSuccess">
+        <app-register-success></app-register-success>
+    </div>
     <div class="mb-3 row justify-content-center" role="group">
         <button (click)="hideContaPaga()" class="btn btn-info mr-3">Normal</button>
         <button (click)="showContaPaga()" class="btn btn-info">Premium</button>
