@@ -48,6 +48,7 @@ export class GlossaryComponent implements OnInit {
     pessoa.qualidades = this.selecionados.toString();
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
+        this.pessoa.qualidades = data.qualidades;
         this.pessoa = data;
       }
     );
