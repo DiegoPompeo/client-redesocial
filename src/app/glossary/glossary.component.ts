@@ -46,7 +46,7 @@ export class GlossaryComponent implements OnInit {
     this.service.getCientist(localStorage.getItem("email")).subscribe(
       data => {
         this.pessoa = data;
-        this.pessoa.qualidades = this.selecionados.toString();
+        this.pessoa.qualidades = "this.selecionados.toString();"
         this.service.atualizarPerfil(this.pessoa).subscribe(
           data => {  
             this.pessoa = data;          
