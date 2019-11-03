@@ -1,1 +1,12 @@
-<p>glossary works!</p>
+<div class="container">
+    <div class="col-md-6">
+        <label for="">
+            <div>
+                <input type="checkbox" name="{{g}}" id="{{g}}"
+                (change)="onChangeCategory($event, o)">{{g}}
+            </div>
+        </label>
+    </div>
+    <button class="ml-3 mb-3 btn btn-success" (click)="submit(pessoa)">
+        Confirmar</button>
+</div>

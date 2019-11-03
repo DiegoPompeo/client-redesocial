@@ -53,7 +53,8 @@ export class RegisterComponent implements OnInit {
       cidade:  '',
       estado:  '',
       curtidas: 0,
-      paga: null
+      paga: null,
+      qualidades: ''
     }
   }
 
