@@ -1,6 +1,6 @@
 <div class="container">
     <div class="col-md-6">
-        <label for="">
+        <label for="" *ngFor="let g of glossarios" class="row">
             <div>
                 <input type="checkbox" name="{{g}}" id="{{g}}"
                 (change)="onChangeCategory($event, o)">{{g}}
