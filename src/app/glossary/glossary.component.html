@@ -2,7 +2,6 @@
     <app-glossary-success></app-glossary-success>
 </div>
 <div *ngIf="!submitted">
-
     <div class="col-md-6">
         <label for="" *ngFor="let g of glossarios" class="row">
             <div>
@@ -10,6 +9,6 @@
             </div>
         </label>
     </div>
-    <button class="ml-3 mb-3 btn btn-info" (click)="submit()">
+    <button class="ml-3 mb-3 btn btn-info" (click)="submit(pessoa)">
         Confirmar</button>
 </div>

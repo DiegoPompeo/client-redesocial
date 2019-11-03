@@ -42,19 +42,13 @@ export class GlossaryComponent implements OnInit {
     this.selecionados.push(g);
   }
 
-  submit(){    
-    this.service.getCientist(localStorage.getItem("email")).subscribe(
+  submit(pessoa: Pessoa){    
+    pessoa.qualidades = this.selecionados.toString();
+    this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
-        this.pessoa.qualidades = "this.selecionados.toString();"
-        this.service.atualizarPerfil(this.pessoa).subscribe(
-          data => {  
-            this.pessoa = data;          
-          }
-        )
       }
-    )
-    
-    this.submitted = true;
+    );
+    this.submitted = true;    
   }
 }
