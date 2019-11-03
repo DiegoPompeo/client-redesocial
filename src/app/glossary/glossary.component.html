@@ -1,15 +1,15 @@
-<div *ngIf="pessoa">
-    <div class="container" *ngIf="submitted">
-        <app-glossary-success></app-glossary-success>
+<div class="container" *ngIf="submitted">
+    <app-glossary-success></app-glossary-success>
+</div>
+<div *ngIf="!submitted">
+    <div class="col-md-6">
+        <label for="" *ngFor="let g of glossarios" class="row">
+            <div>
+                <input type="checkbox" name="{{g}}" id="{{g}}"
+                (change)="onChangeCategory($event.checked.target, g)">{{g}}
+            </div>
+        </label>
     </div>
-    <div *ngIf="!submitted">
-        <div>
-            <label for="" *ngFor="let g of glossarios" class="row">
-                <div>
-                    <input type="checkbox" name="{{g}}" id="{{g}}" (change)="onChangeCategory($event.target.checked, g)">{{g}}
-                </div>
-            </label>
-        </div>
-        <button class="ml-3 mb-3 btn-success" (click)="submit(pessoa)">Confirmar</button>
-    </div>
+    <button class="ml-3 mb-3 btn btn-info" (click)="submit()">
+        Confirmar</button>
 </div>
