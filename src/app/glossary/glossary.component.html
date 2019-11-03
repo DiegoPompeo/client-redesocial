@@ -6,7 +6,7 @@
         <label for="" *ngFor="let g of glossarios" class="row">
             <div>
                 <input type="checkbox" name="{{g.nome}}" id="{{g.id}}"
-                (change)="onChangeCategory($event, g.nome)">{{g}}
+                (change)="onChangeCategory($event, g.nome)">{{g.nome}}
             </div>
         </label>
     </div>
