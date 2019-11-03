@@ -45,10 +45,10 @@ export class GlossaryComponent implements OnInit {
   }
 
   submit(pessoa: Pessoa){
-    pessoa.qualidades = this.selecionados.toString();
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
-        this.pessoa.qualidades = data.qualidades;
+        data.qualidades = this.selecionados.toString();
+        this.pessoa.qualidades = this.selecionados.toString();
         this.pessoa = data;
       }
     );
