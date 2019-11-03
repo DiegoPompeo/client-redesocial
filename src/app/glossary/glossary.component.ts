@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Glossario, Pessoa } from '../model/pessoa';
+import { Pessoa } from '../model/pessoa';
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
 
@@ -13,6 +13,7 @@ export class GlossaryComponent implements OnInit {
   pessoa: Pessoa;
   glossarios = [];
   selecionados = [];
+  submitted = false;
 
   constructor(private service: ServiceService, private router: Router) {
     this.service.listaGlossary().subscribe(
@@ -48,5 +49,6 @@ export class GlossaryComponent implements OnInit {
         this.pessoa = data;
       }
     )
+    this.submitted = true;
   }
 }

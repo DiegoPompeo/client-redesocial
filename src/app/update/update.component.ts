@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class UpdateComponent implements OnInit {
 
   pessoa: Pessoa;
+  submitted = false;
 
   constructor(private service: ServiceService, 
     private router: Router) { }
@@ -32,13 +33,13 @@ export class UpdateComponent implements OnInit {
     );
   }
 
-  Atualizar(pessoa: Pessoa){
+  Atualizar(pessoa: Pessoa){    
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
-        this.router.navigate(['profile']);
       }
     );
+    this.submitted = true;
   }
 
   edit() {
