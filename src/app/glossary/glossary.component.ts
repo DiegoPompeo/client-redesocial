@@ -21,7 +21,7 @@ export class GlossaryComponent implements OnInit {
           this.glossarios.push(x.nome);
         })
       }
-    )
+    );
   }
   
   ngOnInit() {
@@ -37,16 +37,15 @@ export class GlossaryComponent implements OnInit {
     )
   }
 
-  onChangeCategory(event, o: any){
+  onChangeCategory(event, o: string){
     this.selecionados.push(o);
   }
 
   submit(pessoa: Pessoa){
-    pessoa.qualidades = this.selecionados.toString();
+    pessoa.qualidades = "this.selecionados.toString()";
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
-        this.router.navigate(['profile']);
       }
     )
   }
