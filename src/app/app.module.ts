@@ -16,6 +16,8 @@ import { UpdateComponent } from './update/update.component';
 import { DetailsComponent } from './details/details.component';
 import { UpdatePremiumComponent } from './update-premium/update-premium.component';
 import { MembersRecommendedComponent } from './members-recommended/members-recommended.component';
+import { GlossaryComponent } from './glossary/glossary.component';
+import { AddGlossaryComponent } from './add-glossary/add-glossary.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { MembersRecommendedComponent } from './members-recommended/members-recom
     UpdateComponent,
     DetailsComponent,
     UpdatePremiumComponent,
-    MembersRecommendedComponent
+    MembersRecommendedComponent,
+    GlossaryComponent,
+    AddGlossaryComponent
   ],
   imports: [
     BrowserModule,

@@ -36,3 +36,8 @@ export class PessoaRecomendada{
     emailRecomendou: string;
     emailRecomendada: string;
 }
+
+export class Glossario{
+    id: number;
+    nome: string;
+}

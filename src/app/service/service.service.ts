@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Pessoa, PessoaLogin, Post, PessoaRecomendada } from '../model/pessoa';
+import { Pessoa, PessoaLogin, Post, PessoaRecomendada, Glossario } from '../model/pessoa';
 @Injectable({
   providedIn: 'root'
 })
@@ -49,4 +49,15 @@ export class ServiceService {
   listaRecomendacao(){
     return this.http.get<PessoaRecomendada[]>(this.url + "/getRecomendacao");
   }
+
+  //AddGlossary
+  addGlossary(glossario: Glossario){
+    return this.http.post<Glossario>(this.url + "/addGlossario", glossario);
+  }
+
+  //ListGlossary
+  listaGlossary(){
+    return this.http.get<Glossario[]>(this.url + "/glossario");
+  }
+  
 }

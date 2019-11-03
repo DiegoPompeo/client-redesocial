@@ -10,6 +10,7 @@ import { ListCientistsComponent } from './list-cientists/list-cientists.componen
 import { AuthGuard } from './auth.guard';
 import { DetailsComponent } from './details/details.component';
 import { UpdatePremiumComponent } from './update-premium/update-premium.component';
+import { GlossaryComponent } from './glossary/glossary.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'update', component: UpdateComponent, canActivate: [AuthGuard]},
   {path: 'details', component: DetailsComponent, canActivate: [AuthGuard]},
   {path: 'cientists', component: ListCientistsComponent, canActivate: [AuthGuard]},
-  {path: 'premium', component: UpdatePremiumComponent, canActivate: [AuthGuard]}
+  {path: 'premium', component: UpdatePremiumComponent, canActivate: [AuthGuard]},
+  {path: 'add', component: GlossaryComponent}
 ];
 
 @NgModule({
