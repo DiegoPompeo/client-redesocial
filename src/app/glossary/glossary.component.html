@@ -3,13 +3,13 @@
         <app-glossary-success></app-glossary-success>
     </div>
     <div *ngIf="!submitted">
-        <div class="col-md-6">
+        <div>
             <label for="" *ngFor="let g of glossarios" class="row">
                 <div>
-                    <input type="checkbox" name="{{g}}" id="{{g}}" (change)="onChangeCategory($event, g)">{{g}}
+                    <input type="checkbox" name="{{g}}" id="{{g}}" (change)="onChangeCategory($event.target.checked, g)">{{g}}
                 </div>
             </label>
         </div>
-        <input (click)="submit(pessoa)" class="btn btn-info" type="submit" value="Confirmar">        
+        <button class="ml-3 mb-3 btn-success" (click)="submit(pessoa)">Confirmar</button>
     </div>
 </div>

@@ -51,7 +51,7 @@ export class ProfileComponent implements OnInit {
   searchPosts() {
     this.service.verPost(localStorage.getItem("email"))
     .subscribe(data => {
-      this.posts = data;
+      this.posts = data.slice();
     });
   }
 
