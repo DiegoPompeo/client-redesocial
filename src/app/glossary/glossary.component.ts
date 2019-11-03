@@ -42,7 +42,7 @@ export class GlossaryComponent implements OnInit {
   }
 
   submit(pessoa: Pessoa){
-    pessoa.qualidades = "this.selecionados.toString()";
+    pessoa.qualidades = this.selecionados.toString();
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
