@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-glossary-success',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./glossary-success.component.css']
 })
 export class GlossarySuccessComponent implements OnInit {
+
+  @Input()
+  selecionados = [];
 
   constructor() { }
 

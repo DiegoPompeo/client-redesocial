@@ -1,5 +1,5 @@
 <div class="container" *ngIf="submitted">
-    <app-glossary-success></app-glossary-success>
+    <app-glossary-success [selecionados]="selecionados"></app-glossary-success>
 </div>
 <div *ngIf="!submitted">
     <div class="col-md-6">
