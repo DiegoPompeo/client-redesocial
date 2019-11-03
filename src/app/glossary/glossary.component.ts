@@ -38,17 +38,22 @@ export class GlossaryComponent implements OnInit {
     )
   }
 
-  onChangeCategory(event, o: string){
-    this.selecionados.push(o);
+  onChangeCategory(event, g: string){
+    this.selecionados.push(g);
   }
 
-  submit(pessoa: Pessoa){
-    pessoa.qualidades = this.selecionados.toString();
-    this.service.atualizarPerfil(pessoa).subscribe(
+  submit(){    
+    this.service.getCientist(localStorage.getItem("email")).subscribe(
       data => {
-        this.pessoa = data;
+        data.qualidades = this.selecionados.toString();
+        this.service.atualizarPerfil(data).subscribe(
+          data => {
+            this.pessoa = data;
+          }
+        )
       }
     )
+    
     this.submitted = true;
   }
 }
