@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
       estado:  '',
       curtidas: 0,
       paga: null,
-      qualidades: ''
+      interesse: '',
     }
   }
 
@@ -89,6 +89,8 @@ export class RegisterComponent implements OnInit {
           this.pessoa.nivelEscolaridade = this.registerForm.get('nivelEscolaridade').value;
           this.pessoa.cidade = this.registerForm.get('cidade').value;
           this.pessoa.estado = this.registerForm.get('estado').value;
+
+          this.pessoa.interesse = "";
 
           this.pessoa.paga = this.submitted;
 

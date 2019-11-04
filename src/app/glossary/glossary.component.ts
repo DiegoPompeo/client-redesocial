@@ -45,11 +45,8 @@ export class GlossaryComponent implements OnInit {
   }
 
   submit(pessoa: Pessoa){
-    this.service.atualizarPerfil(pessoa).subscribe(
-      data => {
-        this.pessoa = data;
-      }
-    );
+    pessoa.interesse = this.selecionados.toString();
+    this.service.atualizarPerfil(pessoa).subscribe();
     this.submitted = true;    
   }
 }
