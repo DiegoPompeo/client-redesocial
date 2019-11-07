@@ -1,12 +1,25 @@
+<nav class="navbar navbar-expand-sm bg-info navbar-info">
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar">
+        <button class="btn btn-light" type="submit">Pesquisar</button>
+    </form>
+    <button class="btn btn-info" routerLink="/glossary">Glossario</button>
+    <button class="btn btn-info" (click)="logout()">Logout</button>
+</nav>
+
+<div class="bg-info text-center pt-2 pb-2">
+    <h3 class="font-weight-normal" style="color: white">Interesses</h3>
+</div>
+    
 <div class="container" *ngIf="submitted">
     <app-glossary-success [selecionados]="selecionados"></app-glossary-success>
 </div>
-<div *ngIf="!submitted">
+<div class="container" *ngIf="!submitted">
     <div class="col-md-6">
         <label for="" *ngFor="let g of glossarios" class="row">
             <div>
                 <input type="checkbox" name="{{g}}" id="{{g}}"
-                (change)="onChangeCategory($event.target.checked, g)">{{g}}
+                    (change)="onChangeCategory($event.target.checked, g)">{{g}}
             </div>
         </label>
     </div>

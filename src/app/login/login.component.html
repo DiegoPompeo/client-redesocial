@@ -9,7 +9,6 @@
     <div class="alert alert-danger mt-3 mb-3" *ngIf="msgError">
         Usuário ou senha digitados inválidos. Caso ainda não seja cadastrado, <a routerLink="/register">clique aqui</a>.
     </div>
-        <a routerLink="/add">Add Glossario</a>
         <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()" ngNativeValidate>
 
         <div class="form-group row">
