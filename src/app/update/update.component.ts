@@ -33,9 +33,13 @@ export class UpdateComponent implements OnInit {
     );
   }
 
-  Atualizar(pessoa: Pessoa){    
+  Atualizar(pessoa: Pessoa){
+    pessoa.dataNascimento = pessoa.dataNascimento.toString();
+    pessoa.inicioDaAtividade = pessoa.inicioDaAtividade.toString();
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
+        this.pessoa.inicioDaAtividade = data.inicioDaAtividade.toString();
+        this.pessoa.dataNascimento = data.dataNascimento.toString();
         this.pessoa = data;
       }
     );
