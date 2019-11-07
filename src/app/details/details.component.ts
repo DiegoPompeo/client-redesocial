@@ -31,8 +31,8 @@ export class DetailsComponent implements OnInit {
   }
 
   Detalhe(){
-    let id = localStorage.getItem("det_id");
-    this.service.verPerfil(+id).subscribe(
+    let email = localStorage.getItem("det_email");
+    this.service.getCientist(email).subscribe(
       data => {
         this.pessoa = data;
       }
@@ -41,7 +41,6 @@ export class DetailsComponent implements OnInit {
 
   recomendar(pessoa: Pessoa){
     pessoa.curtidas++;    
-
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
@@ -55,12 +54,6 @@ export class DetailsComponent implements OnInit {
   ngOnInit() {
     this.Detalhe();
     this.searchPosts();
-    this.listaRecomendada();
-
-    this.emailLogado = localStorage.getItem('email');
-    if (!(this.emailLogado == localStorage.getItem("det_email"))) {
-      this.auth = true;
-    }
   }
 
   searchPosts() {
@@ -69,20 +62,7 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  listaRecomendada(){
-    this.service.listaRecomendacao().subscribe(data => {
-      this.listaRecomendadas = data;
-      for (let i = 0; i < this.listaRecomendadas.length; i++) {
-        if(this.listaRecomendadas[i].emailRecomendada ==  localStorage.getItem('email')
-          && this.listaRecomendadas[i].emailRecomendou == localStorage.getItem("det_email")){
-            this.desabilita = true;
-        }        
-      }
-    });
-  }
-
   logout() {
     this.authService.logout();
   }
-
 }
