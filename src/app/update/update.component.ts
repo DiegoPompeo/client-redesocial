@@ -36,7 +36,6 @@ export class UpdateComponent implements OnInit {
   Atualizar(pessoa: Pessoa){
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
-        this.pessoa.inicioDaAtividade = data.inicioDaAtividade.toString();
         this.pessoa = data;
       }
     );

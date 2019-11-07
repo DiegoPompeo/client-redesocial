@@ -5,8 +5,8 @@ export class Pessoa {
     senha: string;
     empresa: string;
     inicioDaAtividade: string;
-    dataNascimento: Date;
-    nivelEscolaridade: Date;
+    dataNascimento: string;
+    nivelEscolaridade: string;
     cidade: string;
     estado: string;
 
