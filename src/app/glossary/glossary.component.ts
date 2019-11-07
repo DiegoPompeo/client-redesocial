@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Pessoa } from '../model/pessoa';
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-glossary',
@@ -15,7 +16,10 @@ export class GlossaryComponent implements OnInit {
   selecionados = [];
   submitted = false;
 
-  constructor(private service: ServiceService, private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private service: ServiceService,
+    private router: Router) {
     this.service.listaGlossary().subscribe(
       data => {
         data.forEach(x => {
@@ -48,5 +52,9 @@ export class GlossaryComponent implements OnInit {
     pessoa.interesse = this.selecionados.toString();
     this.service.atualizarPerfil(pessoa).subscribe();
     this.submitted = true;    
+  }
+  
+  logout() {
+    this.authService.logout();
   }
 }
