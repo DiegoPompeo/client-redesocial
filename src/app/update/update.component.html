@@ -71,8 +71,7 @@
                 </div>
             </div>
         </div>
-
-        <input (click)="Atualizar(pessoa)" class="btn btn-success" type="submit" value="Atualizar dados">
+        <button (click)="Atualizar(pessoa)" class="btn btn-success" type="button">Atualizar dados</button>
         <a routerLink="/profile" class="btn btn-info ml-3">Voltar para o perfil</a>
     </form>
     <div class="alert alert-info mt-3" *ngIf="!pessoa.paga">
