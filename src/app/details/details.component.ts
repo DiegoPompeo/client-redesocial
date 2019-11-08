@@ -17,6 +17,7 @@ export class DetailsComponent implements OnInit {
   cientistas: Pessoa[];
   post: Post;
   posts: Post[];
+  interesses = [];
   pessoaRecomendada: PessoaRecomendada;
   listaRecomendadas: PessoaRecomendada[];
   emailLogado: string;
@@ -25,9 +26,7 @@ export class DetailsComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private formBuilder: FormBuilder,
-    private service: ServiceService,
-    private router: Router) {
+    private service: ServiceService) {
   }
 
   Detalhe(){
@@ -54,12 +53,17 @@ export class DetailsComponent implements OnInit {
   ngOnInit() {
     this.Detalhe();
     this.searchPosts();
+    this.listInteresses();
   }
 
   searchPosts() {
     this.service.verPost(localStorage.getItem("det_email")).subscribe(data => {
       this.posts = data;  
     });
+  }
+
+  listInteresses(){
+    this.interesses = this.pessoa.interesse.split(",");
   }
 
   logout() {
