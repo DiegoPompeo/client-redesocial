@@ -51,6 +51,12 @@
                 <button class="btn btn-primary" type="submit">Postar</button>
             </form>
 
+            <div class="mt-3" *ngIf="atualiza">
+                <button class="btn btn-info btn-block" type="button" (click)="msgAtualizaFeed()">
+                    Atualizar feed
+                </button>
+            </div>
+
             <div *ngIf="posts">
                 <div *ngFor="let post of posts">
                     <div class="card mt-3 mb-3">

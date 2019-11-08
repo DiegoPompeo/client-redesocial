@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   cientistas: Pessoa[];
   post: Post;
   posts: Post[];
+  atualiza = false;
 
   constructor(
     private authService: AuthService,
@@ -39,9 +40,14 @@ export class ProfileComponent implements OnInit {
     this.post.conteudo = this.registerForm.get('conteudo').value;
     this.post.email = localStorage.getItem("email");    
     this.service.addPost(this.post).subscribe(data => { 
-    });    
-    this.ngOnInit(); 
+    });      
+    this.atualiza = true;  
     this.registerForm.get('conteudo').setValue("");
+  }
+
+  msgAtualizaFeed(){
+    this.ngOnInit();
+    this.atualiza = false;
   }
 
   ngOnInit() {

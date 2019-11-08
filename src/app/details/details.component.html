@@ -23,6 +23,7 @@
             <p><b>Nível de Escolaridade: </b>{{pessoa.nivelEscolaridade}}</p>
             <p><b>Cidade: </b>{{pessoa.cidade}}</p>
             <p><b>Estado: </b>{{pessoa.estado}}</p>
+            
             <button (click)="recomendar(pessoa)" [disabled]="desabilita" class="btn btn-dark"><i
                     class="fa fa-thumbs-up"></i>
                 {{pessoa.curtidas}}
