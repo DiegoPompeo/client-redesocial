@@ -43,6 +43,7 @@ export class DetailsComponent implements OnInit {
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
+        this.interesses = data.interesse.split(",");
       }
     );
 
@@ -53,17 +54,12 @@ export class DetailsComponent implements OnInit {
   ngOnInit() {
     this.Detalhe();
     this.searchPosts();
-    this.listInteresses();
   }
 
   searchPosts() {
     this.service.verPost(localStorage.getItem("det_email")).subscribe(data => {
       this.posts = data;  
     });
-  }
-
-  listInteresses(){
-    this.interesses = this.pessoa.interesse.split(",");
   }
 
   logout() {

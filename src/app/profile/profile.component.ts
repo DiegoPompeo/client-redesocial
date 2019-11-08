@@ -63,7 +63,6 @@ export class ProfileComponent implements OnInit {
       });
   }
 
-
   gotoUpdate(cientist: Pessoa) {
     localStorage.setItem("id", cientist.id.toString());
     this.router.navigate(['update']);

@@ -68,8 +68,8 @@
         <div class="col-md-3">
             <h3>Interesses</h3>
             <div *ngIf="interesses">
-                <div *ngFor="let interesse of interesses">
-                    <p>{{interesse}}</p>
+                <div *ngFor="let interesse of interesses; let i = index">
+                    <p>{{interesse[i]}}</p>
                 </div>
             </div>
         </div>
