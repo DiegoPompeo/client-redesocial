@@ -17,7 +17,7 @@ export class DetailsComponent implements OnInit {
   cientistas: Pessoa[];
   post: Post;
   posts: Post[];
-  interesses = [];
+  interesses: any;
   pessoaRecomendada: PessoaRecomendada;
   listaRecomendadas: PessoaRecomendada[];
   emailLogado: string;
@@ -46,7 +46,6 @@ export class DetailsComponent implements OnInit {
         this.pessoa = data;        
       }
     );
-
     this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => {
     });
   }
