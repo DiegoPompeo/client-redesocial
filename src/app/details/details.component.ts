@@ -34,6 +34,7 @@ export class DetailsComponent implements OnInit {
     this.service.getCientist(email).subscribe(
       data => {
         this.pessoa = data;
+        this.interesses = data.interesse.split(",");
       }
     )
   }
@@ -42,8 +43,7 @@ export class DetailsComponent implements OnInit {
     pessoa.curtidas++;    
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
-        this.pessoa = data;
-        this.interesses = data.interesse.split(",");
+        this.pessoa = data;        
       }
     );
 
