@@ -39,8 +39,9 @@ export class ProfileComponent implements OnInit {
     this.post.conteudo = this.registerForm.get('conteudo').value;
     this.post.email = localStorage.getItem("email");    
     this.service.addPost(this.post).subscribe(data => { 
-    }); 
-    this.ngOnInit();      
+      this.ngOnInit(); 
+    });
+    this.registerForm.get('conteudo').setValue("");
   }
 
   ngOnInit() {
