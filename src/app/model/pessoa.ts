@@ -42,3 +42,12 @@ export class Glossario{
     id: number;
     nome: string;
 }
+
+export class Amizade{
+    id: number;
+    emailMandatario: string;
+    emailRemetente: string;
+    aceite: boolean;
+    recusado: boolean;
+    solicitado: boolean;
+}

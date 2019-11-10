@@ -24,8 +24,7 @@
             <p><b>Cidade: </b>{{pessoa.cidade}}</p>
             <p><b>Estado: </b>{{pessoa.estado}}</p>
             
-            <button (click)="recomendar(pessoa)" [disabled]="desabilita" class="btn btn-dark"><i
-                    class="fa fa-thumbs-up"></i>
+            <button (click)="recomendar(pessoa)" [disabled]="desabilita" class="btn btn-dark">
                 {{pessoa.curtidas}}
                 <div *ngIf="pessoa.curtidas<2; then thenBlock else elseBlock"></div>
                 <ng-template #thenBlock>Recomendação</ng-template>
@@ -33,7 +32,8 @@
             </button>
 
             <div *ngIf="auth">
-                <button class="btn btn-dark mt-3">Solicitar amizade</button>
+                <button class="btn btn-dark mt-3" [disabled]="desabilitaSolicitacao"
+                (click)="solicitarAmizade()">Solicitar amizade</button>
             </div>
 
             <div class="mt-3">

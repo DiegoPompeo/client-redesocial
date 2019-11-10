@@ -72,6 +72,19 @@
         </div>
 
         <div class="col-md-3">
+            <h3>Pedidos de amizade</h3>
+            <div *ngIf="solicita">
+                <div *ngFor="let s of solicita">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <p><b>{{s.nome}}</b> solicitou amizade</p>
+                            <button class="btn btn-success mr-3" (click)="aceita(s)">Aceitar</button>
+                            <button class="btn btn-danger" (click)="recusa(s)">Recusar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
             <h3>Amizade sugeridas</h3>
             <app-list-cientists></app-list-cientists>
         </div>

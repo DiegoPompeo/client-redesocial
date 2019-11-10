@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Pessoa, Post, PessoaRecomendada } from '../model/pessoa';
+import { Pessoa, Post, PessoaRecomendada, Amizade } from '../model/pessoa';
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
@@ -12,7 +12,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class DetailsComponent implements OnInit {
 
-  registerForm: FormGroup;
   pessoa: Pessoa;
   cientistas: Pessoa[];
   post: Post;
@@ -21,8 +20,11 @@ export class DetailsComponent implements OnInit {
   pessoaRecomendada: PessoaRecomendada;
   listaRecomendadas: PessoaRecomendada[];
   emailLogado: string;
-  auth: boolean = false;  
+  auth: boolean = false; 
+  desabilitaSolicitacao = false; 
   desabilita: boolean;
+
+  amizade: Amizade = new Amizade();
 
   constructor(
     private authService: AuthService,
@@ -38,6 +40,17 @@ export class DetailsComponent implements OnInit {
         console.log(data.interesse.split(","));
       }
     )
+  }
+
+  solicitarAmizade(){
+    this.amizade.emailMandatario = localStorage.getItem("email");
+    this.amizade.emailRemetente = localStorage.getItem("det_email");
+    this.amizade.aceite = false;
+    this.amizade.recusado = false;
+    this.amizade.solicitado = true;
+    this.desabilitaSolicitacao = this.amizade.solicitado;
+
+    this.service.solicitaAmizade(this.amizade).subscribe(data => {this.amizade = data});
   }
 
   recomendar(pessoa: Pessoa){

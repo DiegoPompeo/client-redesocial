@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Pessoa, PessoaLogin, Post, PessoaRecomendada, Glossario } from '../model/pessoa';
+import { Pessoa, PessoaLogin, Post, PessoaRecomendada, Glossario, Amizade } from '../model/pessoa';
 @Injectable({
   providedIn: 'root'
 })
@@ -59,5 +59,27 @@ export class ServiceService {
   listaGlossary(){
     return this.http.get<Glossario[]>(this.url + "/glossario");
   }
+
+   
+  //SolicitaAmizade
+  solicitaAmizade(amizade: Amizade) {
+    return this.http.post<Amizade>(this.url + "/amizade", amizade);
+  }
+ 
+  //ListarAmizade
+  listaAmizade(){
+    return this.http.get<Amizade[]>(this.url + "/listaAmizade")
+  }
+ 
+  //AtualizaSolicitacao
+  atualizaSolicitacao(amizade: Amizade){
+    return this.http.put<Amizade>(this.url + "/respostaSolicitacao/" + amizade.emailMandatario, amizade);
+  }
+ 
+  //ReadByEmailMandatario
+  findByEmailMandatario(email: string){
+    return this.http.get<Amizade[]>(this.url + "/getAmizade/" + email)
+  }
+
   
 }
