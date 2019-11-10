@@ -42,40 +42,79 @@ export class DetailsComponent implements OnInit {
     )
   }
 
-  solicitarAmizade(){
+   //
+   solicitarAmizade(){
     this.amizade.emailMandatario = localStorage.getItem("email");
     this.amizade.emailRemetente = localStorage.getItem("det_email");
     this.amizade.aceite = false;
     this.amizade.recusado = false;
     this.amizade.solicitado = true;
     this.desabilitaSolicitacao = this.amizade.solicitado;
-
+ 
     this.service.solicitaAmizade(this.amizade).subscribe(data => {this.amizade = data});
   }
-
+ 
   recomendar(pessoa: Pessoa){
     pessoa.curtidas++;    
+ 
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
-        this.pessoa = data;        
+        this.pessoa = data;
       }
     );
+ 
     this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => {
     });
   }
-
+ 
+  //
+  verificaSolicitacao(){
+    this.service.listaAmizade().subscribe(
+      data => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].emailRemetente == localStorage.getItem("det_email") 
+          && data[i].emailMandatario == localStorage.getItem("email")
+          && data[i].solicitado == true) {
+            this.desabilitaSolicitacao = true;
+          }          
+        }
+      }
+    )
+  }
+ 
+  //
   ngOnInit() {
     this.Detalhe();
     this.searchPosts();
+    this.listaRecomendada();
+    this.verificaSolicitacao();
+ 
+    this.emailLogado = localStorage.getItem("email");
+    if (!(this.emailLogado == localStorage.getItem("det_email"))) {
+      this.auth = true;
+    }
   }
-
+ 
   searchPosts() {
     this.service.verPost(localStorage.getItem("det_email")).subscribe(data => {
-      this.posts = data;  
+      this.posts = data.reverse();  
     });
   }
-
+ 
+  listaRecomendada(){
+    this.service.listaRecomendacao().subscribe(data => {
+      this.listaRecomendadas = data;
+      for (let i = 0; i < this.listaRecomendadas.length; i++) {
+        if(this.listaRecomendadas[i].emailRecomendada ==  localStorage.getItem('email')
+          && this.listaRecomendadas[i].emailRecomendou == localStorage.getItem("det_email")){
+            this.desabilita = true;
+        }        
+      }
+    });
+  }
+ 
   logout() {
     this.authService.logout();
   }
+
 }
