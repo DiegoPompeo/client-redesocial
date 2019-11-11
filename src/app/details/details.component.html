@@ -24,11 +24,11 @@
             <p><b>Cidade: </b>{{pessoa.cidade}}</p>
             <p><b>Estado: </b>{{pessoa.estado}}</p>
             
-            <button (click)="recomendar(pessoa)" [disabled]="desabilita" class="btn btn-dark">
-                {{pessoa.curtidas}}
-                <div *ngIf="pessoa.curtidas<2; then thenBlock else elseBlock"></div>
-                <ng-template #thenBlock>Recomendação</ng-template>
-                <ng-template #elseBlock>Recomendações</ng-template>
+            <button (click)="recomendar(pessoa)" *ngIf="!recomendou" class="btn btn-dark">
+                {{pessoa.curtidas}} Recomendam
+            </button>
+            <button (click)="desrecomendar(pessoa)" *ngIf="recomendou" class="btn btn-success">
+                {{pessoa.curtidas}} Recomendam
             </button>
 
             <div *ngIf="auth">

@@ -16,7 +16,9 @@ export class Pessoa {
     codSeg: string;    
 
     paga: boolean;
+
     curtidas: number;
+    
     interesse: string;
 }
 

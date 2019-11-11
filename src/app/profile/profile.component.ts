@@ -90,7 +90,6 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-
   onSubmit() {
     this.post.conteudo = this.registerForm.get('conteudo').value;
     this.post.email = localStorage.getItem("email");    

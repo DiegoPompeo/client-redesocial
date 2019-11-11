@@ -23,6 +23,7 @@ export class DetailsComponent implements OnInit {
   auth: boolean = false; 
   desabilitaSolicitacao = false; 
   desabilita: boolean;
+  recomendou = false;
 
   amizade: Amizade = new Amizade();
 
@@ -42,8 +43,39 @@ export class DetailsComponent implements OnInit {
     )
   }
 
-   //
-   solicitarAmizade(){
+  recomendar(){
+    let email = localStorage.getItem("det_email");
+    this.service.getCientist(email).subscribe(
+      data => {
+        data.curtidas++;
+        this.service.atualizarPerfil(data).subscribe( x => {
+          x.curtidas++;
+          this.pessoa = x;
+        })
+      }
+    );
+    this.ngOnInit();
+  }
+
+  desrecomendar(){
+    let email = localStorage.getItem("det_email");
+    this.service.getCientist(email).subscribe(
+      data => {
+        data.curtidas--;
+        this.service.atualizarPerfil(data).subscribe( x => {
+          x.curtidas--;
+          this.pessoa = x;
+        })
+      }
+    );
+    this.ngOnInit();
+  }
+
+  curtir(){
+
+  }
+
+  solicitarAmizade(){
     this.amizade.emailMandatario = localStorage.getItem("email");
     this.amizade.emailRemetente = localStorage.getItem("det_email");
     this.amizade.aceite = false;
@@ -52,19 +84,6 @@ export class DetailsComponent implements OnInit {
     this.desabilitaSolicitacao = this.amizade.solicitado;
  
     this.service.solicitaAmizade(this.amizade).subscribe(data => {this.amizade = data});
-  }
- 
-  recomendar(pessoa: Pessoa){
-    pessoa.curtidas++;    
- 
-    this.service.atualizarPerfil(pessoa).subscribe(
-      data => {
-        this.pessoa = data;
-      }
-    );
- 
-    this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => {
-    });
   }
  
   verificaSolicitacao(){
