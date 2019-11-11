@@ -37,9 +37,9 @@ export class DetailsComponent implements OnInit {
     let email = localStorage.getItem("det_email");
     this.service.getCientist(email).subscribe(
       data => {
-        this.pessoa = data;
-        this.interesses = data.interesse.split(",");
         localStorage.setItem("curtidas", data.curtida.toString());
+        this.pessoa = data;
+        this.interesses = data.interesse.split(",");        
       }
     )
   }
@@ -47,10 +47,10 @@ export class DetailsComponent implements OnInit {
   recomendar(){
     let curtidas_string = localStorage.getItem("curtidas");
     let curtidas_numero = (+curtidas_string);
-    curtidas_numero--;
+    curtidas_numero++;
     localStorage.setItem("curtidas", curtidas_numero.toString());
     this.curtidas = localStorage.getItem("curtidas");
-    this.recomendou = false;
+    this.recomendou = true;
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
       data => {
         data.curtida++;
