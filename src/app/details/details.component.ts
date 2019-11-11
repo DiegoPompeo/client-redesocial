@@ -24,6 +24,7 @@ export class DetailsComponent implements OnInit {
   desabilitaSolicitacao = false; 
   desabilita: boolean;
   recomendou = false;
+  curtidas: string;
 
   amizade: Amizade = new Amizade();
 
@@ -44,30 +45,20 @@ export class DetailsComponent implements OnInit {
   }
 
   recomendar(){
-    let email = localStorage.getItem("det_email");
-    this.service.getCientist(email).subscribe(
-      data => {
-        data.curtidas++;
-        this.service.atualizarPerfil(data).subscribe( x => {
-          x.curtidas++;
-          this.pessoa = x;
-        })
-      }
-    );
+    let curtidas_string = localStorage.getItem("curtidas");
+    let curtidas_numero = (+curtidas_string);
+    curtidas_numero++;
+    localStorage.setItem("curtidas",curtidas_numero.toString());
+    this.curtidas = localStorage.getItem("curtidas");
     this.ngOnInit();
   }
 
   desrecomendar(){
-    let email = localStorage.getItem("det_email");
-    this.service.getCientist(email).subscribe(
-      data => {
-        data.curtidas--;
-        this.service.atualizarPerfil(data).subscribe( x => {
-          x.curtidas--;
-          this.pessoa = x;
-        })
-      }
-    );
+    let curtidas_string = localStorage.getItem("curtidas");
+    let curtidas_numero = (+curtidas_string);
+    curtidas_numero--;
+    localStorage.setItem("curtidas",curtidas_numero.toString());
+    this.curtidas = localStorage.getItem("curtidas");
     this.ngOnInit();
   }
 

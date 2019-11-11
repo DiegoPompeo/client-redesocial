@@ -102,6 +102,7 @@ export class ProfileComponent implements OnInit {
   msgAtualizaFeed(){
     this.ngOnInit();
     this.atualiza = false;
+    localStorage.setItem("curtidas", "0");
   }
 
   ngOnInit() {
