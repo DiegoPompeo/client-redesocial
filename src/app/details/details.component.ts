@@ -38,7 +38,9 @@ export class DetailsComponent implements OnInit {
     let email = localStorage.getItem("det_email");
     this.service.getCientist(email).subscribe(
       data => {
-        localStorage.setItem("curtidas", data.curtida.toString());
+        if(data.curtida == null){
+          localStorage.setItem("curtidas", "0");
+        }        
         this.pessoa = data;
         this.interesses = data.interesse.split(",");
       }
