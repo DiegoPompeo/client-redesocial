@@ -1,18 +1,4 @@
 <div *ngFor="let cientist of cientists" class="align-items-center">
-    <div class="container mt-3" *ngIf="!mesmapessoa">
-        <div class="row">
-            <img src="https://uifaces.co/images/man.svg" alt="" style="width: 120px;">
-        </div>
-        <div class="row text-center">
-            <span>{{cientist.nome}}</span>
-        </div>
-        <div class="row text-center">
-            <span>Recomendaram: {{cientist.curtida}}</span>
-        </div>        
-        <div scope="row">
-            <div class="btn btn-info" (click)="gotoDetails(cientist)">Ver perfil</div>
-        </div>
-    </div>
     <div class="container mt-3" *ngIf="mesmapessoa">
         <div class="row">
             <img src="https://uifaces.co/images/man.svg" alt="" style="width: 120px;">
