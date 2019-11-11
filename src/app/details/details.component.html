@@ -24,16 +24,16 @@
             <p><b>Cidade: </b>{{pessoa.cidade}}</p>
             <p><b>Estado: </b>{{pessoa.estado}}</p>
             
-            <button (click)="recomendar()" *ngIf="!recomendou" class="btn btn-dark">
-                {{pessoa.curtida}} Recomendam
-            </button>
-            <button (click)="desrecomendar()" *ngIf="recomendou" class="btn btn-success">
-                {{pessoa.curtida}} Recomendam
-            </button>
 
             <div *ngIf="auth">
-                <button class="btn btn-dark mt-3" [disabled]="desabilitaSolicitacao"
-                (click)="solicitarAmizade()">Solicitar amizade</button>
+                <button (click)="recomendar()" *ngIf="!recomendou" class="btn btn-dark">
+                    {{curtidas}} Recomendam
+                </button>
+                <button (click)="desrecomendar()" *ngIf="recomendou" class="btn btn-success">
+                    {{curtidas}} Recomendam
+                </button>
+                <button class="btn btn-dark mt-3" [disabled]="desabilitaSolicitacao" (click)="solicitarAmizade()">Solicitar
+                    amizade</button>
             </div>
 
             <div class="mt-3">
