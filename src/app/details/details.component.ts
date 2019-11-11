@@ -53,8 +53,9 @@ export class DetailsComponent implements OnInit {
         })
       }
     );
-    this.router.navigate(["profile"]);
-    this.recomendou = true;
+    this.router.navigate(["profile"]);    
+    localStorage.setItem("recomendou", "true");
+    this.ngOnInit();
 
   }
 
@@ -66,8 +67,9 @@ export class DetailsComponent implements OnInit {
         })
       }
     );
-    this.router.navigate(["profile"])
-    this.recomendou = false;
+    this.router.navigate(["profile"]);    
+    localStorage.setItem("recomendou", "true");
+    this.ngOnInit();
   }
 
   curtir() {
@@ -104,7 +106,14 @@ export class DetailsComponent implements OnInit {
     this.searchPosts();
     this.listaRecomendada();
     this.verificaSolicitacao();
-    
+
+    if(localStorage.getItem("recomendou") == "true"){
+      this.recomendou = true;
+    }
+    if(localStorage.getItem("recomendou") == "false"){
+      this.recomendou = false;
+    }
+
     this.curtidas = localStorage.getItem("curtidas");
 
     this.emailLogado = localStorage.getItem("email");
