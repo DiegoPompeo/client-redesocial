@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
       nivelEscolaridade:  '',
       cidade:  '',
       estado:  '',
-      curtidas: 0,
+      curtida: 0,
       paga: null,
       interesse: '',
     }
