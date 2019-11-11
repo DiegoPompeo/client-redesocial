@@ -12,6 +12,7 @@ import { DetailsComponent } from './details/details.component';
 import { UpdatePremiumComponent } from './update-premium/update-premium.component';
 import { AddGlossaryComponent } from './add-glossary/add-glossary.component';
 import { GlossaryComponent } from './glossary/glossary.component';
+import { DesrecomendacaoComponent } from './desrecomendacao/desrecomendacao.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'cientists', component: ListCientistsComponent, canActivate: [AuthGuard]},
   {path: 'premium', component: UpdatePremiumComponent, canActivate: [AuthGuard]},
   {path: 'glossary', component: GlossaryComponent, canActivate: [AuthGuard]},
+  {path: 'up', component: DesrecomendacaoComponent, canActivate: [AuthGuard]},
   {path: 'add', component: AddGlossaryComponent}
 ];
 

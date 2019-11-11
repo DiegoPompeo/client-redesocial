@@ -20,6 +20,7 @@ import { GlossaryComponent } from './glossary/glossary.component';
 import { AddGlossaryComponent } from './add-glossary/add-glossary.component';
 import { UpdateSuccessComponent } from './update-success/update-success.component';
 import { GlossarySuccessComponent } from './glossary-success/glossary-success.component';
+import { DesrecomendacaoComponent } from './desrecomendacao/desrecomendacao.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { GlossarySuccessComponent } from './glossary-success/glossary-success.co
     GlossaryComponent,
     AddGlossaryComponent,
     UpdateSuccessComponent,
-    GlossarySuccessComponent
+    GlossarySuccessComponent,
+    DesrecomendacaoComponent
   ],
   imports: [
     BrowserModule,

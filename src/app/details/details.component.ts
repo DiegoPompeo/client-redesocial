@@ -39,8 +39,9 @@ export class DetailsComponent implements OnInit {
     this.service.getCientist(email).subscribe(
       data => {
         if(data.curtida == null){
-          localStorage.setItem("curtidas", "0");
-        }        
+          data.curtida = 0;
+        } 
+        localStorage.setItem("curtidas", data.curtida.toString());
         this.pessoa = data;
         this.interesses = data.interesse.split(",");
       }
@@ -68,7 +69,7 @@ export class DetailsComponent implements OnInit {
       }
     );
     localStorage.setItem("recomendou", "false");
-    this.ngOnInit();
+    this.router.navigate(["up"]);
   }
 
   curtir() {
