@@ -18,6 +18,7 @@ export class ListCientistsComponent implements OnInit {
 
   ngOnInit() {
     this.getPessoa();
+    this.listaRecomendado();
   }
 
   listaRecomendado(){
