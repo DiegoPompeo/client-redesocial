@@ -13,11 +13,11 @@ export class ListCientistsComponent implements OnInit {
   cientist: Pessoa;
   pessoa: Pessoa = new Pessoa();
   cientists: Pessoa[] = new Array<Pessoa>();
+  mesmapessoa = false;
 
   constructor(private service: ServiceService, private router: Router) { }
 
   ngOnInit() {
-    this.getPessoa();
     this.listaRecomendado();
   }
 
@@ -26,14 +26,15 @@ export class ListCientistsComponent implements OnInit {
     .subscribe(
       data => {
         this.cientists = data;
+        for (let i = 0; i < this.cientists.length; i++) {
+          if (this.cientists[i].email == localStorage.getItem("email")) {
+            this.mesmapessoa = true;
+          } else {
+            this.mesmapessoa = false;
+          }          
+        }
       }
     );
-  }
-
-  getPessoa(){
-    this.service.getCientist(localStorage.getItem("email")).subscribe(data => {
-      this.pessoa = data;
-    });
   }
 
   gotoDetails(cientist: Pessoa){
