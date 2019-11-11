@@ -56,7 +56,6 @@ export class ProfileComponent implements OnInit {
     );
   }
  
-  //
   aceita(p: Pessoa){
     this.service.listaAmizade().subscribe(
       data => {
@@ -73,7 +72,6 @@ export class ProfileComponent implements OnInit {
     );
   }
   
-  //
   recusa(p: Pessoa){
     this.service.listaAmizade().subscribe(
       data => {
@@ -110,6 +108,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.searchProfile();
     this.searchPosts();
+    this.listaSolicitacao();
   }
 
   searchPosts() {
