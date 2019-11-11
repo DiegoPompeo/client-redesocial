@@ -53,9 +53,9 @@ export class DetailsComponent implements OnInit {
         })
       }
     );
+    this.ngOnInit();
     this.router.navigate(["profile"]);    
     localStorage.setItem("recomendou", "true");
-    this.ngOnInit();
 
   }
 
@@ -67,9 +67,9 @@ export class DetailsComponent implements OnInit {
         })
       }
     );
+    this.ngOnInit();
     this.router.navigate(["profile"]);    
     localStorage.setItem("recomendou", "true");
-    this.ngOnInit();
   }
 
   curtir() {
