@@ -24,10 +24,10 @@
             <p><b>Cidade: </b>{{pessoa.cidade}}</p>
             <p><b>Estado: </b>{{pessoa.estado}}</p>
             
-            <button (click)="recomendar(pessoa)" *ngIf="!recomendou" class="btn btn-dark">
+            <button (click)="recomendar()" *ngIf="!recomendou" class="btn btn-dark">
                 {{pessoa.curtidas}} Recomendam
             </button>
-            <button (click)="desrecomendar(pessoa)" *ngIf="recomendou" class="btn btn-success">
+            <button (click)="desrecomendar()" *ngIf="recomendou" class="btn btn-success">
                 {{pessoa.curtidas}} Recomendam
             </button>
 
