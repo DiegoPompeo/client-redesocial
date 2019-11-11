@@ -25,14 +25,7 @@ export class ListCientistsComponent implements OnInit {
     this.service.listar()
     .subscribe(
       data => {
-        this.cientists = data;
-        for (let i = 0; i < this.cientists.length; i++) {
-          if (this.cientists[i].email == localStorage.getItem("email")) {
-            this.mesmapessoa = true;
-          } else {
-            this.mesmapessoa = false;
-          }          
-        }
+        this.cientists = data;        
       }
     );
   }

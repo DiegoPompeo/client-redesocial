@@ -108,7 +108,6 @@ export class ProfileComponent implements OnInit {
     this.searchProfile();
     this.searchPosts();
     this.listaSolicitacao();
-    console.log(localStorage.getItem("email"));
   }
 
   searchPosts() {
