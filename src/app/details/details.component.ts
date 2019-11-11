@@ -50,6 +50,7 @@ export class DetailsComponent implements OnInit {
     curtidas_numero++;
     localStorage.setItem("curtidas",curtidas_numero.toString());
     this.curtidas = localStorage.getItem("curtidas");
+    this.recomendou = true;
     this.ngOnInit();
   }
 
@@ -59,6 +60,7 @@ export class DetailsComponent implements OnInit {
     curtidas_numero--;
     localStorage.setItem("curtidas",curtidas_numero.toString());
     this.curtidas = localStorage.getItem("curtidas");
+    this.recomendou = false;
     this.ngOnInit();
   }
 
