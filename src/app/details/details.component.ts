@@ -67,14 +67,13 @@ export class DetailsComponent implements OnInit {
     });
   }
  
-  //
   verificaSolicitacao(){
     this.service.listaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].emailRemetente == localStorage.getItem("det_email") 
           && data[i].emailMandatario == localStorage.getItem("email")
-          && data[i].solicitado == true) {
+          && (data[i].solicitado == true || data[i].aceite == true || data[i].recusado == true)) {
             this.desabilitaSolicitacao = true;
           }          
         }
@@ -82,7 +81,6 @@ export class DetailsComponent implements OnInit {
     )
   }
  
-  //
   ngOnInit() {
     this.Detalhe();
     this.searchPosts();
