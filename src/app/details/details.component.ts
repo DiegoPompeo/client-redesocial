@@ -20,8 +20,8 @@ export class DetailsComponent implements OnInit {
   pessoaRecomendada: PessoaRecomendada;
   listaRecomendadas: PessoaRecomendada[];
   emailLogado: string;
-  auth: boolean = false; 
-  desabilitaSolicitacao = false; 
+  auth: boolean = false;
+  desabilitaSolicitacao = false;
   desabilita: boolean;
   recomendou = false;
   curtidas: string;
@@ -33,110 +33,111 @@ export class DetailsComponent implements OnInit {
     private service: ServiceService) {
   }
 
-  Detalhe(){
+  Detalhe() {
     let email = localStorage.getItem("det_email");
     this.service.getCientist(email).subscribe(
       data => {
         localStorage.setItem("curtidas", data.curtida.toString());
         this.pessoa = data;
-        this.interesses = data.interesse.split(",");        
+        this.interesses = data.interesse.split(",");
       }
     )
   }
 
-  recomendar(){
-    let curtidas_string = localStorage.getItem("curtidas");
-    let curtidas_numero = (+curtidas_string);
-    curtidas_numero++;
-    localStorage.setItem("curtidas", curtidas_numero.toString());
-    this.curtidas = localStorage.getItem("curtidas");
-    this.recomendou = true;
+  recomendar() {
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
       data => {
         data.curtida++;
         this.service.atualizarPerfil(data).subscribe(x => {
         })
       }
-    );    
+    );
     this.ngOnInit();
-  }
-
-  desrecomendar(){
     let curtidas_string = localStorage.getItem("curtidas");
     let curtidas_numero = (+curtidas_string);
-    curtidas_numero--;
-    localStorage.setItem("curtidas",curtidas_numero.toString());
+    curtidas_numero++;
+    localStorage.setItem("curtidas", curtidas_numero.toString());
     this.curtidas = localStorage.getItem("curtidas");
-    this.recomendou = false;
+    this.recomendou = true;
+
+  }
+
+  desrecomendar() {
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
       data => {
         data.curtida--;
         this.service.atualizarPerfil(data).subscribe(x => {
         })
       }
-    ); 
+    );
     this.ngOnInit();
+    let curtidas_string = localStorage.getItem("curtidas");
+    let curtidas_numero = (+curtidas_string);
+    curtidas_numero--;
+    localStorage.setItem("curtidas", curtidas_numero.toString());
+    this.curtidas = localStorage.getItem("curtidas");
+    this.recomendou = false;
   }
 
-  curtir(){
+  curtir() {
 
   }
 
-  solicitarAmizade(){
+  solicitarAmizade() {
     this.amizade.emailMandatario = localStorage.getItem("email");
     this.amizade.emailRemetente = localStorage.getItem("det_email");
     this.amizade.aceite = false;
     this.amizade.recusado = false;
     this.amizade.solicitado = true;
     this.desabilitaSolicitacao = this.amizade.solicitado;
- 
-    this.service.solicitaAmizade(this.amizade).subscribe(data => {this.amizade = data});
+
+    this.service.solicitaAmizade(this.amizade).subscribe(data => { this.amizade = data });
   }
- 
-  verificaSolicitacao(){
+
+  verificaSolicitacao() {
     this.service.listaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
-          if (data[i].emailRemetente == localStorage.getItem("det_email") 
-          && data[i].emailMandatario == localStorage.getItem("email")
-          && (data[i].solicitado == true || data[i].aceite == true || data[i].recusado == true)) {
+          if (data[i].emailRemetente == localStorage.getItem("det_email")
+            && data[i].emailMandatario == localStorage.getItem("email")
+            && (data[i].solicitado == true || data[i].aceite == true || data[i].recusado == true)) {
             this.desabilitaSolicitacao = true;
-          }          
+          }
         }
       }
     )
   }
- 
+
   ngOnInit() {
     this.Detalhe();
     this.searchPosts();
     this.listaRecomendada();
     this.verificaSolicitacao();
- 
+
     this.emailLogado = localStorage.getItem("email");
     if (!(this.emailLogado == localStorage.getItem("det_email"))) {
       this.auth = true;
     }
   }
- 
+
   searchPosts() {
     this.service.verPost(localStorage.getItem("det_email")).subscribe(data => {
-      this.posts = data.reverse();  
+      this.posts = data.reverse();
     });
   }
- 
-  listaRecomendada(){
+
+  listaRecomendada() {
     this.service.listaRecomendacao().subscribe(data => {
       this.listaRecomendadas = data;
       for (let i = 0; i < this.listaRecomendadas.length; i++) {
-        if(this.listaRecomendadas[i].emailRecomendada ==  localStorage.getItem('email')
-          && this.listaRecomendadas[i].emailRecomendou == localStorage.getItem("det_email")){
-            this.desabilita = true;
-        }        
+        if (this.listaRecomendadas[i].emailRecomendada == localStorage.getItem('email')
+          && this.listaRecomendadas[i].emailRecomendou == localStorage.getItem("det_email")) {
+          this.desabilita = true;
+        }
       }
     });
   }
- 
+
   logout() {
     this.authService.logout();
   }
