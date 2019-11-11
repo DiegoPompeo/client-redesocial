@@ -113,6 +113,8 @@ export class DetailsComponent implements OnInit {
     this.searchPosts();
     this.listaRecomendada();
     this.verificaSolicitacao();
+    
+    this.curtidas = localStorage.getItem("curtidas");
 
     this.emailLogado = localStorage.getItem("email");
     if (!(this.emailLogado == localStorage.getItem("det_email"))) {
