@@ -123,7 +123,6 @@ export class ProfileComponent implements OnInit {
       .subscribe(data => {
         this.cientist = data;
         localStorage.setItem("profile_email", data.email);
-        localStorage.setItem("curtidas", data.curtida.toString());
       });
   }
 

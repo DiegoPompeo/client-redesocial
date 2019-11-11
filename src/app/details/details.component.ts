@@ -39,7 +39,7 @@ export class DetailsComponent implements OnInit {
       data => {
         this.pessoa = data;
         this.interesses = data.interesse.split(",");
-        console.log(data.interesse.split(","));
+        localStorage.setItem("curtidas", data.curtida.toString());
       }
     )
   }
