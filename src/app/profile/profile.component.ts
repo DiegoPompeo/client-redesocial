@@ -102,13 +102,13 @@ export class ProfileComponent implements OnInit {
   msgAtualizaFeed(){
     this.ngOnInit();
     this.atualiza = false;
-    localStorage.setItem("curtidas", "0");
   }
 
   ngOnInit() {
     this.searchProfile();
     this.searchPosts();
     this.listaSolicitacao();
+    console.log(localStorage.getItem("email"));
   }
 
   searchPosts() {

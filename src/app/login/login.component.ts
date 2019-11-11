@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.pessoaLogin).subscribe(
       data => {
         if (data) {
+          localStorage.setItem("email", this.pessoaLogin.email);
           this.router.navigateByUrl("profile");
         } else {
           console.log(this.pessoaLogin);
