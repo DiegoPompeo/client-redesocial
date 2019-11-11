@@ -17,8 +17,8 @@ export class Pessoa {
 
     paga: boolean;
 
-    curtidas: number;
-    
+    curtida: number;
+
     interesse: string;
 }
 

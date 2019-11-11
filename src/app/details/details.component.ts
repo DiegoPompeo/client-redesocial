@@ -45,11 +45,14 @@ export class DetailsComponent implements OnInit {
   }
 
   recomendar(){
-    let curtidas_string = localStorage.getItem("curtidas");
-    let curtidas_numero = (+curtidas_string);
-    curtidas_numero++;
-    localStorage.setItem("curtidas",curtidas_numero.toString());
-    this.curtidas = localStorage.getItem("curtidas");
+    this.service.getCientist(localStorage.getItem("det_email")).subscribe(
+      data => {
+        data.curtida++;
+        this.service.atualizarPerfil(data).subscribe(x => {
+        })
+      }
+    );
+    
     this.recomendou = true;
     this.ngOnInit();
   }
