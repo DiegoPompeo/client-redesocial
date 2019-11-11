@@ -25,11 +25,11 @@
             <p><b>Estado: </b>{{pessoa.estado}}</p>
             
             <div *ngIf="auth">
-                <button (click)="recomendar()" *ngIf="!recomendou" class="btn btn-dark">
+                <button (click)="recomendar()" *ngIf="!recomendou" class="btn btn-success">
                     {{pessoa.curtida}} Recomendam
                 </button>
-                <button (click)="desrecomendar()" *ngIf="recomendou" class="btn btn-success">
-                    {{pessoa.curtida}} Recomendam
+                <button (click)="desrecomendar()" *ngIf="recomendou" class="btn btn-danger">
+                    Desfazer recomendação
                 </button>
             </div>
 
