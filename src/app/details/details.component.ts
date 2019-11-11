@@ -30,7 +30,8 @@ export class DetailsComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private service: ServiceService) {
+    private service: ServiceService,
+    private router: Router) {
   }
 
   Detalhe() {
@@ -52,12 +53,7 @@ export class DetailsComponent implements OnInit {
         })
       }
     );
-    this.ngOnInit();
-    let curtidas_string = localStorage.getItem("curtidas");
-    let curtidas_numero = (+curtidas_string);
-    curtidas_numero++;
-    localStorage.setItem("curtidas", curtidas_numero.toString());
-    this.curtidas = localStorage.getItem("curtidas");
+    this.router.navigate(["profile"]);
     this.recomendou = true;
 
   }
@@ -70,12 +66,7 @@ export class DetailsComponent implements OnInit {
         })
       }
     );
-    this.ngOnInit();
-    let curtidas_string = localStorage.getItem("curtidas");
-    let curtidas_numero = (+curtidas_string);
-    curtidas_numero--;
-    localStorage.setItem("curtidas", curtidas_numero.toString());
-    this.curtidas = localStorage.getItem("curtidas");
+    this.router.navigate(["profile"])
     this.recomendou = false;
   }
 
