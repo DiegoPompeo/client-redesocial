@@ -70,6 +70,7 @@ export class ProfileComponent implements OnInit {
         }
       }
     );
+    this.ngOnInit();
   }
   
   recusa(p: Pessoa){
@@ -87,7 +88,8 @@ export class ProfileComponent implements OnInit {
           }
         }
       }
-    );
+    );    
+    this.ngOnInit();
   }
 
   onSubmit() {
