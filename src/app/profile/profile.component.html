@@ -35,11 +35,6 @@
                     <i style="font-size: 90px;" class="large material-icons">insert_photo</i>
                 </div>
             </div>
-            <div class="mt-3">
-                <h3>Amigos</h3>
-                <div>
-                </div>
-            </div>
         </div>
         <div class="col-md-6">
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" ngNativeValidate>
@@ -78,8 +73,8 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <p><b>{{s.nome}}</b> solicitou amizade</p>
-                            <button class="btn btn-success mr-3" (click)="aceita(s)">Aceitar</button>
-                            <button class="btn btn-danger" (click)="recusa(s)">Recusar</button>
+                            <button routerLink="/profile" class="btn btn-success mr-3" (click)="aceita(s)">Aceitar</button>
+                            <button routerLink="/profile" class="btn btn-danger" (click)="recusa(s)">Recusar</button>
                         </div>
                     </div>
                 </div>
