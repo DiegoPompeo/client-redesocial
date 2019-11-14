@@ -21,7 +21,7 @@
             <input type="text" id="inputCodSec" [(ngModel)]="pessoa.codSeg" class="form-control"
                 placeholder="Código segurança" required="true" name="codSeg">
         </div>
-        <button (click)="update(pessoa)" class="btn btn-success">Confirmar</button>
+        <button routerLink="/profile" (click)="update(pessoa)" class="btn btn-success">Confirmar</button>
         <a routerLink="/profile" class="btn btn-dark ml-3">Voltar para o ínicio</a>
     </form>
 </div>

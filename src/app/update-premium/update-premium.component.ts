@@ -24,7 +24,6 @@ export class UpdatePremiumComponent implements OnInit {
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
-        this.router.navigate(['profile']);
       }
     );
   }
@@ -33,7 +32,6 @@ export class UpdatePremiumComponent implements OnInit {
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
-        this.router.navigate(['profile']);
       }
     );
   }
