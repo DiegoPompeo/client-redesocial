@@ -10,16 +10,16 @@ import { Router } from '@angular/router';
 })
 export class UpdatePremiumComponent implements OnInit {
 
-  pessoa: Pessoa;
+  pessoa: Pessoa = new Pessoa();
 
-  constructor(private service: ServiceService, 
+  constructor(private service: ServiceService,
     private router: Router) { }
 
   ngOnInit() {
     this.edit();
   }
 
-  update(pessoa: Pessoa){
+  update(pessoa: Pessoa) {
     pessoa.paga = true;
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
@@ -29,7 +29,7 @@ export class UpdatePremiumComponent implements OnInit {
     );
   }
 
-  Atualizar(pessoa: Pessoa){
+  Atualizar(pessoa: Pessoa) {
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;
@@ -39,11 +39,9 @@ export class UpdatePremiumComponent implements OnInit {
   }
 
   edit() {
-    let id = localStorage.getItem("id");
-    this.service.verPerfil(+id).subscribe(
-      data => {
-        this.pessoa = data;
-      }
+    let email = localStorage.getItem("email");
+    this.service.getCientist(email).subscribe(
+      data => { this.pessoa = data }
     );
   }
 
