@@ -19,7 +19,8 @@ export class ProfileComponent implements OnInit {
   posts: Post[];
   atualiza = false;
   solicita: Pessoa[] = new Array<Pessoa>();
-  mandatario: Pessoa = new Pessoa();
+  mandatario: Pessoa = new Pessoa();  
+  interesses: any;
 
   constructor(
     private authService: AuthService,
@@ -131,7 +132,8 @@ export class ProfileComponent implements OnInit {
         this.cientist.inicioDaAtividade = final2.toString();
 
         this.cientist = data;
-        localStorage.setItem("profile_email", data.email);
+        localStorage.setItem("profile_email", data.email);        
+        this.interesses = data.interesse.split(",");
       });
   }
 

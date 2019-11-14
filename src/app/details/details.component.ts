@@ -3,7 +3,6 @@ import { Pessoa, Post, PessoaRecomendada, Amizade } from '../model/pessoa';
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-details',

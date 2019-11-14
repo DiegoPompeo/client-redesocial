@@ -23,6 +23,15 @@
             <p><b>Cidade: </b>{{cientist.cidade}}</p>
             <p><b>Estado: </b>{{cientist.estado}}</p>
 
+            <div class="col-md-3">
+                <h3>Interesses</h3>
+                <div *ngIf="interesses">
+                    <ul *ngFor="let x of interesses;">
+                        <li>{{x}}</li>
+                    </ul>
+                </div>
+            </div>
+
             <div *ngIf="cientist.paga"><span>☆&nbsp;Você é um usuário premium</span></div>
 
             <button class="btn btn-dark" (click)="gotoUpdate(cientist)">Atualizar perfil</button>
