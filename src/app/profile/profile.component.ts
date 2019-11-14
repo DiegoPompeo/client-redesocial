@@ -13,7 +13,7 @@ import { AuthService } from '../service/auth.service';
 export class ProfileComponent implements OnInit {
 
   registerForm: FormGroup;
-  cientist: Pessoa;
+  cientist: Pessoa = new Pessoa();
   cientistas: Pessoa[];
   post: Post;
   posts: Post[];
