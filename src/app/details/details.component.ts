@@ -25,7 +25,6 @@ export class DetailsComponent implements OnInit {
   desabilita: boolean;
   recomendou = false;
   curtidas: string;
-
   amizade: Amizade = new Amizade();
 
   constructor(

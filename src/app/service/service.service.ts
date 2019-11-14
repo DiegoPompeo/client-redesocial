@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Pessoa, PessoaLogin, Post, PessoaRecomendada, Glossario, Amizade } from '../model/pessoa';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,7 +22,7 @@ export class ServiceService {
   }
 
   //Update
-  atualizarPerfil(pessoa: Pessoa) {
+  atualizarPerfil(pessoa: Pessoa): Observable<Pessoa> {
     return this.http.put<Pessoa>(this.url + "/editar/" + pessoa.email, pessoa);
   }
 
@@ -31,7 +32,7 @@ export class ServiceService {
   }
 
   //AddPost
-  addPost(post: Post){
+  addPost(post: Post): Observable<Post>{
     return this.http.post<Post>(this.url + "/addPost", post);
   }
 
@@ -41,7 +42,7 @@ export class ServiceService {
   }
 
   //AddRecomendacao
-  addRecomendacao(pessoaRecomendada: PessoaRecomendada){
+  addRecomendacao(pessoaRecomendada: PessoaRecomendada): Observable<PessoaRecomendada>{
     return this.http.post<PessoaRecomendada>(this.url + "/addRecomendacao", pessoaRecomendada);
   }
 
@@ -62,7 +63,7 @@ export class ServiceService {
 
    
   //SolicitaAmizade
-  solicitaAmizade(amizade: Amizade) {
+  solicitaAmizade(amizade: Amizade): Observable<Amizade> {
     return this.http.post<Amizade>(this.url + "/amizade", amizade);
   }
  
@@ -72,7 +73,7 @@ export class ServiceService {
   }
  
   //AtualizaSolicitacao
-  atualizaSolicitacao(amizade: Amizade){
+  atualizaSolicitacao(amizade: Amizade): Observable<Amizade>{
     return this.http.put<Amizade>(this.url + "/respostaSolicitacao/" + amizade.emailMandatario, amizade);
   }
  
