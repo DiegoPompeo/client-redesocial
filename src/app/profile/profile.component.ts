@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
 
   registerForm: FormGroup;
   cientist: Pessoa = new Pessoa();
+  pessoa: Pessoa = new Pessoa();
   cientistas: Pessoa[];
   post: Post;
   posts: Post[];
@@ -119,17 +120,18 @@ export class ProfileComponent implements OnInit {
   }
 
   searchProfile() {
-    this.service.getCientist(localStorage.getItem("email"))
+    let email =localStorage.getItem("email")
+    this.service.getCientist(email)
       .subscribe(data => {
         let str = data.dataNascimento.toString();
         let array = str.split("-");
         let final = array[2] + "/" + array[1] + "/" + array[0];
-        this.cientist.dataNascimento = final.toString();
+        this.pessoa.dataNascimento = final.toString();
 
         let str2 = data.inicioDaAtividade.toString();
         let array2 = str2.split("-");
         let final2 = array2[2] + "/" + array2[1] + "/" + array2[0];
-        this.cientist.inicioDaAtividade = final2.toString();
+        this.pessoa.inicioDaAtividade = final2.toString();
 
         this.cientist = data;
         localStorage.setItem("profile_email", data.email);        
