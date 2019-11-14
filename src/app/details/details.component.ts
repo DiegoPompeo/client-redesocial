@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class DetailsComponent implements OnInit {
 
-  pessoa: Pessoa;
+  pessoa: Pessoa = new Pessoa();
   cientistas: Pessoa[];
   post: Post;
   posts: Post[];
@@ -42,16 +42,16 @@ export class DetailsComponent implements OnInit {
         } 
         let str = data.dataNascimento.toString();
         let array = str.split("-");
-        let final = array[2] + array[1] + array[0];
+        let final = array[2] + "/" + array[1] + "/" + array[0];
         this.pessoa.dataNascimento = final.toString();
 
         let str2 = data.inicioDaAtividade.toString();
         let array2 = str2.split("-");
-        let final2 = array2[2] + array2[1] + array2[0];
+        let final2 = array2[2] + "/" + array2[1] + "/" + array2[0];
         this.pessoa.inicioDaAtividade = final2.toString();
 
         localStorage.setItem("curtidas", data.curtida.toString());
-        
+
         this.pessoa = data;
         this.interesses = data.interesse.split(",");
       }

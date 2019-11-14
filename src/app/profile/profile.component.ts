@@ -122,12 +122,12 @@ export class ProfileComponent implements OnInit {
       .subscribe(data => {
         let str = data.dataNascimento.toString();
         let array = str.split("-");
-        let final = array[2] + array[1] + array[0];
+        let final = array[2] + "/" + array[1] + "/" + array[0];
         this.cientist.dataNascimento = final.toString();
 
         let str2 = data.inicioDaAtividade.toString();
         let array2 = str2.split("-");
-        let final2 = array2[2] + array2[1] + array2[0];
+        let final2 = array2[2] + "/" + array2[1] + "/" + array2[0];
         this.cientist.inicioDaAtividade = final2.toString();
 
         this.cientist = data;
