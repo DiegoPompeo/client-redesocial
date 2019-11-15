@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class ServiceService {
 
-  url: string = 'https://server-redesocial.herokuapp.com/redesocial';
-  httpOptions = {
+  private url: string = 'https://server-redesocial.herokuapp.com/redesocial';
+  private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
