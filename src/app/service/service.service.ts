@@ -1,13 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Pessoa, PessoaLogin, Post, PessoaRecomendada, Glossario, Amizade } from '../model/pessoa';
 import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceService {
 
-  url = 'https://server-redesocial.herokuapp.com/redesocial'
+  url: string = 'https://server-redesocial.herokuapp.com/redesocial';
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-type': 'application/json',
+      'Authorization': 'my-auth-token'
+    })
+  }
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +30,7 @@ export class ServiceService {
 
   //Update
   atualizarPerfil(pessoa: Pessoa): Observable<Pessoa> {
-    return this.http.put<Pessoa>(this.url + "/editar/" + pessoa.email, pessoa);
+    return this.http.put<Pessoa>(this.url + "/editar/" + pessoa.email, pessoa, this.httpOptions);
   }
 
   //ReadByEmail
@@ -33,7 +40,7 @@ export class ServiceService {
 
   //AddPost
   addPost(post: Post): Observable<Post>{
-    return this.http.post<Post>(this.url + "/addPost", post);
+    return this.http.post<Post>(this.url + "/addPost", post, this.httpOptions);
   }
 
   //ReadPostByEmail
@@ -43,7 +50,7 @@ export class ServiceService {
 
   //AddRecomendacao
   addRecomendacao(pessoaRecomendada: PessoaRecomendada): Observable<PessoaRecomendada>{
-    return this.http.post<PessoaRecomendada>(this.url + "/addRecomendacao", pessoaRecomendada);
+    return this.http.post<PessoaRecomendada>(this.url + "/addRecomendacao", pessoaRecomendada, this.httpOptions);
   }
 
   //ListRecomendacao
@@ -53,7 +60,7 @@ export class ServiceService {
 
   //AddGlossary
   addGlossary(glossario: Glossario){
-    return this.http.post<Glossario>(this.url + "/addGlossario", glossario);
+    return this.http.post<Glossario>(this.url + "/addGlossario", glossario, this.httpOptions);
   }
 
   //ListGlossary
@@ -64,7 +71,7 @@ export class ServiceService {
    
   //SolicitaAmizade
   solicitaAmizade(amizade: Amizade): Observable<Amizade> {
-    return this.http.post<Amizade>(this.url + "/amizade", amizade);
+    return this.http.post<Amizade>(this.url + "/amizade", amizade, this.httpOptions);
   }
  
   //ListarAmizade
@@ -74,7 +81,7 @@ export class ServiceService {
  
   //AtualizaSolicitacao
   atualizaSolicitacao(amizade: Amizade): Observable<Amizade>{
-    return this.http.put<Amizade>(this.url + "/respostaSolicitacao/" + amizade.emailMandatario, amizade);
+    return this.http.put<Amizade>(this.url + "/respostaSolicitacao/" + amizade.emailMandatario, amizade, this.httpOptions);
   }
  
   //ReadByEmailMandatario

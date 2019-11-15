@@ -131,7 +131,7 @@ export class ProfileComponent implements OnInit {
         let str2 = data.inicioDaAtividade.toString();
         let array2 = str2.split("-");
         let final2 = array2[2] + "/" + array2[1] + "/" + array2[0];
-        this.pessoa.inicioDaAtividade = final2.toString();
+        this.pessoa.inicioDaAtividade = data.inicioDaAtividade.toString();
 
         this.cientist = data;
         localStorage.setItem("profile_email", data.email);        
