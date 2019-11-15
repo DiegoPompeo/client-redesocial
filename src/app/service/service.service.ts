@@ -11,8 +11,7 @@ export class ServiceService {
   url: string = 'https://server-redesocial.herokuapp.com/redesocial';
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-type': 'application/json',
-      'Authorization': 'my-auth-token'
+      'Content-type': 'application/json'
     })
   }
 

@@ -26,9 +26,12 @@
             <div class="col-md-3">
                 <h3>Interesses</h3>
                 <div *ngIf="interesses">
-                    <ul *ngFor="let x of interesses;">
-                        <li>{{x}}</li>
-                    </ul>
+                    <div *ngFor="let x of interesses;">
+                        <p>{{x}}</p>
+                    </div>
+                </div>
+                <div *ngIf="!interesses">
+                    Nenhum interesse cadastrado.
                 </div>
             </div>
 
