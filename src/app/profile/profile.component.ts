@@ -111,6 +111,9 @@ export class ProfileComponent implements OnInit {
     this.searchProfile();
     this.searchPosts();
     this.listaSolicitacao();
+    if(this.interesses.length > 0){
+      this.verifica = true;
+    }  
   }
 
   searchPosts() {
@@ -138,9 +141,7 @@ export class ProfileComponent implements OnInit {
         localStorage.setItem("profile_email", data.email);        
         this.interesses = data.interesse.split(",");
         
-        if(this.interesses.length > 0){
-          this.verifica = true;
-        }  
+        
       });
   }
 

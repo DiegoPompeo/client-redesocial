@@ -24,12 +24,10 @@ export class GlossaryComponent implements OnInit {
     private router: Router) {    
     this.service.getCientist(localStorage.getItem("email")).subscribe(
       data => {
-        this.interesses = data.interesse.split(",");
-        if(this.interesses.length > 0){
-          this.verifica = true;
-        }        
+        this.interesses = data.interesse.split(",");               
       }
     );
+
     this.service.listaGlossary().subscribe(
       data => {      
         for (let i = 0; i < data.length; i++) {    
@@ -49,6 +47,9 @@ export class GlossaryComponent implements OnInit {
   
   ngOnInit() {
     this.search();
+    if(this.interesses.length > 0){
+      this.verifica = true;
+    } 
   }
 
   search(){
