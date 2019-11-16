@@ -31,7 +31,7 @@ export class GlossaryComponent implements OnInit {
         for (let i = 0; i < data.length; i++) {   
           var contem = 0;        
           for (let j = 0; j < this.interesses.length; j++) {               
-            if (data[i] == this.interesses[j]) {
+            if (data[i].nome == this.interesses[j].nome) {
               contem = contem + 1;
             }
           }
@@ -54,12 +54,6 @@ export class GlossaryComponent implements OnInit {
         this.pessoa = data;
       }
     );
-  }
-
-  onUnchangeCategory(event, g: any){
-    if(event.target.checked){
-      this.selecionados.push(g);
-    }
   }
 
   onChangeCategory(event, g: any){

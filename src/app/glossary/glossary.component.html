@@ -17,13 +17,15 @@
 
 <div class="container" *ngIf="!submitted">
     <div>
-        <div class="alert alert-info mt-3 mb-3" *ngIf="interesses">
-            <label for="" class="row" *ngFor="let i of interesses">
-                <div>
-                    <input type="checkbox" name="{{i}}" id="{{i}}"
-                    (change)="onUnchangeCategory($event, i)" checked>{{i}}
-                </div>
-            </label>
+        <div *ngIf="interesses">
+            <div class="alert alert-info mt-3 mb-3">
+                <label for="" class="row" *ngFor="let i of interesses">
+                    <div>
+                        <input type="checkbox" name="{{i}}" id="{{i}}"
+                        (change)="onChangeCategory($event.target.checked, i)" checked>{{i}}
+                    </div>
+                </label>
+            </div>
         </div>
         <label for="" *ngFor="let g of glossarios" class="row">
             <div>
