@@ -110,9 +110,9 @@ export class ProfileComponent implements OnInit {
             data[i].aceite = true;
             data[i].solicitado = false;
             this.solicita.splice(i);
-            this.service.atualizaSolicitacao(data[i]).subscribe(data => {});
-            break;
+            this.service.atualizaSolicitacao(data[i]).subscribe(data => {});            
           }
+          break;
         }
       }
     );
@@ -130,9 +130,8 @@ export class ProfileComponent implements OnInit {
             data[i].solicitado = false;
             data[i].recusado = true;
             this.solicita.splice(i);
-            this.service.atualizaSolicitacao(data[i]).subscribe(data => {}); 
-            break;           
-          }
+            this.service.atualizaSolicitacao(data[i]).subscribe(data => {});                        
+          }break;
         }
       }
     ); 
