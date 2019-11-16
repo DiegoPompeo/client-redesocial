@@ -109,8 +109,9 @@ export class ProfileComponent implements OnInit {
             && data[i].solicitado == true) {
             data[i].aceite = true;
             data[i].solicitado = false;
-            this.solicita.splice(i);    
-            break;        
+            this.solicita.splice(i);
+            this.service.atualizaSolicitacao(data[i]).subscribe(data => {}); 
+            this.ngOnInit();          
           }
         }
       }
@@ -128,8 +129,9 @@ export class ProfileComponent implements OnInit {
             && data[i].solicitado == true) {
             data[i].solicitado = false;
             data[i].recusado = true;
-            this.solicita.splice(i); 
-            break;                     
+            this.solicita.splice(i);
+            this.service.atualizaSolicitacao(data[i]).subscribe(data => {});
+            this.ngOnInit();                      
           }
         }
       }
