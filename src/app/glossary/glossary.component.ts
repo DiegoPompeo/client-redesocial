@@ -27,10 +27,19 @@ export class GlossaryComponent implements OnInit {
       }
     );
     this.service.listaGlossary().subscribe(
-      data => {                
-        data.forEach(x => {
-          this.glossarios.push(x.nome);
-        })
+      data => {          
+        let contem = 0;
+        for (let i = 0; i < data.length; i++) {
+          for (let j = 0; j < this.interesses.length; j++) {
+            if(data[i] == this.interesses[j]){
+              contem++;
+            }            
+          } 
+          if (contem == 0) {
+            this.glossarios.push(data[i].nome);
+          }        
+        }
+        
       }
     );
   }
@@ -49,8 +58,8 @@ export class GlossaryComponent implements OnInit {
   }
 
   onUnchangeCategory(event, g: any){
-    if (event) {
-      this.selecionados.splice(g);
+    if(event.target.checked){
+      this.selecionados.push(g);
     }
   }
 
