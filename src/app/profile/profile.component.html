@@ -26,12 +26,12 @@
             <hr>
             
             <h3>Interesses</h3>
-            <div *ngIf="interesses">
+            <div *ngIf="verifica">
                 <ul *ngFor="let x of interesses;">
                     <li>{{x}}</li>
                 </ul>
             </div>
-            <div *ngIf="!interesses">
+            <div *ngIf="!verifica">
                 Nenhum interesse cadastrado.
             </div>
 

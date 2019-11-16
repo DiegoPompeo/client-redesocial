@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
   solicita: Pessoa[] = new Array<Pessoa>();
   mandatario: Pessoa = new Pessoa();  
   interesses: any;
+  verifica = false;
 
   constructor(
     private authService: AuthService,
@@ -136,6 +137,10 @@ export class ProfileComponent implements OnInit {
         this.cientist = data;
         localStorage.setItem("profile_email", data.email);        
         this.interesses = data.interesse.split(",");
+        
+        if(this.interesses.length > 0){
+          this.verifica = true;
+        }  
       });
   }
 

@@ -17,21 +17,22 @@
 
 <div class="container" *ngIf="!submitted">
     <div>
-        <div class="alert alert-info mt-3 mb-3">
-            <p class="text-center">Confirme os interesses ja selecionados</p>
+        <div class="alert alert-info mt-3 mb-3" *ngIf="verifica">
+            <p class="text-center">Confirme os interesses ja selecionados:</p>
             <label for="" class="row" *ngFor="let i of interesses">
                 <div>
-                    <input type="checkbox" name="{{i}}" id="{{i}}"
-                    (change)="onChangeCategory($event, i)">{{i}}
+                    <input type="checkbox" name="{{i}}" id="{{i}}" (change)="onChangeCategory($event, i)">{{i}}
                 </div>
             </label>
         </div>
-        <label for="" *ngFor="let g of glossarios" class="row">
-            <div>
-                <input type="checkbox" name="{{g}}" id="{{g}}"
-                (change)="onChangeCategory($event, g)">{{g}}
-            </div>
-        </label>
+        <div class="alert alert-success">
+            <p class="text-center"></p>
+            <label for="" *ngFor="let g of glossarios" class="row">
+                <div>
+                    <input type="checkbox" name="{{g}}" id="{{g}}" (change)="onChangeCategory($event, g)">{{g}}
+                </div>
+            </label>
+        </div>
     </div>
     <button class="ml-3 mb-3 btn btn-info" (click)="submit(pessoa)">
         Confirmar</button>

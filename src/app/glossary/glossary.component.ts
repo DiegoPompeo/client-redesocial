@@ -16,6 +16,7 @@ export class GlossaryComponent implements OnInit {
   selecionados = [];
   interesses = [];
   submitted = false;
+  verifica = false;
 
   constructor(
     private authService: AuthService,
@@ -23,7 +24,10 @@ export class GlossaryComponent implements OnInit {
     private router: Router) {    
     this.service.getCientist(localStorage.getItem("email")).subscribe(
       data => {
-        this.interesses = data.interesse.split(",");        
+        this.interesses = data.interesse.split(",");
+        if(this.interesses.length > 0){
+          this.verifica = true;
+        }        
       }
     );
     this.service.listaGlossary().subscribe(
