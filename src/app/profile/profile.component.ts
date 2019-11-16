@@ -121,7 +121,7 @@ export class ProfileComponent implements OnInit {
         }
       }
     );
-    this.listaSolicitacao();
+    this.ngOnInit();
   }
   
   recusa(p: Pessoa){
@@ -147,7 +147,7 @@ export class ProfileComponent implements OnInit {
         }
       }
     ); 
-    this.listaSolicitacao();
+    this.ngOnInit();
   }
 
   onSubmit() {
