@@ -26,16 +26,11 @@ export class GlossaryComponent implements OnInit {
         this.interesses = data.interesse.split(",");
         this.service.listaGlossary().subscribe(
           data => {                
-            let contem = 0;
+            data.forEach(x => {
+              this.glossarios.push(x.nome);
+            })
             for (let i = 0; i < this.interesses.length; i++) {
-              for (let j = 0; j < data.length; j++) {
-                if (data[j] == this.interesses[i]) {
-                  contem++;
-                }
-              }
-              if(contem == 0){
-                this.glossarios.push(data[j].nome);
-              }
+              this.glossarios.splice(this.interesses[i]);
             }
           }
         );
