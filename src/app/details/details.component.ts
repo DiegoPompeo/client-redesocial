@@ -117,19 +117,24 @@ export class DetailsComponent implements OnInit {
     this.listaRecomendada();
     this.verificaSolicitacao();
 
-    if(localStorage.getItem("recomendou") == "true"){
-      this.recomendou = true;
-    }
-    if(localStorage.getItem("recomendou") == "false"){
-      this.recomendou = false;
-    }
-
-    this.curtidas = localStorage.getItem("curtidas");
-
     this.emailLogado = localStorage.getItem("email");
     if (!(this.emailLogado == localStorage.getItem("det_email"))) {
       this.auth = true;
     }
+
+    this.service.listaAmizade().subscribe(
+      data => {
+        for (let i = 0; i < data.length; i++) {          
+          if ((data[i].aceite == true || data[i].solicitado == true)
+          && ((data[i].emailMandatario == localStorage.getItem("email") 
+          || data[i].emailMandatario == localStorage.getItem("det_email"))
+          && (data[i].emailRemetente == localStorage.getItem("email")
+          || data[i].emailRemetente == localStorage.getItem("det_email")))) {
+            this.desabilitaSolicitacao = true;
+          }
+        }
+      }
+    );
   }
 
   searchPosts() {

@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
   mandatario: Pessoa = new Pessoa();  
   interesses: any;
   verifica = false;
+  listaAmigos: Pessoa[] = new Array<Pessoa>();
 
   constructor(
     private authService: AuthService,
@@ -39,6 +40,42 @@ export class ProfileComponent implements OnInit {
       email: '',
       curtidas: 0
     }
+  }
+  
+  ngOnInit() {
+    this.searchProfile();
+    this.searchPosts();
+    this.listaSolicitacao();
+    this.getAmigos();
+  }
+
+  gotoDetails(cientist: Pessoa){
+    localStorage.setItem("det_email", cientist.email);
+    this.router.navigate(['details']);
+  }
+
+  getAmigos(){
+    this.service.listaAmizade().subscribe(
+      data => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].aceite == true) {
+            if (data[i].emailMandatario != localStorage.getItem("email")) {
+              this.service.getCientist(data[i].emailMandatario).subscribe(
+                data => {
+                  this.listaAmigos.push(data);
+                }
+              );
+            } else if(data[i].emailRemetente != localStorage.getItem("email")){
+              this.service.getCientist(data[i].emailRemetente).subscribe(
+                data => {
+                  this.listaAmigos.push(data);
+                }
+              );
+            }
+          }
+        }
+      }
+    );
   }
 
   listaSolicitacao(){
@@ -109,11 +146,6 @@ export class ProfileComponent implements OnInit {
     this.atualiza = false;
   }
 
-  ngOnInit() {
-    this.searchProfile();
-    this.searchPosts();
-    this.listaSolicitacao();
-  }
 
   searchPosts() {
     this.service.verPost(localStorage.getItem("email"))
