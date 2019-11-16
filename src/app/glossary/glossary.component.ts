@@ -11,20 +11,34 @@ import { AuthService } from '../service/auth.service';
 })
 export class GlossaryComponent implements OnInit {
 
-  pessoa: Pessoa;
+  pessoa: Pessoa = new Pessoa();
   glossarios = [];
   selecionados = [];
+  interesses = [];
   submitted = false;
 
   constructor(
     private authService: AuthService,
     private service: ServiceService,
-    private router: Router) {
-    this.service.listaGlossary().subscribe(
+    private router: Router) {    
+    this.service.getCientist(localStorage.getItem("email")).subscribe(
       data => {
-        data.forEach(x => {
-          this.glossarios.push(x.nome);
-        })
+        this.interesses = data.interesse.split(",");
+        this.service.listaGlossary().subscribe(
+          data => {                
+            let contem = 0;
+            for (let i = 0; i < this.interesses.length; i++) {
+              for (let j = 0; j < data.length; j++) {
+                if (data[j] == this.interesses[i]) {
+                  contem++;
+                }
+              }
+              if(contem > 0){
+                this.glossarios.push(data[i].nome);
+              }
+            }
+          }
+        );
       }
     );
   }
@@ -39,7 +53,13 @@ export class GlossaryComponent implements OnInit {
       data => {
         this.pessoa = data;
       }
-    )
+    );
+  }
+
+  onUnchangeCategory(event, g: any){
+    if (event) {
+      this.selecionados.splice(g);
+    }
   }
 
   onChangeCategory(event, g: any){

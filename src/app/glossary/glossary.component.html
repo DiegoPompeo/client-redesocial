@@ -14,8 +14,17 @@
 <div class="container" *ngIf="submitted">
     <app-glossary-success [selecionados]="selecionados"></app-glossary-success>
 </div>
+
 <div class="container" *ngIf="!submitted">
     <div class="col-md-6">
+        <div class="alert alert-info mt-3 mb-3">
+            <label for="" class="row" *ngFor="let i of interesses">
+                <div>
+                    <input type="checkbox" name="{{i}}" id="{{i}}"
+                    (change)="onUnchangeCategory($event.target.checked, i)">{{i}}
+                </div>
+            </label>
+        </div>
         <label for="" *ngFor="let g of glossarios" class="row">
             <div>
                 <input type="checkbox" name="{{g}}" id="{{g}}"

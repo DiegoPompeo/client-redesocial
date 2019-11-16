@@ -24,17 +24,15 @@
             <p><b>Estado: </b>{{cientist.estado}}</p>
 
             <hr>
-
-            <div class="col-md-3">
-                <h3>Interesses</h3>
-                <div *ngIf="interesses">
-                    <ul *ngFor="let x of interesses;">
-                        <li>{{x}}</li>
-                    </ul>
-                </div>
-                <div *ngIf="!interesses">
-                    Nenhum interesse cadastrado.
-                </div>
+            
+            <h3>Interesses</h3>
+            <div *ngIf="interesses">
+                <ul *ngFor="let x of interesses;">
+                    <li>{{x}}</li>
+                </ul>
+            </div>
+            <div *ngIf="!interesses">
+                Nenhum interesse cadastrado.
             </div>
 
             <hr>
