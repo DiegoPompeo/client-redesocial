@@ -67,6 +67,7 @@ export class ProfileComponent implements OnInit {
             && data[i].emailMandatario == p.email && data[i].emailRemetente == localStorage.getItem("email")
             && data[i].solicitado == true) {
             data[i].aceite = true;
+            data[i].solicitado = false;
             this.service.atualizaSolicitacao(data[i]).subscribe(data => {});
             this.solicita.splice(i);
           }
@@ -84,6 +85,7 @@ export class ProfileComponent implements OnInit {
             && data[i].emailMandatario == p.email 
             && data[i].emailRemetente == localStorage.getItem("email")
             && data[i].solicitado == true) {
+            data[i].solicitado = false;
             data[i].recusado = true;
             this.solicita.splice(i);
             this.service.atualizaSolicitacao(data[i]).subscribe(data => {});            
