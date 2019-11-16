@@ -33,8 +33,8 @@ export class GlossaryComponent implements OnInit {
                   contem++;
                 }
               }
-              if(contem > 0){
-                this.glossarios.push(data[i].nome);
+              if(contem == 0){
+                this.glossarios.push(data[j].nome);
               }
             }
           }

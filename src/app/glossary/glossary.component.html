@@ -21,7 +21,7 @@
             <label for="" class="row" *ngFor="let i of interesses">
                 <div>
                     <input type="checkbox" name="{{i}}" id="{{i}}"
-                    (change)="onUnchangeCategory($event.target.checked, i)">{{i}}
+                    (change)="onUnchangeCategory($event.target.checked, i)" checked>{{i}}
                 </div>
             </label>
         </div>
