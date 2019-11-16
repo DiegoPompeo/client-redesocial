@@ -79,7 +79,7 @@ export class DetailsComponent implements OnInit {
       }
     );
     localStorage.setItem("recomendou", "false");
-    this.router.navigate(["up"]);
+    this.ngOnInit();
   }
 
   curtir() {
