@@ -104,18 +104,19 @@ export class ProfileComponent implements OnInit {
     this.service.listaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
-          if (data[i].aceite == false && data[i].recusado == false 
-            && data[i].emailMandatario == p.email && data[i].emailRemetente == localStorage.getItem("email")
+          if (data[i].aceite == false 
+            && data[i].recusado == false 
+            && data[i].emailMandatario == p.email 
+            && data[i].emailRemetente == localStorage.getItem("email")
             && data[i].solicitado == true) {
             data[i].aceite = true;
             data[i].solicitado = false;
-            this.service.atualizaSolicitacao(data[i]).subscribe(data => {});
             this.solicita.splice(i);
+            this.service.atualizaSolicitacao(data[i]).subscribe(data => {});
           }
         }
       }
     );
-    this.listaSolicitacao();
   }
   
   recusa(p: Pessoa){
@@ -135,7 +136,6 @@ export class ProfileComponent implements OnInit {
         }
       }
     ); 
-    this.listaSolicitacao();  
   }
 
   onSubmit() {
