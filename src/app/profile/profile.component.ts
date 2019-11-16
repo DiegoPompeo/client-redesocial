@@ -85,8 +85,6 @@ export class ProfileComponent implements OnInit {
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].emailRemetente == localStorage.getItem("email")
-          && data[i].aceite == false 
-          && data[i].recusado == false 
           && data[i].solicitado == true) {
             this.service.getCientist(data[i].emailMandatario).subscribe(
               x => {
@@ -113,6 +111,7 @@ export class ProfileComponent implements OnInit {
             data[i].solicitado = false;
             this.solicita.splice(i);
             this.service.atualizaSolicitacao(data[i]).subscribe(data => {});
+            break;
           }
         }
       }
@@ -131,7 +130,8 @@ export class ProfileComponent implements OnInit {
             data[i].solicitado = false;
             data[i].recusado = true;
             this.solicita.splice(i);
-            this.service.atualizaSolicitacao(data[i]).subscribe(data => {});            
+            this.service.atualizaSolicitacao(data[i]).subscribe(data => {}); 
+            break;           
           }
         }
       }
