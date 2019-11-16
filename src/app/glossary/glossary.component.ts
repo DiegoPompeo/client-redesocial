@@ -31,9 +31,6 @@ export class GlossaryComponent implements OnInit {
         data.forEach(x => {
           this.glossarios.push(x.nome);
         })
-        for (let i = 0; i < this.interesses.length; i++) {
-          this.glossarios.splice(this.interesses[i]);
-        }
       }
     );
   }
