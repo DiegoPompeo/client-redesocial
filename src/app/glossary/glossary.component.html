@@ -10,28 +10,26 @@
 <div class="bg-info text-center pt-2 pb-2">
     <h3 class="font-weight-normal" style="color: white">Interesses</h3>
 </div>
-    
+
 <div class="container" *ngIf="submitted">
     <app-glossary-success [selecionados]="selecionados"></app-glossary-success>
 </div>
 
 <div class="container" *ngIf="!submitted">
     <div>
-        <div *ngIf="interesses">
-            <div class="alert alert-info mt-3 mb-3">
-                <p class="text-center">Selecionados:</p>
-                <label for="" class="row" *ngFor="let i of interesses">
-                    <div>
-                        <input type="checkbox" name="{{i}}" id="{{i}}"
-                        (change)="onChangeCategory($event, i)" checked>{{i}}
-                    </div>
-                </label>
-            </div>
+        <div class="alert alert-info mt-3 mb-3">
+            <p class="text-center">Confirme os interesses ja selecionados</p>
+            <label for="" class="row" *ngFor="let i of interesses">
+                <div>
+                    <input type="checkbox" name="{{i}}" id="{{i}}"
+                    (change)="onChangeCategory($event, i)">{{i}}
+                </div>
+            </label>
         </div>
         <label for="" *ngFor="let g of glossarios" class="row">
             <div>
                 <input type="checkbox" name="{{g}}" id="{{g}}"
-                    (change)="onChangeCategory($event, g)">{{g}}
+                (change)="onChangeCategory($event, g)">{{g}}
             </div>
         </label>
     </div>
