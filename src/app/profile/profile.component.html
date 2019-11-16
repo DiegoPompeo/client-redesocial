@@ -23,21 +23,27 @@
             <p><b>Cidade: </b>{{cientist.cidade}}</p>
             <p><b>Estado: </b>{{cientist.estado}}</p>
 
+            <hr>
+
             <div class="col-md-3">
                 <h3>Interesses</h3>
                 <div *ngIf="interesses">
-                    <div *ngFor="let x of interesses;">
-                        <p>{{x}}</p>
-                    </div>
+                    <ul *ngFor="let x of interesses;">
+                        <li>{{x}}</li>
+                    </ul>
                 </div>
                 <div *ngIf="!interesses">
                     Nenhum interesse cadastrado.
                 </div>
             </div>
 
+            <hr>
+
             <div *ngIf="cientist.paga"><span>☆&nbsp;Você é um usuário premium</span></div>
 
             <button class="btn btn-dark" (click)="gotoUpdate(cientist)">Atualizar perfil</button>
+
+            <hr>
 
             <div class="mt-3">
                 <h3>Fotos</h3>
@@ -91,6 +97,8 @@
                     </div>
                 </div>
             </div>
+
+            <hr>
  
             <h3>Amizade sugeridas</h3>
             <app-list-cientists></app-list-cientists>
