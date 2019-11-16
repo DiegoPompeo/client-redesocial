@@ -23,17 +23,17 @@ export class GlossaryComponent implements OnInit {
     private router: Router) {    
     this.service.getCientist(localStorage.getItem("email")).subscribe(
       data => {
-        this.interesses = data.interesse.split(",");
-        this.service.listaGlossary().subscribe(
-          data => {                
-            data.forEach(x => {
-              this.glossarios.push(x.nome);
-            })
-            for (let i = 0; i < this.interesses.length; i++) {
-              this.glossarios.splice(this.interesses[i]);
-            }
-          }
-        );
+        this.interesses = data.interesse.split(",");        
+      }
+    );
+    this.service.listaGlossary().subscribe(
+      data => {                
+        data.forEach(x => {
+          this.glossarios.push(x.nome);
+        })
+        for (let i = 0; i < this.interesses.length; i++) {
+          this.glossarios.splice(this.interesses[i]);
+        }
       }
     );
   }
