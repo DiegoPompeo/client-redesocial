@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
   post: Post;
   posts: Post[];
   atualiza = false;
+  atualizaAmigos = false;
   solicita: Pessoa[] = new Array<Pessoa>();
   mandatario: Pessoa = new Pessoa();  
   interesses: any;
@@ -115,6 +116,8 @@ export class ProfileComponent implements OnInit {
                 this.solicita.splice(this.solicita.indexOf(x))
               }
             );
+
+            this.atualizaAmigos = true;
             
             this.service.atualizaSolicitacao(data[i]).subscribe(data => {}); 
           }
@@ -147,7 +150,6 @@ export class ProfileComponent implements OnInit {
         }
       }
     ); 
-    this.ngOnInit();
   }
 
   onSubmit() {
@@ -164,6 +166,10 @@ export class ProfileComponent implements OnInit {
     this.atualiza = false;
   }
 
+  msgAtualizaAmigos(){
+    this.ngOnInit();
+    this.atualizaAmigos = false;
+  }
 
   searchPosts() {
     this.service.verPost(localStorage.getItem("email"))
