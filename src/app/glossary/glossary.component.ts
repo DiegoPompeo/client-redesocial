@@ -36,7 +36,7 @@ export class GlossaryComponent implements OnInit {
             }
           }
           if(contem == 0){
-            this.glossarios.push(data[i]);
+            this.glossarios.push(data[i].nome);
           }
         }        
       }
