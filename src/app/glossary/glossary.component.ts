@@ -28,9 +28,9 @@ export class GlossaryComponent implements OnInit {
     );
     this.service.listaGlossary().subscribe(
       data => {      
-        for (let i = 0; i < data.length; i++) {   
-          var contem = 0;        
-          for (let j = 0; j < this.interesses.length; j++) {               
+        for (let i = 0; i < data.length; i++) { 
+          for (let j = 0; j < this.interesses.length; j++) {    
+            var contem = 0;                     
             if (data[i].nome == this.interesses[j].nome) {
               contem = contem + 1;
             }
