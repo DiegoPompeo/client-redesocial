@@ -19,10 +19,11 @@
     <div>
         <div *ngIf="interesses">
             <div class="alert alert-info mt-3 mb-3">
+                <p class="text-center">Selecionados:</p>
                 <label for="" class="row" *ngFor="let i of interesses">
                     <div>
                         <input type="checkbox" name="{{i}}" id="{{i}}"
-                        (change)="onChangeCategory($event.target.checked, i)" checked>{{i}}
+                        (change)="onChangeCategory($event, i)" checked>{{i}}
                     </div>
                 </label>
             </div>
@@ -30,7 +31,7 @@
         <label for="" *ngFor="let g of glossarios" class="row">
             <div>
                 <input type="checkbox" name="{{g}}" id="{{g}}"
-                    (change)="onChangeCategory($event.target.checked, g)">{{g}}
+                    (change)="onChangeCategory($event, g)">{{g}}
             </div>
         </label>
     </div>
