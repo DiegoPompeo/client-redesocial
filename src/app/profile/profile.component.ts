@@ -59,14 +59,16 @@ export class ProfileComponent implements OnInit {
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].aceite == true) {
-            if (data[i].emailMandatario != localStorage.getItem("email")) {
-              this.service.getCientist(data[i].emailMandatario).subscribe(
+            if (data[i].emailMandatario == localStorage.getItem("email")
+            && (data[i].aceite == true)) {
+              this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigos.push(data);
                 }
               );
-            } else if(data[i].emailRemetente != localStorage.getItem("email")){
-              this.service.getCientist(data[i].emailRemetente).subscribe(
+            } else if(data[i].emailRemetente == localStorage.getItem("email")
+            && (data[i].aceite == true)){
+              this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigos.push(data);
                 }
