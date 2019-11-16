@@ -46,10 +46,7 @@ export class GlossaryComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.search();
-    if(this.interesses.length > 0){
-      this.verifica = true;
-    } 
+    this.search();    
   }
 
   search(){

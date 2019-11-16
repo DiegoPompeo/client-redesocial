@@ -26,13 +26,10 @@
             <hr>
             
             <h3>Interesses</h3>
-            <div *ngIf="verifica">
+            <div>
                 <ul *ngFor="let x of interesses;">
                     <li>{{x}}</li>
                 </ul>
-            </div>
-            <div *ngIf="!verifica">
-                Nenhum interesse cadastrado.
             </div>
 
             <hr>
