@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../service/service.service';
 import { Pessoa } from '../model/pessoa';
 import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-update',
@@ -14,7 +15,8 @@ export class UpdateComponent implements OnInit {
   submitted = false;
 
   constructor(private service: ServiceService, 
-    private router: Router) { }
+    private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.edit();
@@ -51,5 +53,9 @@ export class UpdateComponent implements OnInit {
         this.pessoa = data;
       }
     );
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

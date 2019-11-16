@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../service/service.service';
 import { Pessoa } from '../model/pessoa';
 import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-update-premium',
@@ -13,7 +14,8 @@ export class UpdatePremiumComponent implements OnInit {
   pessoa: Pessoa = new Pessoa();
 
   constructor(private service: ServiceService,
-    private router: Router) { }
+    private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.edit();
@@ -42,5 +44,8 @@ export class UpdatePremiumComponent implements OnInit {
       data => { this.pessoa = data }
     );
   }
-
+  
+  logout() {
+    this.authService.logout();
+  }
 }

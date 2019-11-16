@@ -1,3 +1,12 @@
+<nav class="navbar navbar-expand-sm bg-info navbar-info">
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar">
+        <button class="btn btn-light" type="submit">Pesquisar</button>
+    </form>
+    <button class="btn btn-info" routerLink="/glossary">Interesses</button>
+    <button class="btn btn-info" (click)="logout()">Logout</button>
+</nav>
+
 <div class="container mt-3" *ngIf="pessoa">
     <h1>Conta Premium</h1>
     <form ngNativeValidate>
