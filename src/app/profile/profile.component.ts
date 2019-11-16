@@ -85,7 +85,9 @@ export class ProfileComponent implements OnInit {
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].emailRemetente == localStorage.getItem("email")
-          && (data[i].aceite == false && data[i].recusado == false) && data[i].solicitado == true) {
+          && data[i].aceite == false 
+          && data[i].recusado == false 
+          && data[i].solicitado == true) {
             this.service.getCientist(data[i].emailMandatario).subscribe(
               x => {
                 this.mandatario = x;
@@ -113,6 +115,7 @@ export class ProfileComponent implements OnInit {
         }
       }
     );
+    this.listaSolicitacao();
   }
   
   recusa(p: Pessoa){
@@ -131,7 +134,8 @@ export class ProfileComponent implements OnInit {
           }
         }
       }
-    );    
+    ); 
+    this.listaSolicitacao();  
   }
 
   onSubmit() {
