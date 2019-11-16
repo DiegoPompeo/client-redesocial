@@ -2,12 +2,11 @@
     <h3 class="font-weight-normal" style="color: white">Login</h3>
 </div>
 
-<a routerLink="/add">Glossario</a>
-
 <div class="container" style="width: 50%;">
     <p class=" text-center">
         <i style="font-size: 200px;" class="large material-icons">account_circle</i>
     </p>
+    <a routerLink="/add">Glossario</a>
     <div class="alert alert-danger mt-3 mb-3" *ngIf="msgError">
         Usuário ou senha digitados inválidos. Caso ainda não seja cadastrado, <a routerLink="/register">clique aqui</a>.
     </div>
