@@ -150,44 +150,39 @@ export class DetailsComponent implements OnInit {
   }
 
   recomendar() {
-    if (this.recomendou = false) {
-      this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
-      this.pessoaRecomendada.emailRecomendou = localStorage.getItem("email");
-      this.pessoaRecomendada.desfazer = false;
-      this.recomendou = true;
+    this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
+    this.pessoaRecomendada.emailRecomendou = localStorage.getItem("email");
+    this.pessoaRecomendada.desfazer = false;
+    this.recomendou = true;
 
-      this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => { });
+    this.service.editRecomendacao(this.pessoaRecomendada).subscribe(data => { });
 
-      this.service.getCientist(localStorage.getItem("det_email")).subscribe(
-        data => {
-          data.curtida++;
-          this.service.atualizarPerfil(data).subscribe(x => {
-          })
-        }
-      );
-    }
+    this.service.getCientist(localStorage.getItem("det_email")).subscribe(
+      data => {
+        data.curtida++;
+        this.service.atualizarPerfil(data).subscribe(x => {
+        })
+      }
+    );
   }
 
   desrecomendar() {
-    if (this.recomendou = true) {
-      this.service.getCientist(localStorage.getItem("det_email")).subscribe(
-        data => {
-          data.curtida--;
-          this.service.atualizarPerfil(data).subscribe(x => {
-          })
-        }
-      );
+    this.service.getCientist(localStorage.getItem("det_email")).subscribe(
+      data => {
+        data.curtida--;
+        this.service.atualizarPerfil(data).subscribe(x => {
+        })
+      }
+    );
 
-      this.pessoaRecomendada.desfazer = true;
+    this.pessoaRecomendada.desfazer = true;
 
-      this.service.editRecomendacao(this.pessoaRecomendada).subscribe(
-        data => {
-        }
-      );
+    this.service.editRecomendacao(this.pessoaRecomendada).subscribe(
+      data => {
+      }
+    );
 
-      this.recomendou = false;
-    }
-
+    this.recomendou = false;      
   }
 
   curtir() {
