@@ -186,16 +186,16 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.Detalhe();
-    this.searchPosts();
+    this.Detalhe();    
     this.listaRecomendada();
-    this.verificaSolicitacao();
-    this.intersecao();
+    this.verificaSolicitacao();    
 
     this.emailLogado = localStorage.getItem("email");
     if (!(this.emailLogado == localStorage.getItem("det_email"))) {
       this.auth = true;
-    }    
+    }  
+
+    this.searchPosts();
   }
 
   searchPosts() {
