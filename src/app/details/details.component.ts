@@ -26,14 +26,19 @@ export class DetailsComponent implements OnInit {
   recomendou = false;
   amizade: Amizade = new Amizade();
 
-  listaAmigos: Pessoa[];
-  listaAmigosDetails: Pessoa[];
-  amigosEmComum: Pessoa[];
+  listaAmigos: Pessoa[] = new Array<Pessoa>();
+  listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
+  amigosEmComum: Pessoa[] = new Array<Pessoa>();
 
   constructor(
     private authService: AuthService,
     private service: ServiceService,
     private router: Router) {
+  }
+  
+  gotoDetails(cientist: Pessoa){
+    localStorage.setItem("det_email", cientist.email);
+    this.router.navigate(['details']);
   }
 
   intersecao(){
@@ -48,13 +53,8 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  gotoDetails(cientist: Pessoa){
-    localStorage.setItem("det_email", cientist.email);
-    this.router.navigate(['details']);
-  }
-
   getAmigos(){
-    return this.service.listaAmizade().subscribe(
+    this.service.listaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].aceite == true) {
@@ -188,14 +188,16 @@ export class DetailsComponent implements OnInit {
   ngOnInit() {
     this.Detalhe();    
     this.listaRecomendada();
-    this.verificaSolicitacao();    
+    this.verificaSolicitacao();
+    this.searchPosts();  
+    this.getAmigos();
+    this.getDetAmigos();
+    this.intersecao();  
 
     this.emailLogado = localStorage.getItem("email");
     if (!(this.emailLogado == localStorage.getItem("det_email"))) {
       this.auth = true;
-    }  
-
-    this.searchPosts();
+    }      
   }
 
   searchPosts() {
