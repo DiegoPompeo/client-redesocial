@@ -54,7 +54,7 @@ export class DetailsComponent implements OnInit {
   }
 
   getAmigos(){
-    this.service.listaAmizade().subscribe(
+    return this.service.listaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].aceite == true) {
@@ -80,7 +80,7 @@ export class DetailsComponent implements OnInit {
   }
 
   getDetAmigos(){
-    this.service.listaAmizade().subscribe(
+    return this.service.listaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].aceite == true) {
