@@ -160,13 +160,13 @@ export class DetailsComponent implements OnInit {
       data.curtida++;
       this.service.atualizarPerfil(data).subscribe(x => {});
     });
-    this.recomendou = false;
+    this.recomendou = true;
   }
 
   desrecomendar() {
     this.pessoaRecomendada.desfazer = false;
     this.service.editRecomendacao(this.pessoaRecomendada).subscribe();
-    this.recomendou = true;
+    this.recomendou = false;
 
     this.service.getCientist(localStorage.getItem("det_email"))
     .subscribe(data => {
