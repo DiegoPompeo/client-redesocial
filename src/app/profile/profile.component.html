@@ -51,27 +51,7 @@
             </div>
 
             <div class="mt-3 container">
-                <h3>Amigos</h3>
-                <div class="mt-3" *ngIf="atualiza">
-                    <button class="btn btn-info btn-block" type="button" (click)="msgAtualizaAmigos()">
-                        Atualizar lista de amigos
-                    </button>
-                </div>
-                <div *ngIf="listaAmigos" class="row">
-                    <div *ngFor="let amigo of listaAmigos">
-                        <div class="container mt-3">
-                            <div class="row">
-                                <img src="https://uifaces.co/images/man.svg" alt="" style="width: 120px;">
-                            </div>
-                            <div class="row text-center">
-                                <span>{{amigo.nome}}</span>
-                            </div>
-                            <div scope="row">
-                                <div class="btn btn-info" (click)="gotoDetails(amigo)">Ver perfil</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <button class="btn btn-block btn-info" (click)="gotoAmigos()">Ver lista de amigos</button>
             </div>
         </div>
         <div class="col-md-6">

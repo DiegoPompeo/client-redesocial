@@ -13,6 +13,7 @@ import { UpdatePremiumComponent } from './update-premium/update-premium.componen
 import { AddGlossaryComponent } from './add-glossary/add-glossary.component';
 import { GlossaryComponent } from './glossary/glossary.component';
 import { DesrecomendacaoComponent } from './desrecomendacao/desrecomendacao.component';
+import { ListaAmigosComponent } from './lista-amigos/lista-amigos.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
   {path: 'premium', component: UpdatePremiumComponent, canActivate: [AuthGuard]},
   {path: 'glossary', component: GlossaryComponent, canActivate: [AuthGuard]},
   {path: 'up', component: DesrecomendacaoComponent, canActivate: [AuthGuard]},
-  {path: 'add', component: AddGlossaryComponent}
+  {path: 'amigos', component: ListaAmigosComponent, canActivate: [AuthGuard]},
+  {path: 'add', component: AddGlossaryComponent},
 ];
 
 @NgModule({
