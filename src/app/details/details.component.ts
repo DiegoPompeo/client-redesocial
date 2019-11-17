@@ -136,13 +136,13 @@ export class DetailsComponent implements OnInit {
         for (let i = 0; i < data.length; i++) {
           if (data[i].emailRecomendou == localStorage.getItem("email")
             && data[i].emailRecomendada == localStorage.getItem("det_email")
-            && data[i].desfazer == false) {
-            this.recomendou = false;
+            && data[i].desfazer == true) {
+            this.recomendou = true;
             break;
           } else if (data[i].emailRecomendou == localStorage.getItem("email")
           && data[i].emailRecomendada == localStorage.getItem("det_email")
-          && data[i].desfazer == true) {
-            this.recomendou = true;
+          && data[i].desfazer == false) {
+            this.recomendou = false;
             break;
           } else {
             this.recomendou = false;
