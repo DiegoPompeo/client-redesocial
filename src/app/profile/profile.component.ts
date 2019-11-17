@@ -52,9 +52,7 @@ export class ProfileComponent implements OnInit {
   gotoDetails(cientist: Pessoa){
     localStorage.setItem("det_email", cientist.email);
     this.router.navigate(['details']);
-  }
-
-  
+  }  
 
   gotoAmigos(){    
     this.router.navigate(['amigos']);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pessoa } from '../model/pessoa';
 import { ServiceService } from '../service/service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-amigos',
@@ -20,10 +21,16 @@ export class ListaAmigosComponent implements OnInit {
   verifica = false;
   listaAmigos: Pessoa[] = new Array<Pessoa>();
   
-  constructor(private service: ServiceService) { }
+  constructor(private service: ServiceService,
+    private router: Router) { }
 
   ngOnInit() {
     this.getAmigos();
+  }
+  
+  gotoDetails(cientist: Pessoa){
+    localStorage.setItem("det_email", cientist.email);
+    this.router.navigate(['details']);
   }
 
   getAmigos(){
