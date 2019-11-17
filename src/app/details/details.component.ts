@@ -137,11 +137,11 @@ export class DetailsComponent implements OnInit {
           if (data[i].emailRecomendou == localStorage.getItem("email")
             && data[i].emailRecomendada == localStorage.getItem("det_email")
             && data[i].desfazer == false) {
-            this.recomendou = true;
+            this.recomendou = false;
           } else if (data[i].emailRecomendou == localStorage.getItem("email")
           && data[i].emailRecomendada == localStorage.getItem("det_email")
           && data[i].desfazer == true) {
-            this.recomendou = false;
+            this.recomendou = true;
           } else {
             this.recomendou = false;
           }
