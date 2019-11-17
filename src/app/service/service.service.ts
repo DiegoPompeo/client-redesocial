@@ -56,6 +56,11 @@ export class ServiceService {
     return this.http.post<PessoaRecomendada>(this.url + "/addRecomendacao", pessoaRecomendada, this.httpOptions);
   }
 
+  //EditRecomendacao
+  editRecomendacao(pessoaRecomendada: PessoaRecomendada): Observable<PessoaRecomendada>{
+    return this.http.put<PessoaRecomendada>(this.url + "/editRecomendacao", pessoaRecomendada, this.httpOptions);
+  }
+
   //ListRecomendacao
   listaRecomendacao(){
     return this.http.get<PessoaRecomendada[]>(this.url + "/getRecomendacao");
