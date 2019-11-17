@@ -103,7 +103,6 @@ export class DetailsComponent implements OnInit {
     );
   }
 
-
   Detalhe() {
     let email = localStorage.getItem("det_email");
     this.service.getCientist(email).subscribe(
@@ -173,6 +172,10 @@ export class DetailsComponent implements OnInit {
           if (data[i].emailRemetente == localStorage.getItem("det_email")
             && data[i].emailMandatario == localStorage.getItem("email")
             && (data[i].solicitado == true || data[i].aceite == true || data[i].recusado == true)) {
+            this.desabilitaSolicitacao = true;
+          } else if (data[i].emailRemetente == localStorage.getItem("email")
+          && data[i].emailMandatario == localStorage.getItem("det_email")
+          && (data[i].solicitado == true || data[i].aceite == true || data[i].recusado == true)) {
             this.desabilitaSolicitacao = true;
           }
         }
