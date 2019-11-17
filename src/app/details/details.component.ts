@@ -24,14 +24,80 @@ export class DetailsComponent implements OnInit {
   desabilitaSolicitacao = false;
   desabilita: boolean;
   recomendou = false;
-  curtidas: string;
   amizade: Amizade = new Amizade();
+
+  listaAmigos: Pessoa[];
+  listaAmigosDetails: Pessoa[];
+  amigosEmComum: Pessoa[];
 
   constructor(
     private authService: AuthService,
     private service: ServiceService,
     private router: Router) {
   }
+
+  intersecao(){
+    for (let i = 0; i < this.listaAmigos.length; i++) {
+      for (let j = 0; j < this.listaAmigosDetails.length; j++) {
+        if(this.listaAmigos[i].email == this.listaAmigosDetails[i].email){
+          this.amigosEmComum.push(this.listaAmigos[i]);
+        }        
+      }
+    }
+  }
+
+  getAmigos(){
+    this.service.listaAmizade().subscribe(
+      data => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].aceite == true) {
+            if (data[i].emailMandatario == localStorage.getItem("email")
+            && (data[i].aceite == true)) {
+              this.service.getCientist(data[i].emailRemetente).subscribe(
+                data => {
+                  this.listaAmigos.push(data);
+                }
+              );
+            } else if(data[i].emailRemetente == localStorage.getItem("email")
+            && (data[i].aceite == true)){
+              this.service.getCientist(data[i].emailMandatario).subscribe(
+                data => {
+                  this.listaAmigos.push(data);
+                }
+              );
+            }
+          }
+        }
+      }
+    );
+  }
+
+  getDetAmigos(){
+    this.service.listaAmizade().subscribe(
+      data => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].aceite == true) {
+            if (data[i].emailMandatario == localStorage.getItem("det_email")
+            && (data[i].aceite == true)) {
+              this.service.getCientist(data[i].emailRemetente).subscribe(
+                data => {
+                  this.listaAmigosDetails.push(data);
+                }
+              );
+            } else if(data[i].emailRemetente == localStorage.getItem("det_email")
+            && (data[i].aceite == true)){
+              this.service.getCientist(data[i].emailMandatario).subscribe(
+                data => {
+                  this.listaAmigosDetails.push(data);
+                }
+              );
+            }
+          }
+        }
+      }
+    );
+  }
+
 
   Detalhe() {
     let email = localStorage.getItem("det_email");
@@ -66,7 +132,6 @@ export class DetailsComponent implements OnInit {
         })
       }
     );
-    localStorage.setItem("recomendou", "true");
     this.ngOnInit();
   }
 
@@ -78,7 +143,6 @@ export class DetailsComponent implements OnInit {
         })
       }
     );
-    localStorage.setItem("recomendou", "false");
     this.ngOnInit();
   }
 
@@ -116,6 +180,9 @@ export class DetailsComponent implements OnInit {
     this.searchPosts();
     this.listaRecomendada();
     this.verificaSolicitacao();
+    this.getAmigos();
+    this.getDetAmigos();
+    this.intersecao();
 
     this.emailLogado = localStorage.getItem("email");
     if (!(this.emailLogado == localStorage.getItem("det_email"))) {

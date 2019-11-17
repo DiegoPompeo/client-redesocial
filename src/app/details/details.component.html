@@ -23,7 +23,7 @@
             <p><b>Nível de Escolaridade: </b>{{pessoa.nivelEscolaridade}}</p>
             <p><b>Cidade: </b>{{pessoa.cidade}}</p>
             <p><b>Estado: </b>{{pessoa.estado}}</p>
-            
+
             <div *ngIf="auth">
                 <button (click)="recomendar()" *ngIf="!recomendou" class="btn btn-success">
                     {{pessoa.curtida}} Recomendam
@@ -35,7 +35,7 @@
 
             <div *ngIf="auth">
                 <button class="btn btn-dark mt-3" [disabled]="desabilitaSolicitacao"
-                (click)="solicitarAmizade()">Solicitar amizade</button>
+                    (click)="solicitarAmizade()">Solicitar amizade</button>
             </div>
 
             <div class="mt-3">
@@ -48,7 +48,18 @@
             </div>
             <div class="mt-3">
                 <h3>Amigos em comum</h3>
-                <div>
+                <div *ngFor="let amigo of amigosEmComum">
+                    <div class="container mt-3">
+                        <div class="row">
+                            <img src="https://uifaces.co/images/man.svg" alt="" style="width: 120px;">
+                        </div>
+                        <div class="row text-center">
+                            <span>{{amigo.nome}}</span>
+                        </div>
+                        <div scope="row">
+                            <div class="btn btn-info" (click)="gotoDetails(amigo)">Ver perfil</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
