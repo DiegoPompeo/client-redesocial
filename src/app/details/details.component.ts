@@ -23,7 +23,7 @@ export class DetailsComponent implements OnInit {
   auth: boolean = false;
   desabilitaSolicitacao = false;
   desabilita: boolean;
-  recomendou: boolean = false;
+  recomendou = false;
   amizade: Amizade = new Amizade();
 
   listaAmigos: Pessoa[] = new Array<Pessoa>();
@@ -140,7 +140,9 @@ export class DetailsComponent implements OnInit {
         ((data[i].emailRecomendou == localStorage.getItem("det_email")
         && data[i].emailRecomendada == localStorage.getItem("email"))
 
-        && data[i].desfazer == false)) {
+        && data[i].desfazer == true)) {
+          this.recomendou = false;
+        } else {
           this.recomendou = true;
         }
       }
@@ -165,7 +167,8 @@ export class DetailsComponent implements OnInit {
       if (this.recomendou = false) {
         this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
         this.pessoaRecomendada.emailRecomendou = localStorage.getItem("email");
-        this.pessoaRecomendada.desfazer = false;;
+        this.pessoaRecomendada.desfazer = false;
+        this.recomendou = true;
         this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => {});
       }
     })
