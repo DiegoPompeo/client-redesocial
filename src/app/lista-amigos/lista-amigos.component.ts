@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Pessoa } from '../model/pessoa';
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-lista-amigos',
@@ -22,12 +23,13 @@ export class ListaAmigosComponent implements OnInit {
   listaAmigos: Pessoa[] = new Array<Pessoa>();
   
   constructor(private service: ServiceService,
-    private router: Router) { }
+    private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.getAmigos();
   }
-  
+
   gotoDetails(cientist: Pessoa){
     localStorage.setItem("det_email", cientist.email);
     this.router.navigate(['details']);
@@ -57,6 +59,10 @@ export class ListaAmigosComponent implements OnInit {
         }
       }
     );
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }
