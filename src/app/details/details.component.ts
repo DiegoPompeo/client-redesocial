@@ -46,6 +46,11 @@ export class DetailsComponent implements OnInit {
     }
   }
 
+  gotoDetails(cientist: Pessoa){
+    localStorage.setItem("det_email", cientist.email);
+    this.router.navigate(['details']);
+  }
+
   getAmigos(){
     this.service.listaAmizade().subscribe(
       data => {
