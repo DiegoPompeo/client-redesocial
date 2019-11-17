@@ -37,6 +37,8 @@ export class DetailsComponent implements OnInit {
   }
 
   intersecao(){
+    this.getAmigos();
+    this.getDetAmigos();
     for (let i = 0; i < this.listaAmigos.length; i++) {
       for (let j = 0; j < this.listaAmigosDetails.length; j++) {
         if(this.listaAmigos[i].email == this.listaAmigosDetails[i].email){
@@ -188,28 +190,12 @@ export class DetailsComponent implements OnInit {
     this.searchPosts();
     this.listaRecomendada();
     this.verificaSolicitacao();
-    this.getAmigos();
-    this.getDetAmigos();
     this.intersecao();
 
     this.emailLogado = localStorage.getItem("email");
     if (!(this.emailLogado == localStorage.getItem("det_email"))) {
       this.auth = true;
-    }
-
-    this.service.listaAmizade().subscribe(
-      data => {
-        for (let i = 0; i < data.length; i++) {          
-          if ((data[i].aceite == true || data[i].solicitado == true)
-          && ((data[i].emailMandatario == localStorage.getItem("email") 
-          || data[i].emailMandatario == localStorage.getItem("det_email"))
-          && (data[i].emailRemetente == localStorage.getItem("email")
-          || data[i].emailRemetente == localStorage.getItem("det_email")))) {
-            this.desabilitaSolicitacao = true;
-          }
-        }
-      }
-    );
+    }    
   }
 
   searchPosts() {
