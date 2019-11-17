@@ -35,38 +35,38 @@ export class DetailsComponent implements OnInit {
     private service: ServiceService,
     private router: Router) {
   }
-  
-  gotoDetails(cientist: Pessoa){
+
+  gotoDetails(cientist: Pessoa) {
     localStorage.setItem("det_email", cientist.email);
     this.router.navigate(['details']);
   }
 
-  intersecao(){
+  intersecao() {
     this.getAmigos();
     this.getDetAmigos();
     for (let i = 0; i < this.listaAmigos.length; i++) {
       for (let j = 0; j < this.listaAmigosDetails.length; j++) {
-        if(this.listaAmigos[i].email == this.listaAmigosDetails[j].email){
+        if (this.listaAmigos[i].email == this.listaAmigosDetails[j].email) {
           this.amigosEmComum.push(this.listaAmigos[i]);
-        }        
+        }
       }
     }
   }
 
-  getAmigos(){
+  getAmigos() {
     this.service.listaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].aceite == true) {
             if (data[i].emailMandatario == localStorage.getItem("email")
-            && (data[i].aceite == true)) {
+              && (data[i].aceite == true)) {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigos.push(data);
                 }
               );
-            } else if(data[i].emailRemetente == localStorage.getItem("email")
-            && (data[i].aceite == true)){
+            } else if (data[i].emailRemetente == localStorage.getItem("email")
+              && (data[i].aceite == true)) {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigos.push(data);
@@ -79,20 +79,20 @@ export class DetailsComponent implements OnInit {
     );
   }
 
-  getDetAmigos(){
+  getDetAmigos() {
     return this.service.listaAmizade().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].aceite == true) {
             if (data[i].emailMandatario == localStorage.getItem("det_email")
-            && (data[i].aceite == true)) {
+              && (data[i].aceite == true)) {
               this.service.getCientist(data[i].emailRemetente).subscribe(
                 data => {
                   this.listaAmigosDetails.push(data);
                 }
               );
-            } else if(data[i].emailRemetente == localStorage.getItem("det_email")
-            && (data[i].aceite == true)){
+            } else if (data[i].emailRemetente == localStorage.getItem("det_email")
+              && (data[i].aceite == true)) {
               this.service.getCientist(data[i].emailMandatario).subscribe(
                 data => {
                   this.listaAmigosDetails.push(data);
@@ -109,9 +109,9 @@ export class DetailsComponent implements OnInit {
     let email = localStorage.getItem("det_email");
     this.service.getCientist(email).subscribe(
       data => {
-        if(data.curtida == null){
+        if (data.curtida == null) {
           data.curtida = 0;
-        } 
+        }
         let str = data.dataNascimento.toString();
         let array = str.split("-");
         let final = array[2] + "/" + array[1] + "/" + array[0];
@@ -130,67 +130,64 @@ export class DetailsComponent implements OnInit {
     )
   }
 
-  verificaRecomendar(){
+  verificaRecomendar() {
     this.service.listaRecomendacao()
-    .subscribe(data => {
-      for (let i = 0; i < data.length; i++) {
-        if ((data[i].emailRecomendou == localStorage.getItem("email")
-        && data[i].emailRecomendada == localStorage.getItem("det_email"))
-        ||
-        ((data[i].emailRecomendou == localStorage.getItem("det_email")
-        && data[i].emailRecomendada == localStorage.getItem("email"))
+      .subscribe(data => {
+        for (let i = 0; i < data.length; i++) {
+          if ((data[i].emailRecomendou == localStorage.getItem("email")
+            && data[i].emailRecomendada == localStorage.getItem("det_email"))
+            ||
+            ((data[i].emailRecomendou == localStorage.getItem("det_email")
+              && data[i].emailRecomendada == localStorage.getItem("email"))
 
-        && data[i].desfazer == true)) {
-          this.recomendou = false;
-        } else {
-          this.recomendou = true;
+              && data[i].desfazer == true)) {
+            this.recomendou = false;
+          } else {
+            this.recomendou = true;
+          }
         }
-      }
-    })
+      })
   }
 
   recomendar() {
-    this.service.listaRecomendacao()
-    .subscribe(data => {
-      for (let i = 0; i < data.length; i++) {
-        if ((data[i].emailRecomendou == localStorage.getItem("email")
-        && data[i].emailRecomendada == localStorage.getItem("det_email"))
-        ||
-        ((data[i].emailRecomendou == localStorage.getItem("det_email")
-        && data[i].emailRecomendada == localStorage.getItem("email")))) {
-          this.recomendou = true;
-          this.pessoaRecomendada.desfazer = false;
+    if (this.recomendou = false) {
+      this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
+      this.pessoaRecomendada.emailRecomendou = localStorage.getItem("email");
+      this.pessoaRecomendada.desfazer = false;
+      this.recomendou = true;
 
-          this.service.editRecomendacao(this.pessoaRecomendada).subscribe(data => {});
+      this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => { });
+
+      this.service.getCientist(localStorage.getItem("det_email")).subscribe(
+        data => {
+          data.curtida++;
+          this.service.atualizarPerfil(data).subscribe(x => {
+          })
         }
-      }
-      if (this.recomendou = false) {
-        this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
-        this.pessoaRecomendada.emailRecomendou = localStorage.getItem("email");
-        this.pessoaRecomendada.desfazer = false;
-        this.recomendou = true;
-        this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => {});
-      }
-    })
+      );
+    }
   }
 
   desrecomendar() {
-    this.service.getCientist(localStorage.getItem("det_email")).subscribe(
-      data => {
-        data.curtida--;
-        this.service.atualizarPerfil(data).subscribe(x => {
-        })
-      }
-    );
+    if (this.recomendou = true) {
+      this.service.getCientist(localStorage.getItem("det_email")).subscribe(
+        data => {
+          data.curtida--;
+          this.service.atualizarPerfil(data).subscribe(x => {
+          })
+        }
+      );
 
-    this.pessoaRecomendada.desfazer = true;
+      this.pessoaRecomendada.desfazer = true;
 
-    this.service.editRecomendacao(this.pessoaRecomendada).subscribe(
-      data => {
-      }
-    );
+      this.service.editRecomendacao(this.pessoaRecomendada).subscribe(
+        data => {
+        }
+      );
 
-    this.recomendou = false;
+      this.recomendou = false;
+    }
+
   }
 
   curtir() {
@@ -217,8 +214,8 @@ export class DetailsComponent implements OnInit {
             && (data[i].solicitado == true || data[i].aceite == true || data[i].recusado == true)) {
             this.desabilitaSolicitacao = true;
           } else if (data[i].emailRemetente == localStorage.getItem("email")
-          && data[i].emailMandatario == localStorage.getItem("det_email")
-          && (data[i].solicitado == true || data[i].aceite == true || data[i].recusado == true)) {
+            && data[i].emailMandatario == localStorage.getItem("det_email")
+            && (data[i].solicitado == true || data[i].aceite == true || data[i].recusado == true)) {
             this.desabilitaSolicitacao = true;
           }
         }
@@ -227,19 +224,19 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.Detalhe();    
+    this.Detalhe();
     this.listaRecomendada();
     this.verificaSolicitacao();
-    this.searchPosts();  
+    this.searchPosts();
     this.getAmigos();
     this.getDetAmigos();
-    this.intersecao();  
+    this.intersecao();
     this.verificaRecomendar();
 
     this.emailLogado = localStorage.getItem("email");
     if (!(this.emailLogado == localStorage.getItem("det_email"))) {
       this.auth = true;
-    }      
+    }
   }
 
   searchPosts() {
