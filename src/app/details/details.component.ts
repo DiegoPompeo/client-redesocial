@@ -154,7 +154,6 @@ export class DetailsComponent implements OnInit {
   recomendar() {
       this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
       this.pessoaRecomendada.emailRecomendou = localStorage.getItem("email");
-      this.pessoaRecomendada.desfazer = false;
       this.recomendou = true;
 
       this.service.editRecomendacao(this.pessoaRecomendada).subscribe(data => { });
