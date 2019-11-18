@@ -48,7 +48,7 @@ export class ServiceService {
 
   //AtualizaPost
   atualizaPost(post: Post): Observable<Post>{
-    return this.http.post<Post>(this.url + "/atualizaPost/" + post.id, post, this.httpOptions);
+    return this.http.post<Post>(this.url + "/atualizaPost/" + post.codPost, post, this.httpOptions);
   }
 
   //ReadPostByEmail

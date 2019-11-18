@@ -40,6 +40,7 @@ export class ProfileComponent implements OnInit {
       id: null,
       conteudo: '',
       email: '',
+      codPost:'',
       curtidas: 0
     }
   }

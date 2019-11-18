@@ -25,7 +25,6 @@ export class DetailsComponent implements OnInit {
   desabilita: boolean;
   recomendou = false;
   amizade: Amizade = new Amizade();
-  numberOfLikes : number = 0;
 
   muca: boolean = false;
 
@@ -219,14 +218,15 @@ export class DetailsComponent implements OnInit {
     );
     this.recomendou = false;
   }
-
   
-  likeButtonClick() {
-    this.numberOfLikes++;
+  likeButtonClick(post: Post) {
+    post.curtidas++;
+    this.service.atualizaPost(post).subscribe(data => {});
   }
 
-  dislikeButtonClick() {
-    this.numberOfLikes--;
+  dislikeButtonClick(post: Post) {
+    post.curtidas--;
+    this.service.atualizaPost(post).subscribe(data => {});
   }
 
   solicitarAmizade() {

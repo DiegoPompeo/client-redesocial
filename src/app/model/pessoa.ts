@@ -31,6 +31,7 @@ export class Post{
     id: number;
     conteudo: string;
     email: string;
+    codPost: string;
     curtidas: number;
 }
 
