@@ -158,7 +158,7 @@ export class DetailsComponent implements OnInit {
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].emailRecomendada == localStorage.getItem("det_email") &&
-          data[i].emailRecomendou == localStorage.getItem("det_email")) {
+          data[i].emailRecomendou == localStorage.getItem("email")) {
             existe = true;
           }          
         }
@@ -191,7 +191,7 @@ export class DetailsComponent implements OnInit {
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].emailRecomendada == localStorage.getItem("det_email") &&
-          data[i].emailRecomendou == localStorage.getItem("det_email")) {
+          data[i].emailRecomendou == localStorage.getItem("email")) {
             existe = true;
           }          
         }
