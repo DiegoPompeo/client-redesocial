@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { Pessoa, Post } from '../model/pessoa';
+import { Pessoa, Post, Amizade } from '../model/pessoa';
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
   interesses: any;
   verifica = false;
   listaAmigos: Pessoa[] = new Array<Pessoa>();
+  amizadeAux: Amizade = new Amizade();
 
   constructor(
     private authService: AuthService,
@@ -58,24 +59,6 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['amigos']);
   }
 
-  listaSolicitacao(){
-    this.service.listaAmizade().subscribe(
-      data => {
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].emailRemetente == localStorage.getItem("email")
-          && data[i].solicitado == true) {
-            this.service.getCientist(data[i].emailMandatario).subscribe(
-              x => {
-                this.mandatario = x;
-                this.solicita.push(this.mandatario);
-              }
-            )
-          }          
-        }
-      }
-    );
-  }
- 
   aceita(p: Pessoa){
     this.service.listaAmizade().subscribe(
       data => {
@@ -85,10 +68,9 @@ export class ProfileComponent implements OnInit {
             && data[i].emailMandatario == p.email 
             && data[i].emailRemetente == localStorage.getItem("email")
             && data[i].solicitado == true) {
-            data[i].aceite = true;
-            data[i].solicitado = false;            
+            this.amizadeAux = data[i];
             
-            this.service.atualizaSolicitacao(data[i]).subscribe(data => {}); 
+            this.service.aceitaSolicitacao(this.amizadeAux).subscribe(data => {}); 
           }
         }
       }
@@ -106,16 +88,33 @@ export class ProfileComponent implements OnInit {
             && data[i].emailMandatario == p.email 
             && data[i].emailRemetente == localStorage.getItem("email")
             && data[i].solicitado == true) {
-            data[i].solicitado = false;
-            data[i].recusado = true;
+            this.amizadeAux = data[i];
             
-            this.service.atualizaSolicitacao(data[i]).subscribe(data => {});                      
+            this.service.recusaSolicitacao(this.amizadeAux).subscribe(data => {});                      
           }
         }
       }
     ); 
     let numero = this.solicita.indexOf(p);
     this.solicita.splice(numero);
+  }
+
+  listaSolicitacao(){
+    this.service.listaAmizade().subscribe(
+      data => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].emailRemetente == localStorage.getItem("email")
+          && data[i].solicitado == true) {
+            this.service.getCientist(data[i].emailMandatario).subscribe(
+              x => {
+                this.mandatario = x;
+                this.solicita.push(this.mandatario);
+              }
+            )
+          }          
+        }
+      }
+    );
   }
 
   onSubmit() {

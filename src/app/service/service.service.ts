@@ -89,8 +89,15 @@ export class ServiceService {
     return this.http.get<Amizade[]>(this.url + "/listaAmizade")
   }
  
-  //AtualizaSolicitacao
-  atualizaSolicitacao(amizade: Amizade): Observable<Amizade>{
+  //AceitaSolicitacao
+  aceitaSolicitacao(amizade: Amizade): Observable<Amizade>{
+    return this.http.put<Amizade>(this.url + "/respostaSolicitacao/" 
+    + amizade.emailMandatario + "/" + amizade.emailRemetente
+    , amizade, this.httpOptions);
+  }
+
+  //RecusaSolicitacao
+  recusaSolicitacao(amizade: Amizade): Observable<Amizade>{
     return this.http.put<Amizade>(this.url + "/respostaSolicitacao/" 
     + amizade.emailMandatario + "/" + amizade.emailRemetente
     , amizade, this.httpOptions);
