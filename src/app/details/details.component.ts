@@ -151,23 +151,7 @@ export class DetailsComponent implements OnInit {
       })
   }
 
-  recomendar() {
-
-    this.service.listaRecomendacao()
-      .subscribe(data => {
-        for (let i = 0; i < data.length; i++) {
-          if ((
-            data[i].emailRecomendou == localStorage.getItem("email")
-            && data[i].emailRecomendada == localStorage.getItem("det_email"))) {
-              this.service.recomenda(data[i]).subscribe(data => { });
-              break;
-          } else {
-            this.service.addRecomendacao(data[i]).subscribe(data =>{});
-            break;
-          }
-        }
-      })
-
+  recomendar() {    
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
       data => {
         data.curtida++;
@@ -175,18 +159,10 @@ export class DetailsComponent implements OnInit {
         })
       }
     );
+    this.recomendou = true;
   }
 
-  desrecomendar() {
-    this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
-    this.pessoaRecomendada.emailRecomendou = localStorage.getItem("email");
-    this.recomendou = false;
-
-    this.service.desrecomenda(this.pessoaRecomendada).subscribe(
-      data => {
-      }
-    );
-
+  desrecomendar() {    
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
       data => {
         data.curtida--;
@@ -194,6 +170,7 @@ export class DetailsComponent implements OnInit {
         })
       }
     );
+    this.recomendou = false;
   }
 
   curtir() {
