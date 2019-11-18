@@ -26,6 +26,8 @@ export class DetailsComponent implements OnInit {
   recomendou = false;
   amizade: Amizade = new Amizade();
 
+  muca: boolean = false;
+
   listaAmigos: Pessoa[] = new Array<Pessoa>();
   listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
   amigosEmComum: Pessoa[] = new Array<Pessoa>();
@@ -217,12 +219,13 @@ export class DetailsComponent implements OnInit {
     this.recomendou = false;
   }
 
-  curtir() {
-    
+  curtir(post: Post) {
+    this.service.atualizaPost(post).subscribe(data => {data.curtidas++});
+    this.muca = true;
   }
-
-  descurtir(){
-
+  descurtir(post: Post) {
+    this.service.atualizaPost(post).subscribe(data => {data.curtidas--});
+    this.muca = false;
   }
 
   solicitarAmizade() {

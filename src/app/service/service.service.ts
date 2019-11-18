@@ -46,6 +46,11 @@ export class ServiceService {
     return this.http.post<Post>(this.url + "/addPost", post, this.httpOptions);
   }
 
+  //AtualizaPost
+  atualizaPost(post: Post): Observable<Post>{
+    return this.http.post<Post>(this.url + "/atualizaPost/" + post.id, post, this.httpOptions);
+  }
+
   //ReadPostByEmail
   verPost(email: string){
     return this.http.get<Post[]>(this.url+ "/verPost/" + email);
