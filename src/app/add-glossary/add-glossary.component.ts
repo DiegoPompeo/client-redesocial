@@ -36,6 +36,7 @@ export class AddGlossaryComponent implements OnInit {
       data => {       
       }
     );
+    this.registerForm.get('nome').setValue("");
   }
 
   
