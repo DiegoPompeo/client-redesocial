@@ -134,15 +134,15 @@ export class DetailsComponent implements OnInit {
     this.service.listaRecomendacao()
       .subscribe(data => {
         for (let i = 0; i < data.length; i++) {
-          if ((data[i].emailRecomendou == localStorage.getItem("email")
+          if ((
+            data[i].emailRecomendou == localStorage.getItem("email")
             && data[i].emailRecomendada == localStorage.getItem("det_email"))
-            ||
-            ((data[i].emailRecomendou == localStorage.getItem("det_email")
-              && data[i].emailRecomendada == localStorage.getItem("email"))
-
-              && data[i].desfazer == true)) {
+            && data[i].desfazer == false) {
             this.recomendou = false;
-          } else {
+          } else if ((
+          data[i].emailRecomendou == localStorage.getItem("email")
+          && data[i].emailRecomendada == localStorage.getItem("det_email"))
+          && data[i].desfazer == true){
             this.recomendou = true;
           }
         }
