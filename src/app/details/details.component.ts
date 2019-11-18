@@ -221,13 +221,15 @@ export class DetailsComponent implements OnInit {
   }
 
   curtir(post: Post) {
-    this.c++;
+    post.curtidas++;
+    this.service.atualizaPost(post).subscribe();
     this.muca = true;
   }
 
   descurtir(post: Post) {
-    this.c--;
-    this.muca = false;
+    post.curtidas--;
+    this.service.atualizaPost(post).subscribe();
+    this.muca = true;
   }
 
   solicitarAmizade() {
