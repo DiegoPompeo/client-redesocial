@@ -25,6 +25,7 @@ export class DetailsComponent implements OnInit {
   desabilita: boolean;
   recomendou = false;
   amizade: Amizade = new Amizade();
+  c: number = 0;
 
   muca: boolean = false;
 
@@ -220,12 +221,12 @@ export class DetailsComponent implements OnInit {
   }
 
   curtir(post: Post) {
-    
+    this.c++;
     this.muca = true;
   }
 
   descurtir(post: Post) {
-    
+    this.c--;
     this.muca = false;
   }
 

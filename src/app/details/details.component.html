@@ -71,10 +71,10 @@
                         <div class="card-body">
                             <p class="card-text">{{post.conteudo}}</p>
                             <div *ngIf="!muca">
-                                <button (click)="curtir(post)" class="btn btn-light">Like</button>
+                                <button (click)="curtir(post)" class="btn btn-light">{{c}} Like</button>
                             </div>
                             <div *ngIf="muca">
-                                <button (click)="descurtir(post)" class="btn btn-light">Like</button>
+                                <button (click)="descurtir(post)" class="btn btn-dark">{{c}} Like</button>
                             </div>
                         </div>
                     </div>
