@@ -14,7 +14,7 @@ export class DetailsComponent implements OnInit {
   pessoa: Pessoa = new Pessoa();
   cientista: Pessoa = new Pessoa();
   cientistas: Pessoa[];
-  post: Post = new Post();
+  post: Post;
   posts: Post[];
   interesses: any;
   pessoaRecomendada: PessoaRecomendada = new PessoaRecomendada();
@@ -229,7 +229,6 @@ export class DetailsComponent implements OnInit {
   dislikeButtonClick(post: Post) {
     post.curtidas--;
     this.service.atualizaPost(post).subscribe(data => {
-      this.post = data;
     });
   }
 
