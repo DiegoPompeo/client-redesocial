@@ -179,6 +179,10 @@ export class DetailsComponent implements OnInit {
   }
 
   curtir() {
+    
+  }
+
+  descurtir(){
 
   }
 

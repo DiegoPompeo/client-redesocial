@@ -74,7 +74,10 @@
                 <div *ngFor="let post of posts">
                     <div class="card mt-3 mb-3">
                         <div class="card-body">
-                            <p class="card-text">{{post.conteudo}}</p>                            
+                            <p class="card-text">{{post.conteudo}}</p>                                                        
+                        </div>
+                        <div class="card-footer">
+                            <p class="card-text">{{post.curtidas}} Like</p>
                         </div>
                     </div>
                 </div>
