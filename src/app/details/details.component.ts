@@ -23,7 +23,7 @@ export class DetailsComponent implements OnInit {
   auth: boolean = false;
   desabilitaSolicitacao = false;
   desabilita: boolean;
-  recomendou: boolean = false;
+  recomendou = false;
   amizade: Amizade = new Amizade();
 
   listaAmigos: Pessoa[] = new Array<Pessoa>();
@@ -134,16 +134,16 @@ export class DetailsComponent implements OnInit {
     this.service.listaRecomendacao()
       .subscribe(data => {
         for (let i = 0; i < data.length; i++) {
-          if (data[i].emailRecomendou == localStorage.getItem("email")
-            && data[i].emailRecomendada == localStorage.getItem("det_email")
-            && data[i].desfazer == true) {
-            this.recomendou = true;
-            break;
-          } else if (data[i].emailRecomendou == localStorage.getItem("email")
-          && data[i].emailRecomendada == localStorage.getItem("det_email")
-          && data[i].desfazer == false) {
+          if ((data[i].emailRecomendou == localStorage.getItem("email")
+            && data[i].emailRecomendada == localStorage.getItem("det_email"))
+            ||
+            ((data[i].emailRecomendou == localStorage.getItem("det_email")
+              && data[i].emailRecomendada == localStorage.getItem("email"))
+
+              && data[i].desfazer == true)) {
             this.recomendou = false;
-            break;
+          } else {
+            this.recomendou = true;
           }
         }
       })
@@ -151,30 +151,41 @@ export class DetailsComponent implements OnInit {
 
   recomendar() {
     this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
-    this.pessoaRecomendada.emailRecomendou = localStorage.getItem("email");
-    this.pessoaRecomendada.desfazer = true;
-    this.service.addRecomendacao(this.pessoaRecomendada).subscribe();
-    
-    this.service.getCientist(localStorage.getItem("det_email"))
-    .subscribe(data => {
-      data.curtida++;
-      this.service.atualizarPerfil(data).subscribe(x => {});
-    });
-    this.recomendou = true;
+      this.pessoaRecomendada.emailRecomendou = localStorage.getItem("email");
+      this.pessoaRecomendada.desfazer = false;
+      this.recomendou = true;
+
+      this.service.editRecomendacao(this.pessoaRecomendada).subscribe(data => { });
+
+      this.service.getCientist(localStorage.getItem("det_email")).subscribe(
+        data => {
+          data.curtida++;
+          this.service.atualizarPerfil(data).subscribe(x => {
+          })
+        }
+      );
   }
 
   desrecomendar() {
-    this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
-    this.pessoaRecomendada.emailRecomendou = localStorage.getItem("email");
-    this.pessoaRecomendada.desfazer = false;
-    this.service.editRecomendacao(this.pessoaRecomendada).subscribe();    
+    if (this.recomendou = true) {
+      this.service.getCientist(localStorage.getItem("det_email")).subscribe(
+        data => {
+          data.curtida--;
+          this.service.atualizarPerfil(data).subscribe(x => {
+          })
+        }
+      );
 
-    this.service.getCientist(localStorage.getItem("det_email"))
-    .subscribe(data => {
-      data.curtida--;
-      this.service.atualizarPerfil(data).subscribe(x => {});
-    });
-    this.recomendou = false;
+      this.pessoaRecomendada.desfazer = true;
+
+      this.service.editRecomendacao(this.pessoaRecomendada).subscribe(
+        data => {
+        }
+      );
+
+      this.recomendou = false;
+    }
+
   }
 
   curtir() {
