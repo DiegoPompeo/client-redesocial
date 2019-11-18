@@ -14,7 +14,7 @@ export class DetailsComponent implements OnInit {
   pessoa: Pessoa = new Pessoa();
   cientista: Pessoa = new Pessoa();
   cientistas: Pessoa[];
-  post: Post;
+  post: Post = new Post();
   posts: Post[];
   interesses: any;
   pessoaRecomendada: PessoaRecomendada = new PessoaRecomendada();
