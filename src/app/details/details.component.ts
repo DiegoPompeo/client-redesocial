@@ -154,10 +154,9 @@ export class DetailsComponent implements OnInit {
   recomendar() {
     this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
     this.pessoaRecomendada.emailRecomendou = localStorage.getItem("email");
-    this.pessoaRecomendada.desfazer = false;
     this.recomendou = true;
 
-    this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => { });
+    this.service.recomenda(this.pessoaRecomendada).subscribe(data => { });
 
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
       data => {
@@ -171,7 +170,13 @@ export class DetailsComponent implements OnInit {
   desrecomendar() {
     this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
     this.pessoaRecomendada.emailRecomendou = localStorage.getItem("email");
-    this.pessoaRecomendada.desfazer = true;
+    this.recomendou = false;
+
+    this.service.desrecomenda(this.pessoaRecomendada).subscribe(
+      data => {
+      }
+    );
+
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
       data => {
         data.curtida--;
@@ -179,15 +184,6 @@ export class DetailsComponent implements OnInit {
         })
       }
     );
-
-    this.service.editRecomendacao(this.pessoaRecomendada).subscribe(
-      data => {
-      }
-    );
-
-    this.recomendou = false;
-
-
   }
 
   curtir() {
