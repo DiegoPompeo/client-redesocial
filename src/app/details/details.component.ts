@@ -220,13 +220,17 @@ export class DetailsComponent implements OnInit {
   }
   
   likeButtonClick(post: Post) {
-    post.curtidas++;
-    this.service.atualizaPost(post).subscribe(data => {});
+    this.service.atualizaPost(post).subscribe(data => {
+      this.post.curtidas++;
+      this.post = data;
+    });
   }
 
   dislikeButtonClick(post: Post) {
-    post.curtidas--;
-    this.service.atualizaPost(post).subscribe(data => {});
+    this.service.atualizaPost(post).subscribe(data => {
+      this.post.curtidas--;
+      this.post = data;
+    });
   }
 
   solicitarAmizade() {
