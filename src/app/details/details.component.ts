@@ -151,12 +151,29 @@ export class DetailsComponent implements OnInit {
       })
   }
 
-  recomendar() {    
+  recomendar() {   
+    let existe: boolean;
+
+    this.service.listaRecomendacao().subscribe(
+      data => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].emailRecomendada == localStorage.getItem("det_email") &&
+          data[i].emailRecomendou == localStorage.getItem("det_email")) {
+            existe = true;
+          }          
+        }
+      }
+    );
     this.pessoaRecomendada.emailRecomendou = localStorage.getItem("email");
     this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
     this.pessoaRecomendada.desfazer = false;
 
-    this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => {});
+    if(!existe){  
+      this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => {});
+    } else {  
+      this.service.recomenda(this.pessoaRecomendada).subscribe(data => {});
+    }
+
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
       data => {
         data.curtida++;
@@ -167,7 +184,29 @@ export class DetailsComponent implements OnInit {
     this.recomendou = true;
   }
 
-  desrecomendar() {    
+  desrecomendar() {   
+    let existe: boolean;
+
+    this.service.listaRecomendacao().subscribe(
+      data => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].emailRecomendada == localStorage.getItem("det_email") &&
+          data[i].emailRecomendou == localStorage.getItem("det_email")) {
+            existe = true;
+          }          
+        }
+      }
+    );
+    this.pessoaRecomendada.emailRecomendou = localStorage.getItem("email");
+    this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
+    this.pessoaRecomendada.desfazer = true;
+
+    if(!existe){  
+      this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => {});
+    } else {  
+      this.service.desrecomenda(this.pessoaRecomendada).subscribe(data => {});
+    }
+
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
       data => {
         data.curtida--;
