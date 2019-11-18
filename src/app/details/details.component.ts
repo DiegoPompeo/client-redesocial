@@ -164,8 +164,10 @@ export class DetailsComponent implements OnInit {
             && data[i].emailRecomendada == localStorage.getItem("det_email"))) {
               this.pessoaRecomendada.desfazer = true;
               this.service.recomenda(this.pessoaRecomendada).subscribe(data => { });
+              break;
           } else {
             this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data =>{});
+            break;
           }
         }
       })
