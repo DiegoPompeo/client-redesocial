@@ -23,7 +23,7 @@ export class DetailsComponent implements OnInit {
   auth: boolean = false;
   desabilitaSolicitacao = false;
   desabilita: boolean;
-  recomendou: boolean;
+  recomendou: boolean = false;
   amizade: Amizade = new Amizade();
 
   listaAmigos: Pessoa[] = new Array<Pessoa>();
@@ -144,8 +144,6 @@ export class DetailsComponent implements OnInit {
           && data[i].desfazer == false) {
             this.recomendou = false;
             break;
-          } else {
-            this.recomendou = false;
           }
         }
       })
