@@ -220,11 +220,12 @@ export class DetailsComponent implements OnInit {
   }
 
   curtir(post: Post) {
-    this.service.atualizaPost(post).subscribe(data => {data.curtidas++});
+    
     this.muca = true;
   }
+
   descurtir(post: Post) {
-    this.service.atualizaPost(post).subscribe(data => {data.curtidas--});
+    
     this.muca = false;
   }
 
