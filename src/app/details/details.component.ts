@@ -176,8 +176,6 @@ export class DetailsComponent implements OnInit {
         }
       );
 
-      this.pessoaRecomendada.desfazer = true;
-
       this.service.editRecomendacao(this.pessoaRecomendada).subscribe(
         data => {
         }
