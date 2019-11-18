@@ -157,7 +157,7 @@ export class DetailsComponent implements OnInit {
     this.pessoaRecomendada.desfazer = true;
     this.recomendou = true;
 
-    this.service.editRecomendacao(this.pessoaRecomendada).subscribe(data => { });
+    this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => { });
 
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
       data => {
