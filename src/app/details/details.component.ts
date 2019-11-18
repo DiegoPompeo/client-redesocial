@@ -221,8 +221,11 @@ export class DetailsComponent implements OnInit {
   
   likeButtonClick(post: Post) {
     post.curtidas++;
-    console.log("post",post);
     this.service.atualizaPost(post).subscribe(data => {
+      this.post.codPost = data.codPost;
+      this.post.conteudo = data.conteudo;
+      this.post.curtidas = data.curtidas;
+      this.post.email = data.email;
       this.post = data;
       console.log("this.post",this.post);
     });
