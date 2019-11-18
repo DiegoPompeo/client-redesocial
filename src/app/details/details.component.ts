@@ -26,8 +26,6 @@ export class DetailsComponent implements OnInit {
   recomendou = false;
   amizade: Amizade = new Amizade();
 
-  muca: boolean = false;
-
   listaAmigos: Pessoa[] = new Array<Pessoa>();
   listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
   amigosEmComum: Pessoa[] = new Array<Pessoa>();
@@ -222,18 +220,7 @@ export class DetailsComponent implements OnInit {
   likeButtonClick(post: Post) {
     post.curtidas++;
     this.service.atualizaPost(post).subscribe(data => {
-      this.post.codPost = data.codPost;
-      this.post.conteudo = data.conteudo;
-      this.post.curtidas = data.curtidas;
-      this.post.email = data.email;
       this.post = data;
-      console.log("this.post",this.post);
-    });
-  }
-
-  dislikeButtonClick(post: Post) {
-    post.curtidas--;
-    this.service.atualizaPost(post).subscribe(data => {
     });
   }
 

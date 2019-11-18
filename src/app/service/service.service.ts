@@ -47,7 +47,7 @@ export class ServiceService {
   }
 
   //AtualizaPost
-  atualizaPost(post: Post): Observable<Post>{
+  atualizaPost(post: Post){
     return this.http.put<Post>(this.url + "/atualizaPost/" + post.codPost, post, this.httpOptions);
   }
 
