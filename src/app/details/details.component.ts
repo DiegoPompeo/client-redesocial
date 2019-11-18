@@ -144,6 +144,8 @@ export class DetailsComponent implements OnInit {
           && data[i].emailRecomendada == localStorage.getItem("det_email"))
           && data[i].desfazer == true){
             this.recomendou = true;
+          } else {
+            this.recomendou = false;
           }
         }
       })

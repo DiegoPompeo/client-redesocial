@@ -58,7 +58,9 @@ export class ServiceService {
 
   //EditRecomendacao
   editRecomendacao(pessoaRecomendada: PessoaRecomendada): Observable<PessoaRecomendada>{
-    return this.http.put<PessoaRecomendada>(this.url + "/editRecomendacao/" + pessoaRecomendada.emailRecomendada, pessoaRecomendada, this.httpOptions);
+    return this.http.put<PessoaRecomendada>(this.url + "/editRecomendacao/" + 
+    pessoaRecomendada.emailRecomendou + "/" + pessoaRecomendada.emailRecomendada, 
+    pessoaRecomendada, this.httpOptions);
   }
 
   //ListRecomendacao
