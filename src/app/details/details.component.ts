@@ -152,9 +152,6 @@ export class DetailsComponent implements OnInit {
   }
 
   recomendar() {
-    this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
-    this.pessoaRecomendada.emailRecomendou = localStorage.getItem("email");
-    this.recomendou = true;
 
     this.service.listaRecomendacao()
       .subscribe(data => {
@@ -162,17 +159,14 @@ export class DetailsComponent implements OnInit {
           if ((
             data[i].emailRecomendou == localStorage.getItem("email")
             && data[i].emailRecomendada == localStorage.getItem("det_email"))) {
-              this.pessoaRecomendada.desfazer = true;
-              this.service.recomenda(this.pessoaRecomendada).subscribe(data => { });
+              this.service.recomenda(data[i]).subscribe(data => { });
               break;
           } else {
-            this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data =>{});
+            this.service.addRecomendacao(data[i]).subscribe(data =>{});
             break;
           }
         }
       })
-
-    this.service.recomenda(this.pessoaRecomendada).subscribe(data => { });
 
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
       data => {
