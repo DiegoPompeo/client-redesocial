@@ -152,6 +152,11 @@ export class DetailsComponent implements OnInit {
   }
 
   recomendar() {    
+    this.pessoaRecomendada.emailRecomendou = localStorage.getItem("email");
+    this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
+    this.pessoaRecomendada.desfazer = false;
+
+    this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => {});
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
       data => {
         data.curtida++;
