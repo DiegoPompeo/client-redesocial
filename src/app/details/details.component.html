@@ -70,11 +70,12 @@
                     <div class="card mt-3 mb-3">
                         <div class="card-body">
                             <p class="card-text">{{post.conteudo}}</p>
-                            <div *ngIf="!muca">
-                                <button (click)="curtir(post)" class="btn btn-light">{{c}} Like</button>
-                            </div>
-                            <div *ngIf="muca">
-                                <button (click)="descurtir(post)" class="btn btn-dark">{{c}} Like</button>
+                            <div class="container">
+                                <div class="row">
+                                    <p class="col">{{numberOfLikes}}</p>
+                                    <button class="col btn btn-success" (click)="likeButtonClick()">Like</button>
+                                    <button class="col btn btn-danger" (click)="dislikeButtonClick()">Dislike</button>
+                                </div>
                             </div>
                         </div>
                     </div>
