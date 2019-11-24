@@ -22,6 +22,7 @@ import { UpdateSuccessComponent } from './update-success/update-success.componen
 import { GlossarySuccessComponent } from './glossary-success/glossary-success.component';
 import { DesrecomendacaoComponent } from './desrecomendacao/desrecomendacao.component';
 import { ListaAmigosComponent } from './lista-amigos/lista-amigos.component';
+import { AmigosComComponent } from './amigos-com/amigos-com.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ListaAmigosComponent } from './lista-amigos/lista-amigos.component';
     UpdateSuccessComponent,
     GlossarySuccessComponent,
     DesrecomendacaoComponent,
-    ListaAmigosComponent
+    ListaAmigosComponent,
+    AmigosComComponent
   ],
   imports: [
     BrowserModule,

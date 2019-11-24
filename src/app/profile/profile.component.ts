@@ -132,11 +132,6 @@ export class ProfileComponent implements OnInit {
     this.atualiza = false;
   }
 
-  msgAtualizaAmigos(){
-    this.ngOnInit();
-    this.atualizaAmigos = false;
-  }
-
   searchPosts() {
     this.service.verPost(localStorage.getItem("email"))
     .subscribe(data => {
@@ -160,9 +155,7 @@ export class ProfileComponent implements OnInit {
 
         this.cientist = data;
         localStorage.setItem("profile_email", data.email);        
-        this.interesses = data.interesse.split(",");
-        
-        
+        this.interesses = data.interesse.split(","); 
       });
   }
 
