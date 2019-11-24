@@ -30,12 +30,17 @@ export class DetailsComponent implements OnInit {
   listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
   amigosEmComum: Pessoa[] = new Array<Pessoa>();
 
+  show = true;
+
   constructor(
     private authService: AuthService,
     private service: ServiceService,
     private router: Router) {
   }
 
+  getAmigosEmComum(){
+    this.show = false;
+  }
 
   Detalhe() {
     let email = localStorage.getItem("det_email");
