@@ -176,13 +176,9 @@ export class DetailsComponent implements OnInit {
     
   }
   
-  likeButtonClick(post: Post) {
-    post.curtidas++;
-    this.service.atualizaPost(post).subscribe(data => {
-      this.post = data;
-    });
-
+  likeButtonClick(post: Post) {    
     var existe = false;
+    var curtirPost: CurtirPost = new CurtirPost();
 
     this.service.listaCurtidas().subscribe(
       data => {
@@ -190,12 +186,16 @@ export class DetailsComponent implements OnInit {
           if(data[i].idPost == post.codPost){
             existe = true;
           }
-          if (existe) {
-            data[i].idPost = post.codPost;
-            data[i].emailCurtiu = localStorage.getItem("email");
-            data[i].emailCurtido = localStorage.getItem("det_email");
+          if (!existe) {
+            post.curtidas++;
+            this.service.atualizaPost(post).subscribe(data => {
+              this.post = data;
+            });
+            curtirPost.idPost = post.codPost;
+            curtirPost.emailCurtiu = localStorage.getItem("email");
+            curtirPost.emailCurtido = localStorage.getItem("det_email");
         
-            this.service.curtirPost(data[i]).subscribe(data => {
+            this.service.curtirPost(curtirPost).subscribe(data => {
             })
           }          
         }
