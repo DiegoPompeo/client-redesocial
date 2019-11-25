@@ -99,9 +99,11 @@ export class RegisterComponent implements OnInit {
 
           if (this.submitted) {
             this.pessoa.curtir = 200;
+          }else {
+            this.pessoa.curtir = 50;
           }
 
-          this.pessoa.curtir = 50;
+          
 
           localStorage.setItem("email",this.pessoa.email);
     
