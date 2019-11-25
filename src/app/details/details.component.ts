@@ -187,7 +187,7 @@ export class DetailsComponent implements OnInit {
     this.service.listaCurtidas().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
-          if(data[i].idPost != post.codPost){
+          if(data[i].idPost == post.codPost){
             existe = true;
           }
           if (!existe) {
