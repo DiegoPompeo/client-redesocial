@@ -167,9 +167,9 @@ export class DetailsComponent implements OnInit {
     );
   }
   
-  likeButtonClick(post: Post) {    
-    post.curtidas++;
+  likeButtonClick(post: Post) {
     this.service.atualizaPost(post).subscribe(data => {
+      data.curtidas--;
       this.post = data;
     });
     this.service.getCientist(localStorage.getItem("email")).subscribe(
@@ -177,8 +177,7 @@ export class DetailsComponent implements OnInit {
         data.curtir--;
         this.service.atualizarPerfil(data).subscribe();
       }
-    );
-    
+    );    
   }
 
   getAmigos() {
