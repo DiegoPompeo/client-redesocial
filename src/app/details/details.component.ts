@@ -174,8 +174,7 @@ export class DetailsComponent implements OnInit {
     this.service.atualizaPost(post).subscribe(data => {
       this.post = data;
       this.service.descurtir(post.codPost);
-    });
-    
+    });    
   }
   
   likeButtonClick(post: Post) {    
@@ -189,7 +188,7 @@ export class DetailsComponent implements OnInit {
     curtirPost.emailCurtiu = localStorage.getItem("email");
     curtirPost.emailCurtido = localStorage.getItem("det_email");
     curtirPost.curtiu = true;
-
+    console.log(curtirPost);
     this.service.curtirPost(curtirPost).subscribe();
   }
 
