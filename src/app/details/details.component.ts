@@ -169,7 +169,7 @@ export class DetailsComponent implements OnInit {
   
   likeButtonClick(post: Post) {
     this.service.atualizaPost(post).subscribe(data => {
-      data.curtidas--;
+      data.curtidas++;
       this.post = data;
     });
     this.service.getCientist(localStorage.getItem("email")).subscribe(
