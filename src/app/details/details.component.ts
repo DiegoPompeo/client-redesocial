@@ -160,7 +160,7 @@ export class DetailsComponent implements OnInit {
   }
 
   verificaCurtir(post: Post){
-    this.service.verificaCurtida(post).subscribe(
+    return this.service.verificaCurtida(post).subscribe(
       data => {
         this.curtir = data;
       }
