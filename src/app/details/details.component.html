@@ -51,7 +51,8 @@
                     <button class="btn btn-info" (click)="getAmigosEmComum()">Ver amigos em comum</button>
                 </div>
                 <div *ngIf="!show">
-                    <app-amigos-com [listaAmigos]="listaAmigos" [listaAmigosDetails]="listaAmigosDetails"></app-amigos-com>
+                    <app-amigos-com [listaAmigos]="listaAmigos" [listaAmigosDetails]="listaAmigosDetails">
+                    </app-amigos-com>
                 </div>
             </div>
         </div>
@@ -65,7 +66,8 @@
                             <div class="container">
                                 <div class="row">
                                     <p class="col">{{post.curtidas}} like</p>
-                                    <button class="col btn btn-success mr-3" (click)="likeButtonClick(post)">Like</button>
+                                    <button class="col btn btn-success mr-3"
+                                        (click)="likeButtonClick(post)">Like</button>
                                 </div>
                             </div>
                         </div>
@@ -75,14 +77,28 @@
         </div>
 
         <div class="col-md-3">
-            <h3>Interesses</h3>
-            <div *ngIf="interesses">
-                <div *ngFor="let x of interesses;">
-                    <p>{{x}}</p>
+            <div class="mb-3">
+                <h3>Interesses</h3>
+                <div *ngIf="interesses">
+                    <div *ngFor="let x of interesses;">
+                        <p>{{x}}</p>
+                    </div>
+                </div>
+                <div *ngIf="!interesses">
+                    Nenhum interesse cadastrado.
                 </div>
             </div>
-            <div *ngIf="!interesses">
-                Nenhum interesse cadastrado.
+
+            <h3>Amigos de {{pessoa.nome}}</h3>
+            <div *ngIf="listaAmigos">
+                <div *ngFor="let amigo of listaAmigos">
+                    <div class="row">
+                        <img src="https://uifaces.co/images/man.svg" alt="" style="width: 120px;">
+                    </div>
+                    <div class="row text-center">
+                        <span>{{amigo.nome}}</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
