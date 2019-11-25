@@ -166,6 +166,14 @@ export class DetailsComponent implements OnInit {
       }
     );
   }
+
+  dislikeButtonClick(post: Post, curtirPost: CurtirPost){
+    post.curtidas++;
+    this.service.atualizaPost(post).subscribe(data => {
+      this.post = data;
+    });
+    this.service.descurtir(curtirPost);
+  }
   
   likeButtonClick(post: Post, curtirPost: CurtirPost) {
     post.curtidas++;
@@ -183,7 +191,6 @@ export class DetailsComponent implements OnInit {
       this.service.curtirPost(curtirPost).subscribe(data => {
       })
     }
-    this.curtir = true;
   }
 
   getAmigos() {
