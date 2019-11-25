@@ -161,18 +161,6 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  intersecao() {
-    this.getAmigos();
-    this.getDetAmigos();
-    for (let i = 0; i < this.listaAmigos.length; i++) {
-      for (let j = 0; j < this.listaAmigosDetails.length; j++) {
-        if (this.listaAmigos[i].email == this.listaAmigosDetails[j].email) {
-          this.amigosEmComum.push(this.listaAmigos[i]);
-        }
-      }
-    }
-  }
-
   getAmigos() {
     this.service.listaAmizade().subscribe(
       data => {
@@ -261,7 +249,6 @@ export class DetailsComponent implements OnInit {
     this.searchPosts();
     this.getAmigos();
     this.getDetAmigos();
-    this.intersecao();
     this.verificaRecomendar();
 
     this.emailLogado = localStorage.getItem("email");
