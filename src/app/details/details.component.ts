@@ -167,30 +167,40 @@ export class DetailsComponent implements OnInit {
     );
   }
 
-  dislikeButtonClick(post: Post, curtirPost: CurtirPost){
-    post.curtidas++;
+  dislikeButtonClick(post: Post){
+    post.curtidas--;
     this.service.atualizaPost(post).subscribe(data => {
       this.post = data;
+      this.service.descurtir(post.codPost);
     });
-    this.service.descurtir(curtirPost);
+    
   }
   
-  likeButtonClick(post: Post, curtirPost: CurtirPost) {
+  likeButtonClick(post: Post) {
     post.curtidas++;
     this.service.atualizaPost(post).subscribe(data => {
       this.post = data;
     });
 
-    if (curtirPost.curtir) {
-      this.service.descurtir(curtirPost);
-    } else {
-      curtirPost.idPost = post.codPost;
-      curtirPost.emailCurtiu = localStorage.getItem("email");
-      curtirPost.emailCurtido = localStorage.getItem("det_email");
+    var existe = false;
 
-      this.service.curtirPost(curtirPost).subscribe(data => {
-      })
-    }
+    this.service.listaCurtidas().subscribe(
+      data => {
+        for (let i = 0; i < data.length; i++) {
+          if(data[i].idPost != post.codPost){
+            existe = true;
+          }
+          if (!existe) {
+            data[i].idPost = post.codPost;
+            data[i].emailCurtiu = localStorage.getItem("email");
+            data[i].emailCurtido = localStorage.getItem("det_email");
+        
+            this.service.curtirPost(data[i]).subscribe(data => {
+            })
+          }          
+        }
+      }
+    );    
   }
 
   getAmigos() {

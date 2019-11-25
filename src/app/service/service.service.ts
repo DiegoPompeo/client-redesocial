@@ -126,8 +126,8 @@ export class ServiceService {
   }
 
   //DescurtirPost
-  descurtir(curtirPost: CurtirPost){
-    this.http.delete<CurtirPost>(this.url + "/descurtir/" + curtirPost.idPost, this.httpOptions);
+  descurtir(codPost: string){
+    this.http.delete<CurtirPost>(this.url + "/descurtir/" + codPost, this.httpOptions);
   }
 
   //ListaCurtidas
