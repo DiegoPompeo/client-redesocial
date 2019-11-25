@@ -156,6 +156,7 @@ export class DetailsComponent implements OnInit {
   
   likeButtonClick(post: Post) {
     post.curtidas++;
+    post.email = localStorage.getItem("det_email");
     this.service.atualizaPost(post).subscribe(data => {
       this.post = data;
     });
