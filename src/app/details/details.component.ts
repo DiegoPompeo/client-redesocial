@@ -190,7 +190,7 @@ export class DetailsComponent implements OnInit {
           if(data[i].idPost == post.codPost){
             existe = true;
           }
-          if (!existe) {
+          if (existe) {
             data[i].idPost = post.codPost;
             data[i].emailCurtiu = localStorage.getItem("email");
             data[i].emailCurtido = localStorage.getItem("det_email");
