@@ -18,7 +18,8 @@
             <p><b>Nível de Escolaridade: </b>{{cientist.nivelEscolaridade}}</p>
             <p><b>Cidade: </b>{{cientist.cidade}}</p>
             <p><b>Estado: </b>{{cientist.estado}}</p>
-            <p><b>Recomendações recebidas: </b>{{cientist.curtida}}</p>
+            <p><b>Recomendações recebidas: </b>{{cientist.curtida}}</p>            
+            <p>Você tem direito a <b>{{cientist.curtir}}</b> curtidas</p>
 
             <hr>
 
@@ -34,7 +35,6 @@
 
             <div *ngIf="cientist.paga">
                 <span>☆&nbsp;Você é um usuário premium</span>
-                <p>Você tem direito a {{cientist.curtir}} curtidas</p>
             </div>
 
             <button class="btn btn-dark" (click)="gotoUpdate(cientist)">Atualizar perfil</button>
