@@ -160,11 +160,13 @@ export class DetailsComponent implements OnInit {
   }
 
   verificaCurtir(post: Post){
+    var existe;
     this.service.verificaCurtida(post).subscribe(
       data => {
-        return data;
+        existe = data;
       }
     );
+    return existe;
   }
 
   dislikeButtonClick(post: Post){
