@@ -68,10 +68,10 @@
                                     <p class="col">{{post.curtidas}} like</p>
                                     <button class="col btn btn-success mr-3"
                                     (click)="likeButtonClick(post)"
-                                    *ngIf="!verificaCurtir(post)">Like</button>
+                                    *ngIf="verificaCurtir(post)">Like</button>
                                     <button class="col btn btn-danger mr-3"
                                     (click)="dislikeButtonClick(post)"
-                                    *ngIf="verificaCurtir(post)">Dislike</button>
+                                    *ngIf="!verificaCurtir(post)">Dislike</button>
                                 </div>
                             </div>
                         </div>
