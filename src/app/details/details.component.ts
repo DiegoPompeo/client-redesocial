@@ -185,20 +185,20 @@ export class DetailsComponent implements OnInit {
         for (let i = 0; i < data.length; i++) {
           if(data[i].idPost == post.codPost){
             existe = true;
-          }
-          if (!existe) {
-            post.curtidas++;
-            this.service.atualizaPost(post).subscribe(data => {
-              this.post = data;
-            });
-            curtirPost.idPost = post.codPost;
-            curtirPost.emailCurtiu = localStorage.getItem("email");
-            curtirPost.emailCurtido = localStorage.getItem("det_email");
-        
-            this.service.curtirPost(curtirPost).subscribe(data => {
-            })
-          }          
+          }                   
         }
+        if (!existe) {
+          post.curtidas++;
+          this.service.atualizaPost(post).subscribe(data => {
+            this.post = data;
+          });
+          curtirPost.idPost = post.codPost;
+          curtirPost.emailCurtiu = localStorage.getItem("email");
+          curtirPost.emailCurtido = localStorage.getItem("det_email");
+      
+          this.service.curtirPost(curtirPost).subscribe(data => {
+          })
+        } 
       }
     );    
   }
