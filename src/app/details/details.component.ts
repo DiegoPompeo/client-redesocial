@@ -34,7 +34,7 @@ export class DetailsComponent implements OnInit {
   show = true;
 
   listaCurtidas: CurtirPost[] = new Array<CurtirPost>();
-  curtir = false;
+  existe = false;
 
   constructor(
     private authService: AuthService,
@@ -160,13 +160,11 @@ export class DetailsComponent implements OnInit {
   }
 
   verificaCurtir(post: Post){
-    var existe;
-    this.service.verificaCurtida(post).subscribe(
+    return this.service.verificaCurtida(post).subscribe(
       data => {
-        existe = data;
+        this.existe = data;
       }
     );
-    return existe;
   }
 
   dislikeButtonClick(post: Post){
