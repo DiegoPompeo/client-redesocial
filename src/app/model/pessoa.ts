@@ -55,3 +55,11 @@ export class Amizade{
     recusado: boolean;
     solicitado: boolean;
 }
+
+export class CurtirPost{
+    id: number;
+    emailCurtiu: string;
+    emailCurtido: string;
+    idPost: string;
+    curtir: boolean;
+}

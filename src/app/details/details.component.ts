@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Pessoa, Post, PessoaRecomendada, Amizade } from '../model/pessoa';
+import { Pessoa, Post, PessoaRecomendada, Amizade, CurtirPost } from '../model/pessoa';
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
@@ -13,6 +13,7 @@ export class DetailsComponent implements OnInit {
 
   pessoa: Pessoa = new Pessoa();
   cientista: Pessoa = new Pessoa();
+  curtirPost: CurtirPost = new CurtirPost();
   cientistas: Pessoa[];
   post: Post;
   posts: Post[];
@@ -32,11 +33,14 @@ export class DetailsComponent implements OnInit {
 
   show = true;
 
+  muca = false;
+
   constructor(
     private authService: AuthService,
     private service: ServiceService,
     private router: Router) {
   }
+
 
   getAmigosEmComum(){
     this.show = false;
@@ -154,12 +158,22 @@ export class DetailsComponent implements OnInit {
     this.recomendou = false;
   }
   
-  likeButtonClick(post: Post) {
+  likeButtonClick(post: Post, curtirPost: CurtirPost) {
     post.curtidas++;
-    post.email = localStorage.getItem("det_email");
     this.service.atualizaPost(post).subscribe(data => {
       this.post = data;
     });
+
+    if (curtirPost.curtir) {
+      this.service.descurtir(curtirPost);
+    } else {
+      curtirPost.idPost = post.codPost;
+      curtirPost.emailCurtiu = localStorage.getItem("email");
+      curtirPost.emailCurtido = localStorage.getItem("det_email");
+
+      this.service.curtirPost(curtirPost).subscribe(data => {
+      })
+    }
   }
 
   getAmigos() {

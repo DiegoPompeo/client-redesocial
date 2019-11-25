@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Pessoa, PessoaLogin, Post, PessoaRecomendada, Glossario, Amizade } from '../model/pessoa';
+import { Pessoa, PessoaLogin, Post, PessoaRecomendada, Glossario, Amizade, CurtirPost } from '../model/pessoa';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -117,8 +117,16 @@ export class ServiceService {
  
   //ReadByEmailMandatario
   findByEmailMandatario(email: string){
-    return this.http.get<Amizade[]>(this.url + "/getAmizade/" + email)
+    return this.http.get<Amizade[]>(this.url + "/getAmizade/" + email);
   }
 
-  
+  //CurtirPost
+  curtirPost(curtirPost: CurtirPost){
+    return this.http.post<CurtirPost>(this.url + "/curtir", curtirPost, this.httpOptions);
+  }
+
+  //DescurtirPost
+  descurtir(curtirPost: CurtirPost){
+    this.http.delete<CurtirPost>(this.url + "/descurtir/" + curtirPost.idPost, this.httpOptions);
+  }
 }
