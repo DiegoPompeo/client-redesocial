@@ -160,9 +160,9 @@ export class DetailsComponent implements OnInit {
   }
 
   verificaCurtir(post: Post){
-    return this.service.verificaCurtida(post).subscribe(
+    this.service.verificaCurtida(post).subscribe(
       data => {
-        this.curtir = data;
+        return data;
       }
     );
   }
@@ -179,20 +179,15 @@ export class DetailsComponent implements OnInit {
   likeButtonClick(post: Post) {    
     var curtirPost: CurtirPost = new CurtirPost();
 
-    this.service.listaCurtidas().subscribe(
-      data => {
-        post.curtidas++;
-        this.service.atualizaPost(post).subscribe(data => {
-          this.post = data;
-        });
-        curtirPost.idPost = post.codPost;
-        curtirPost.emailCurtiu = localStorage.getItem("email");
-        curtirPost.emailCurtido = localStorage.getItem("det_email");
+    post.curtidas++;
+    this.service.atualizaPost(post).subscribe(data => {
+      this.post = data;
+    });
+    curtirPost.idPost = post.codPost;
+    curtirPost.emailCurtiu = localStorage.getItem("email");
+    curtirPost.emailCurtido = localStorage.getItem("det_email");
 
-        this.service.curtirPost(curtirPost).subscribe(data => {
-        })
-      }
-    );    
+    this.service.curtirPost(curtirPost).subscribe();
   }
 
   getAmigos() {
