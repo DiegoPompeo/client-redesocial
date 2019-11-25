@@ -32,7 +32,10 @@
 
             <hr>
 
-            <div *ngIf="cientist.paga"><span>☆&nbsp;Você é um usuário premium</span></div>
+            <div *ngIf="cientist.paga">
+                <span>☆&nbsp;Você é um usuário premium</span>
+                <p>Você tem direito a {{cientist.curtir}} curtidas</p>
+            </div>
 
             <button class="btn btn-dark" (click)="gotoUpdate(cientist)">Atualizar perfil</button>
 

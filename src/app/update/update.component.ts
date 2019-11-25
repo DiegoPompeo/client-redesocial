@@ -28,6 +28,7 @@ export class UpdateComponent implements OnInit {
     pessoa.dataValidade = '';
     pessoa.nomeNoCartao = '';
     pessoa.nroCartao = '';
+    pessoa.curtir = pessoa.curtir - 150;
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
         this.pessoa = data;

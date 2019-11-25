@@ -55,6 +55,7 @@ export class RegisterComponent implements OnInit {
       curtida: 0,
       paga: null,
       interesse: '',
+      curtir: 50,
     }
   }
 
@@ -95,6 +96,12 @@ export class RegisterComponent implements OnInit {
           this.pessoa.interesse = "";
 
           this.pessoa.paga = this.submitted;
+
+          if (this.submitted) {
+            this.pessoa.curtir = 200;
+          }
+
+          this.pessoa.curtir = 50;
 
           localStorage.setItem("email",this.pessoa.email);
     

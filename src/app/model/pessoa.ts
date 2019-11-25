@@ -20,6 +20,8 @@ export class Pessoa {
     curtida: number;
 
     interesse: string;
+
+    curtir: number;
 }
 
 export class PessoaLogin{

@@ -166,28 +166,19 @@ export class DetailsComponent implements OnInit {
       }
     );
   }
-
-  dislikeButtonClick(post: Post){
-    post.curtidas--;
-    this.service.atualizaPost(post).subscribe(data => {
-      this.post = data;
-      this.service.descurtir(post.codPost);
-    });    
-  }
   
   likeButtonClick(post: Post) {    
-    var curtirPost: CurtirPost = new CurtirPost();
-
     post.curtidas++;
     this.service.atualizaPost(post).subscribe(data => {
       this.post = data;
     });
-    curtirPost.idPost = post.codPost;
-    curtirPost.emailCurtiu = localStorage.getItem("email");
-    curtirPost.emailCurtido = localStorage.getItem("det_email");
-    curtirPost.curtiu = true;
-    console.log(curtirPost);
-    this.service.curtirPost(curtirPost).subscribe();
+    this.service.getCientist(localStorage.getItem("email")).subscribe(
+      data => {
+        data.curtir--;
+        this.service.atualizarPerfil(data).subscribe();
+      }
+    );
+    
   }
 
   getAmigos() {
