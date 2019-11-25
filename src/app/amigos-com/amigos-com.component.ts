@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Pessoa } from '../model/pessoa';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-amigos-com',
@@ -16,11 +17,16 @@ export class AmigosComComponent implements OnInit {
   @Input()
   listaAmigosDetails: Pessoa[] = new Array<Pessoa>();
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.intersecao();
   }
+
+  gotoDetails(cientist: Pessoa){
+    localStorage.setItem("det_email", cientist.email);
+    this.router.navigate(['details']);
+  }  
 
   intersecao(){
     for (let i = 0; i < this.listaAmigos.length; i++) {
