@@ -61,5 +61,5 @@ export class CurtirPost{
     emailCurtiu: string;
     emailCurtido: string;
     idPost: string;
-    curtir: boolean;
+    curtiu: boolean;
 }

@@ -188,6 +188,7 @@ export class DetailsComponent implements OnInit {
     curtirPost.idPost = post.codPost;
     curtirPost.emailCurtiu = localStorage.getItem("email");
     curtirPost.emailCurtido = localStorage.getItem("det_email");
+    curtirPost.curtiu = true;
 
     this.service.curtirPost(curtirPost).subscribe();
   }
