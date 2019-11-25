@@ -22,6 +22,7 @@ export class UpdatePremiumComponent implements OnInit {
   }
 
   update(pessoa: Pessoa) {
+    pessoa.curtir += 150;
     pessoa.paga = true;
     this.service.atualizarPerfil(pessoa).subscribe(
       data => {
