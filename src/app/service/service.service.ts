@@ -129,4 +129,14 @@ export class ServiceService {
   descurtir(curtirPost: CurtirPost){
     this.http.delete<CurtirPost>(this.url + "/descurtir/" + curtirPost.idPost, this.httpOptions);
   }
+
+  //ListaCurtidas
+  listaCurtidas(){
+    return this.http.get<CurtirPost[]>(this.url + "/listaCurtida");
+  }
+
+  //VerificaCurtida
+  verificaCurtida(post: Post){
+    return this.http.get<boolean>(this.url + "/verificaCurtida/" + post.codPost, this.httpOptions);
+  }
 }

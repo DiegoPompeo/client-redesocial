@@ -33,7 +33,8 @@ export class DetailsComponent implements OnInit {
 
   show = true;
 
-  muca = false;
+  listaCurtidas: CurtirPost[] = new Array<CurtirPost>();
+  curtir = false;
 
   constructor(
     private authService: AuthService,
@@ -157,6 +158,14 @@ export class DetailsComponent implements OnInit {
     );
     this.recomendou = false;
   }
+
+  verificaCurtir(post: Post){
+    this.service.verificaCurtida(post).subscribe(
+      data => {
+        this.curtir = data;
+      }
+    );
+  }
   
   likeButtonClick(post: Post, curtirPost: CurtirPost) {
     post.curtidas++;
@@ -174,6 +183,7 @@ export class DetailsComponent implements OnInit {
       this.service.curtirPost(curtirPost).subscribe(data => {
       })
     }
+    this.curtir = true;
   }
 
   getAmigos() {

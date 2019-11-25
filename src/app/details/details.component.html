@@ -67,8 +67,8 @@
                                 <div class="row">
                                     <p class="col">{{post.curtidas}} like</p>
                                     <button class="col btn btn-success mr-3"
-                                        (click)="likeButtonClick(post)"
-                                        [disabled]="curtir">Like</button>
+                                    (click)="likeButtonClick(post)"
+                                    [disabled]="verificaCurtir(post)">Like</button>
                                 </div>
                             </div>
                         </div>
