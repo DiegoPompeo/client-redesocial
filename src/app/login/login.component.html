@@ -9,20 +9,19 @@
     <div class="alert alert-danger mt-3 mb-3" *ngIf="msgError">
         Usuário ou senha digitados inválidos. Caso ainda não seja cadastrado, <a routerLink="/register">clique aqui</a>.
     </div>
-    <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+        <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()" ngNativeValidate>
 
         <div class="form-group row">
             <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
                 <input type="email" id="inputEmail" formControlName="email" class="form-control" placeholder="Email"
-                    required="true" autofocus="">
+                required="true" autofocus="">
             </div>
         </div>
         <div class="form-group row">
             <label for="inputSenha" class="col-sm-2 col-form-label">Senha</label>
             <div class="col-sm-10">
-                <input type="password" id="inputSenha" formControlName="senha" class="form-control" placeholder="Senha"
-                    required="true">
+                <input type="password" id="inputSenha" formControlName="senha" class="form-control" placeholder="Senha" required="true">
             </div>
         </div>
         <div class="text-center mb-3">

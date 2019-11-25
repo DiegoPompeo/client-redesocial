@@ -36,6 +36,8 @@ export class DetailsComponent implements OnInit {
   listaCurtidas: CurtirPost[] = new Array<CurtirPost>();
   existe = false;
 
+  msgError = false;
+
   constructor(
     private authService: AuthService,
     private service: ServiceService,
@@ -43,7 +45,7 @@ export class DetailsComponent implements OnInit {
   }
 
 
-  getAmigosEmComum(){
+  getAmigosEmComum() {
     this.show = false;
   }
 
@@ -93,16 +95,16 @@ export class DetailsComponent implements OnInit {
       })
   }
 
-  recomendar() {   
+  recomendar() {
     let existe: boolean;
 
     this.service.listaRecomendacao().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].emailRecomendada == localStorage.getItem("det_email") &&
-          data[i].emailRecomendou == localStorage.getItem("email")) {
+            data[i].emailRecomendou == localStorage.getItem("email")) {
             existe = true;
-          }          
+          }
         }
       }
     );
@@ -110,10 +112,10 @@ export class DetailsComponent implements OnInit {
     this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
     this.pessoaRecomendada.desfazer = false;
 
-    if(!existe){  
-      this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => {});
-    } else {  
-      this.service.recomenda(this.pessoaRecomendada).subscribe(data => {});
+    if (!existe) {
+      this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => { });
+    } else {
+      this.service.recomenda(this.pessoaRecomendada).subscribe(data => { });
     }
 
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
@@ -126,16 +128,16 @@ export class DetailsComponent implements OnInit {
     this.recomendou = true;
   }
 
-  desrecomendar() {   
+  desrecomendar() {
     let existe: boolean;
 
     this.service.listaRecomendacao().subscribe(
       data => {
         for (let i = 0; i < data.length; i++) {
           if (data[i].emailRecomendada == localStorage.getItem("det_email") &&
-          data[i].emailRecomendou == localStorage.getItem("email")) {
+            data[i].emailRecomendou == localStorage.getItem("email")) {
             existe = true;
-          }          
+          }
         }
       }
     );
@@ -143,10 +145,10 @@ export class DetailsComponent implements OnInit {
     this.pessoaRecomendada.emailRecomendada = localStorage.getItem("det_email");
     this.pessoaRecomendada.desfazer = true;
 
-    if(!existe){  
-      this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => {});
-    } else {  
-      this.service.desrecomenda(this.pessoaRecomendada).subscribe(data => {});
+    if (!existe) {
+      this.service.addRecomendacao(this.pessoaRecomendada).subscribe(data => { });
+    } else {
+      this.service.desrecomenda(this.pessoaRecomendada).subscribe(data => { });
     }
 
     this.service.getCientist(localStorage.getItem("det_email")).subscribe(
@@ -159,26 +161,30 @@ export class DetailsComponent implements OnInit {
     this.recomendou = false;
   }
 
-  verificaCurtir(post: Post){
+  verificaCurtir(post: Post) {
     return this.service.verificaCurtida(post).subscribe(
       data => {
         this.existe = data;
       }
     );
   }
-  
+
   likeButtonClick(post: Post) {
-    post.curtidas++;
-    this.service.atualizaPost(post).subscribe(data => {
-      this.post = data;
-      console.log("Oi");
-    });
     this.service.getCientist(localStorage.getItem("email")).subscribe(
       data => {
-        data.curtir--;
-        this.service.atualizarPerfil(data).subscribe();
+        if (data.curtir > 0) {
+          post.curtidas++;
+          this.service.atualizaPost(post).subscribe(data => {
+            this.post = data;
+            console.log("Oi");
+          });
+          data.curtir--;
+          this.service.atualizarPerfil(data).subscribe();
+        } else {
+          this.msgError = true;
+        }
       }
-    );    
+    )
   }
 
   getAmigos() {
